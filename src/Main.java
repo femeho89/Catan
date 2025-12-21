@@ -1,5 +1,7 @@
+import javax.swing.*;
 import java.io.File;
 import java.util.*;
+import javax.swing.*;
 
 public class Main {
 
@@ -7,8 +9,10 @@ public class Main {
 
     public static void main(String[] args) {
 
-
-        File file = new File(file1);
+        JFrame frame = new JFrame(file1);    // makes the frame for the game
+        frame.setSize(1400, 600);     // sets the frame size
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);    // makes the game close when the cross is pressed
+        frame.setVisible(true);     // makes the frame visible
 
 
     }

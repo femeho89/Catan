@@ -1,7 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.util.*;
-import javax.swing.*;
 
 public class Main {
 
@@ -17,6 +15,12 @@ public class Main {
         Color colorBackground = new Color(255, 255, 255);    // makes a white color
         frame.getContentPane().setBackground(colorBackground);
 
+        ImageIcon cardKnight = new ImageIcon("Kaart Ridder.png");
+        JLabel knight = new JLabel(cardKnight);
+
+        knight.setBounds(100, 100, cardKnight.getIconWidth(), cardKnight.getIconHeight());
+        frame.add(knight);
+        frame.setVisible(true);
 
     }
 }

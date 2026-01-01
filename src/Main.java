@@ -4,12 +4,12 @@ import java.awt.*;
 public class Main {
 
     public static String file1 = "Catan";
+    public static boolean playing = true;
 
     public static void main(String[] args) {
 
         JFrame frame = new JFrame(file1);    // makes the frame for the game
         frame.setSize(1366, 720);     // sets the frame size
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);    // makes the game close when the cross is pressed
 
         while(playing) {
 
@@ -21,9 +21,11 @@ public class Main {
 
             knight.setBounds(100, 100, cardKnight.getIconWidth(), cardKnight.getIconHeight());
             frame.add(knight);
-            frame.setVisible(true);     // makes the frame visible
 
+            frame.setVisible(true);     // makes the frame visible
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);    // makes the game close when the cross is pressed
             frame.revalidate();
+            frame.repaint();
         }
     }
 }

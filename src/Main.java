@@ -20,6 +20,7 @@ public class Main {
 
         JButton startButton = new JButton("Start Catan");
         startButton.setBounds(100, 100, 200, 50);
+        startButton.setBackground(new Color(200, 0, 0));
         frame.add(startButton);
 
         ActionListener listener = f -> {

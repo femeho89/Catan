@@ -15,12 +15,12 @@ public class StartButtonActionListener implements ActionListener {
         card.setBounds(card.getX(), card.getY(), card.image.getIconWidth(), card.image.getIconHeight());
         playingFrame.add(card);
 
-        Timer timerKnight = new Timer(9, event -> {
+        Timer timer = new Timer(9, event -> {
             card.setX(card.getX() + 3);
             card.setLocation(card.getX(), card.getY());
         });
 
-        timerKnight.start();
+        timer.start();
 
         card.setVisible(true);
         Main.frame.setVisible(false);
@@ -45,6 +45,8 @@ public class StartButtonActionListener implements ActionListener {
         ActionListener endListener = g -> {
             Main.frame.setVisible(true);
             playingFrame.setVisible(false);
+            card.setX(0);
+            timer.stop();
         };
 
         JButton endButton = new JButton("End Catan");

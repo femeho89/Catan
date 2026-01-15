@@ -15,6 +15,7 @@ public class Kaart extends JLabel {
         this.width = width;
         this.type = type;
         this.image = image;
+        this.setIcon(image);
     }
 
     public int getHeight() {

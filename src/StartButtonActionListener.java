@@ -41,15 +41,19 @@ public class StartButtonActionListener implements ActionListener {
                 }
             }
         });
-        JButton endButton = new JButton("End Catan");
-        endButton.setBounds(1100, 50, 200, 50);
-        endButton.setBackground(new Color(200, 0, 0));
-        playingFrame.add(endButton);
 
         ActionListener endListener = g -> {
             Main.frame.setVisible(true);
             playingFrame.setVisible(false);
         };
+
+        JButton endButton = new JButton("End Catan");
+        endButton.setBounds(1100, 50, 200, 50);
+        endButton.setBackground(new Color(200, 0, 0));
+        playingFrame.add(endButton);
+        endButton.addActionListener(endListener);
+
+
 
         playingFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }

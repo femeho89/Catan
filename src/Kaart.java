@@ -6,7 +6,7 @@ public class Kaart extends JLabel {
     private int height;
     private int width;
     private String type;
-    ImageIcon image;
+    public ImageIcon image;
 
     public Kaart(int x, int y, int height, int width, String type, ImageIcon image) {
         this.x = x;

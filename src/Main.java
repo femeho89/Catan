@@ -22,17 +22,7 @@ public class Main {
 
         ActionListener listener = new StartButtonActionListener(knight);
 
-        JButton endButton = new JButton("End Catan");
-        endButton.setBounds(1100, 50, 200, 50);
-        endButton.setBackground(new Color(200, 0, 0));
-        frame.add(endButton);
-
-        ActionListener endListener = f -> {
-            //frame.setDefaultCloseOperation(JFrame.);
-        };
-
         startButton.addActionListener(listener);
-        endButton.addActionListener(endListener);
 
         Color colorBackground = new Color(255, 255, 255);    // Makes a white color
         frame.getContentPane().setBackground(colorBackground);

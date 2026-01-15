@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
 
 public class StartButtonActionListener implements ActionListener {
@@ -40,6 +41,14 @@ public class StartButtonActionListener implements ActionListener {
                 }
             }
         });
+        JButton endButton = new JButton("End Catan");
+        endButton.setBounds(1100, 50, 200, 50);
+        endButton.setBackground(new Color(200, 0, 0));
+        playingFrame.add(endButton);
+
+        ActionListener endListener = f -> {
+            //frame.setDefaultCloseOperation(JFrame.);
+        };
 
         playingFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }

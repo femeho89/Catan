@@ -46,8 +46,9 @@ public class StartButtonActionListener implements ActionListener {
         endButton.setBackground(new Color(200, 0, 0));
         playingFrame.add(endButton);
 
-        ActionListener endListener = f -> {
-            //frame.setDefaultCloseOperation(JFrame.);
+        ActionListener endListener = g -> {
+            Main.frame.setVisible(true);
+            playingFrame.setVisible(false);
         };
 
         playingFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -58,11 +58,13 @@ public class StartButtonActionListener implements ActionListener {
                         if(turns % 2 == 0) {
                             card.setVisible(false);
                             card2.setVisible(true);
+                            victoryPoints =+ 1;
                         }
 
                         else if(turns % 2 == 1) {
                             card.setVisible(true);
                             card2.setVisible(false);
+                            victoryPoints -= 1;
                         }
                     }
                 }
@@ -79,7 +81,7 @@ public class StartButtonActionListener implements ActionListener {
             timer.stop();
         };
 
-        JButton endButton = new JButton("End Catan");
+        JButton endButton = new JButton("Stop Catan");
         endButton.setBounds(1100, 50, 200, 50);
         endButton.setBackground(new Color(200, 0, 0));
         playingFrame.add(endButton);

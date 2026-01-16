@@ -4,9 +4,15 @@ import java.awt.event.*;
 
 public class StartButtonActionListener implements ActionListener {
     private Kaart card;
+    private Kaart card2;
+    private int turns;
+    private int victoryPoints;
 
-    public StartButtonActionListener(Kaart card) {
+    public StartButtonActionListener(Kaart card, Kaart card2) {
+        victoryPoints = 0;
+        turns = 0;
         this.card = card;
+        this.card2 = card2;
     }
     public void actionPerformed(ActionEvent e) {
         JFrame playingFrame = new JFrame(Main.file1);    // The playing screen
@@ -15,14 +21,25 @@ public class StartButtonActionListener implements ActionListener {
         card.setBounds(card.getX(), card.getY(), card.image.getIconWidth(), card.image.getIconHeight());
         playingFrame.add(card);
 
+        card2.setBounds(card.getX(), card.getY(), card2.image.getIconWidth(), card2.image.getIconHeight());
+        playingFrame.add(card2);
+
+        JLabel points = new JLabel("Je hebt: " + victoryPoints + " overwinningspunten");
+        points.setFont(new Font("Arial", Font.BOLD, 12));
+        points.setBounds(60, 40, 200, 60);
+        playingFrame.add(points);
+
         Timer timer = new Timer(9, event -> {
-            card.setX(card.getX() + 3);
+            card.setX(card.getX() + 1);
+            card2.setX(card2.getX() + 1);
             card.setLocation(card.getX(), card.getY());
+            card2.setLocation(card2.getX(), card2.getY());
         });
 
         timer.start();
 
         card.setVisible(true);
+        card2.setVisible(false);
         Main.frame.setVisible(false);
         playingFrame.setVisible(true);
 
@@ -35,8 +52,18 @@ public class StartButtonActionListener implements ActionListener {
                     int mouseX = e.getX();
                     int mouseY = e.getY();
 
-                    if (mouseX <= card.getX() + card.image.getIconWidth() && mouseX >= card.getX() && mouseY <= card.getY() + card.image.getIconHeight() && mouseY >= card.getY()) {    // Makes the card disappear when the right mouse button is pressed
-                        card.setVisible(false);
+                    if (mouseX <= card.getX() + card.image.getIconWidth() && mouseX >= card.getX() && mouseY <= card.getY() + card.image.getIconHeight() && mouseY >= card.getY()) {    // Makes the card turn when the right mouse button is pressed
+                        turns += 1;
+
+                        if(turns % 2 == 0) {
+                            card.setVisible(false);
+                            card2.setVisible(true);
+                        }
+
+                        else if(turns % 2 == 1) {
+                            card.setVisible(true);
+                            card2.setVisible(false);
+                        }
                     }
                 }
             }
@@ -45,7 +72,10 @@ public class StartButtonActionListener implements ActionListener {
         ActionListener endListener = g -> {
             Main.frame.setVisible(true);
             playingFrame.setVisible(false);
+            card.setVisible(false);
             card.setX(0);
+            card2.setVisible(false);
+            card2.setX(0);
             timer.stop();
         };
 

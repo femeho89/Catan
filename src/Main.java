@@ -12,15 +12,18 @@ public class Main {
         frame.setSize(1366, 720);     // Sets the frame size
         frame.setLayout(null);
 
-        ImageIcon cardKnight = new ImageIcon("Kaart Ridder.png");
-        Kaart knight = new Kaart(100, 100, cardKnight.getIconWidth(), cardKnight.getIconHeight(), "Knight", cardKnight);
+        ImageIcon cardKnightA = new ImageIcon("Kaart Ridder.png");
+        Kaart knightA = new Kaart(100, 100, cardKnightA.getIconWidth(), cardKnightA.getIconHeight(), "Knight", cardKnightA);
+
+        ImageIcon cardKnightB = new ImageIcon("Kaart Stad.png");
+        Kaart knightB = new Kaart(knightA.getX(), knightA.getY(), cardKnightB.getIconWidth(), cardKnightB.getIconHeight(), "Knight", cardKnightB);
 
         JButton startButton = new JButton("Start Catan");
         startButton.setBounds(100, 100, 200, 50);
         startButton.setBackground(new Color(200, 0, 0));
         frame.add(startButton);
 
-        ActionListener listener = new StartButtonActionListener(knight);
+        ActionListener listener = new StartButtonActionListener(knightA, knightB);
 
         startButton.addActionListener(listener);
 

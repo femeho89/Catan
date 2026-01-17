@@ -58,7 +58,7 @@ public class StartButtonActionListener implements ActionListener {
                         if(turns % 2 == 0) {
                             card.setVisible(false);
                             card2.setVisible(true);
-                            victoryPoints =+ 1;
+                            victoryPoints += 1;
                         }
 
                         else if(turns % 2 == 1) {

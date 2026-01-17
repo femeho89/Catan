@@ -3,8 +3,8 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class StartButtonActionListener implements ActionListener {
-    private Kaart card;
-    private Kaart card2;
+    private final Kaart card;
+    private final Kaart card2;
     private int turns;
     private int victoryPoints;
 

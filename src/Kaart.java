@@ -3,9 +3,9 @@ import javax.swing.*;
 public class Kaart extends JLabel {
     private int x;
     private int y;
-    private int height;
-    private int width;
-    private String type;
+    private final int height;
+    private final int width;
+    private final String type;
     public ImageIcon image;
 
     public Kaart(int x, int y, int height, int width, String type, ImageIcon image) {
@@ -42,5 +42,9 @@ public class Kaart extends JLabel {
     @Override
     public int getY() {
         return y;
+    }
+
+    public String getType() {
+        return type;
     }
 }

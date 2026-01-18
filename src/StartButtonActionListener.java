@@ -14,6 +14,7 @@ public class StartButtonActionListener implements ActionListener {
         this.card = card;
         this.card2 = card2;
     }
+
     public void actionPerformed(ActionEvent e) {
         JFrame playingFrame = new JFrame(Main.file1);    // The playing screen
         playingFrame.setSize(1366, 720);
@@ -48,23 +49,21 @@ public class StartButtonActionListener implements ActionListener {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
 
-                if(SwingUtilities.isRightMouseButton(e)) {
+                if (SwingUtilities.isRightMouseButton(e)) {
                     int mouseX = e.getX();
                     int mouseY = e.getY();
 
                     if (mouseX <= card.getX() + card.image.getIconWidth() && mouseX >= card.getX() && mouseY <= card.getY() + card.image.getIconHeight() && mouseY >= card.getY()) {    // Makes the card turn when the right mouse button is pressed
                         turns += 1;
 
-                        if(turns % 2 == 0) {
+                        if (turns % 2 == 0) {
                             card.setVisible(false);
                             card2.setVisible(true);
-                            victoryPoints += 1;
-                        }
-
-                        else if(turns % 2 == 1) {
+                            if (card2.getType().equals("town")) victoryPoints += 1;
+                        } else if (turns % 2 == 1) {
                             card.setVisible(true);
                             card2.setVisible(false);
-                            victoryPoints -= 1;
+                            if (card.getType().equals("town")) victoryPoints -= 1;
                         }
                     }
                 }
@@ -86,7 +85,6 @@ public class StartButtonActionListener implements ActionListener {
         endButton.setBackground(new Color(200, 0, 0));
         playingFrame.add(endButton);
         endButton.addActionListener(endListener);
-
 
 
         playingFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

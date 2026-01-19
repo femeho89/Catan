@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class StartButtonActionListener implements ActionListener {
+
     private final Kaart card;
     private final Kaart card2;
     private int turns;
@@ -59,13 +60,18 @@ public class StartButtonActionListener implements ActionListener {
                         if (turns % 2 == 0) {
                             card.setVisible(false);
                             card2.setVisible(true);
-                            if (card2.getType().equals("town")) victoryPoints += 1;
+                            if (card2.getType() == Kaart.Type.TOWN) {
+                                victoryPoints++;
+                            }
                         } else if (turns % 2 == 1) {
                             card.setVisible(true);
                             card2.setVisible(false);
-                            if (card.getType().equals("town")) victoryPoints -= 1;
+                            if (card.getType() == Kaart.Type.TOWN) {
+                                victoryPoints--;
+                            }
                         }
                     }
+                    points.setText("Je hebt: " + victoryPoints + " overwinningspunten");
                 }
             }
         });

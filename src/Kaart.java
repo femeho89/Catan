@@ -1,14 +1,23 @@
 import javax.swing.*;
 
 public class Kaart extends JLabel {
+
+    public enum Type{
+        KNIGHT,
+        TOWN,
+        CITY,
+        STREET,
+        CITY_EXTENSION
+    }
+
     private int x;
     private int y;
     private final int height;
     private final int width;
-    private final String type;
+    private final Type type;
     public ImageIcon image;
 
-    public Kaart(int x, int y, int height, int width, String type, ImageIcon image) {
+    public Kaart(int x, int y, int height, int width, Type type, ImageIcon image) {
         this.x = x;
         this.y = y;
         this.height = height;
@@ -44,7 +53,7 @@ public class Kaart extends JLabel {
         return y;
     }
 
-    public String getType() {
+    public Type getType() {
         return type;
     }
 }

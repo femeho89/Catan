@@ -8,6 +8,9 @@ public class StartButtonActionListener implements ActionListener {
     private final Kaart card2;
     private int turns;
     private int victoryPoints;
+    private int towns = 0;
+    private int cities = 0;
+    private int cityExtensions = 0;
 
     public StartButtonActionListener(Kaart card, Kaart card2) {
         victoryPoints = 0;
@@ -17,6 +20,11 @@ public class StartButtonActionListener implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
+        towns = 0;
+        cities = 0;
+        cityExtensions = 0;
+        victoryPoints = 0;
+
         JFrame playingFrame = new JFrame(Main.file1);    // The playing screen
         playingFrame.setSize(1366, 720);
         playingFrame.setLayout(null);
@@ -41,6 +49,11 @@ public class StartButtonActionListener implements ActionListener {
         timer.start();
 
         card.setVisible(true);
+        addCard(card.getType());
+
+        victoryPoints = towns + 2 * cities + 3 * cityExtensions;
+        points.setText("Je hebt: " + victoryPoints + " overwinningspunten");
+
         card2.setVisible(false);
         Main.frame.setVisible(false);
         playingFrame.setVisible(true);
@@ -57,20 +70,19 @@ public class StartButtonActionListener implements ActionListener {
                     if (mouseX <= card.getX() + card.image.getIconWidth() && mouseX >= card.getX() && mouseY <= card.getY() + card.image.getIconHeight() && mouseY >= card.getY()) {    // Makes the card turn when the right mouse button is pressed
                         turns += 1;
 
-                        if (turns % 2 == 0) {
+                        if (turns % 2 == 1) {
                             card.setVisible(false);
                             card2.setVisible(true);
-                            if (card2.getType() == Kaart.Type.TOWN) {
-                                victoryPoints++;
-                            }
-                        } else if (turns % 2 == 1) {
+                            addCard(card2.getType());
+                            removeCard(card.getType());
+                        } else if (turns % 2 == 0) {
                             card.setVisible(true);
                             card2.setVisible(false);
-                            if (card.getType() == Kaart.Type.TOWN) {
-                                victoryPoints--;
-                            }
+                            addCard(card.getType());
+                            removeCard(card2.getType());
                         }
                     }
+                    victoryPoints = towns + 2 * cities + 3 * cityExtensions;
                     points.setText("Je hebt: " + victoryPoints + " overwinningspunten");
                 }
             }
@@ -94,5 +106,21 @@ public class StartButtonActionListener implements ActionListener {
 
 
         playingFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    public void addCard(Kaart.Type type) {
+        switch(type) {
+            case Kaart.Type.TOWN -> towns++;
+            case Kaart.Type.CITY -> cities++;
+            case Kaart.Type.CITY_EXTENSION -> cityExtensions++;
+        }
+    }
+
+    public void removeCard(Kaart.Type type) {
+        switch(type) {
+            case Kaart.Type.TOWN -> towns--;
+            case Kaart.Type.CITY -> cities--;
+            case Kaart.Type.CITY_EXTENSION -> cityExtensions--;
+        }
     }
 }

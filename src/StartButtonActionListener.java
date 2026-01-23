@@ -3,38 +3,31 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class StartButtonActionListener implements ActionListener {
-
-    private final Kaart card;
-    private final Kaart card2;
+    private final Game game;
     private int turns;
     private int victoryPoints;
-    private int towns = 0;
-    private int cities = 0;
-    private int cityExtensions = 0;
 
-    public StartButtonActionListener(Kaart card, Kaart card2) {
+    public StartButtonActionListener(Game game) {
         victoryPoints = 0;
         turns = 0;
-        this.card = card;
-        this.card2 = card2;
+        this.game = game;
     }
 
     public void actionPerformed(ActionEvent e) {
-        towns = 0;
-        cities = 0;
-        cityExtensions = 0;
         victoryPoints = 0;
+        turns = 0;
+
+        Player currentPlayer = game.getCurrentPlayer();
+        Kaart card = currentPlayer.getCard();
+        Kaart card2 = currentPlayer.getCard2();
 
         JFrame playingFrame = new JFrame(Main.file1);    // The playing screen
         playingFrame.setSize(1366, 720);
         playingFrame.setLayout(null);
-        card.setBounds(card.getX(), card.getY(), card.image.getIconWidth(), card.image.getIconHeight());
         playingFrame.add(card);
-
-        card2.setBounds(card.getX(), card.getY(), card2.image.getIconWidth(), card2.image.getIconHeight());
         playingFrame.add(card2);
 
-        JLabel points = new JLabel("Je hebt: " + victoryPoints + " overwinningspunten");
+        JLabel points = new JLabel(currentPlayer.getName() + " heeft: " + currentPlayer.getVictoryPoints() + " overwinningspunt(en)");
         points.setFont(new Font("Arial", Font.BOLD, 12));
         points.setBounds(60, 40, 200, 60);
         playingFrame.add(points);
@@ -49,11 +42,6 @@ public class StartButtonActionListener implements ActionListener {
         timer.start();
 
         card.setVisible(true);
-        addCard(card.getType());
-
-        victoryPoints = towns + 2 * cities + 3 * cityExtensions;
-        points.setText("Je hebt: " + victoryPoints + " overwinningspunten");
-
         card2.setVisible(false);
         Main.frame.setVisible(false);
         playingFrame.setVisible(true);
@@ -73,20 +61,42 @@ public class StartButtonActionListener implements ActionListener {
                         if (turns % 2 == 1) {
                             card.setVisible(false);
                             card2.setVisible(true);
-                            addCard(card2.getType());
-                            removeCard(card.getType());
+                            currentPlayer.addCard(card2.getType());
+                            currentPlayer.removeCard(card.getType());
                         } else if (turns % 2 == 0) {
                             card.setVisible(true);
                             card2.setVisible(false);
-                            addCard(card.getType());
-                            removeCard(card2.getType());
+                            currentPlayer.addCard(card.getType());
+                            currentPlayer.removeCard(card2.getType());
                         }
                     }
-                    victoryPoints = towns + 2 * cities + 3 * cityExtensions;
-                    points.setText("Je hebt: " + victoryPoints + " overwinningspunten");
+                    points.setText(currentPlayer.getName() + " heeft: " + currentPlayer.getVictoryPoints() + " overwinningspunt(en)");
                 }
             }
         });
+        ActionListener nextListener = h -> {
+            game.getCurrentPlayer().refreshCardCoordinates();
+
+            game.switchPlayer();
+            currentPlayer = game.getCurrentPlayer();
+            card = currentPlayer.getCard();
+            card2 = currentPlayer.getCard2();
+
+            card.setVisible(true);
+            card2.setVisible(false);
+
+            card.setLocation(card.getX(), card.getY());
+            card2.setLocation(card2.getX(), card2.getY());
+
+            turns = 0;
+            points.setText(currentPlayer.getName() + " heeft: " + currentPlayer.getVictoryPoints() + " overwinningspunt(en)");
+        };
+
+        JButton nextButton = new JButton("Volgende ronde");
+        nextButton.setBounds(890, 50, 200, 50);
+        nextButton.setBackground(new Color(200, 0, 0));
+        playingFrame.add(nextButton);
+        nextButton.addActionListener(nextListener);
 
         ActionListener endListener = g -> {
             Main.frame.setVisible(true);
@@ -106,21 +116,5 @@ public class StartButtonActionListener implements ActionListener {
 
 
         playingFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }
-
-    public void addCard(Kaart.Type type) {
-        switch(type) {
-            case Kaart.Type.TOWN -> towns++;
-            case Kaart.Type.CITY -> cities++;
-            case Kaart.Type.CITY_EXTENSION -> cityExtensions++;
-        }
-    }
-
-    public void removeCard(Kaart.Type type) {
-        switch(type) {
-            case Kaart.Type.TOWN -> towns--;
-            case Kaart.Type.CITY -> cities--;
-            case Kaart.Type.CITY_EXTENSION -> cityExtensions--;
-        }
     }
 }

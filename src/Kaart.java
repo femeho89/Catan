@@ -27,14 +27,6 @@ public class Kaart extends JLabel {
         this.setIcon(image);
     }
 
-    public int getHeight() {
-        return height;
-    }
-
-    public int getWidth() {
-        return width;
-    }
-
     public void setX(int x) {
         this.x = x;
     }
@@ -51,6 +43,16 @@ public class Kaart extends JLabel {
     @Override
     public int getY() {
         return y;
+    }
+
+    @Override
+    public int getHeight() {
+        return height;
+    }
+
+    @Override
+    public int getWidth() {
+        return width;
     }
 
     public Type getType() {

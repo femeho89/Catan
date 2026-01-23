@@ -23,7 +23,16 @@ public class Main {
         startButton.setBackground(new Color(200, 0, 0));
         frame.add(startButton);
 
-        ActionListener listener = new StartButtonActionListener(townA, townB);
+        Player[] players = new Player[2];   // Makes a player Array
+        players[0] = new Player("Jens", cardTownA, cardTownB);
+        players[1] = new Player("Feltse", cardTownA, cardTownB);
+
+        Game game = new Game(players);
+
+        Player current = game.getCurrentPlayer();
+        current.addCard(Kaart.Type.TOWN);
+
+        ActionListener listener = new StartButtonActionListener(game);
 
         startButton.addActionListener(listener);
 

@@ -17,7 +17,10 @@ public class Kaart extends JLabel {
     private final Type type;
     public ImageIcon image;
 
-    public Kaart(int x, int y, int height, int width, Type type, ImageIcon image) {
+    private final int startX;
+    private final int startY;
+
+    public Kaart(int x, int y, int height, int width, Type type, ImageIcon image, int startX, int startY) {
         this.x = x;
         this.y = y;
         this.height = height;
@@ -25,6 +28,8 @@ public class Kaart extends JLabel {
         this.type = type;
         this.image = image;
         this.setIcon(image);
+        this.startX = startX;
+        this.startY = startY;
     }
 
     public void setX(int x) {
@@ -35,14 +40,23 @@ public class Kaart extends JLabel {
         this.y = y;
     }
 
-    @Override
-    public int getX() {
-        return x;
+    public int getStartX() {
+        return startX;
     }
 
-    @Override
-    public int getY() {
-        return y;
+    public int getStartY() {
+        return startY;
+    }
+
+    public void moveX(int pixels) {
+        x += pixels;
+        setLocation(x, y);
+    }
+
+    public void restartPosition() {
+        x = startX;
+        y = startY;
+        setLocation(x, y);
     }
 
     @Override

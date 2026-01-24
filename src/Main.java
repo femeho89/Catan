@@ -13,10 +13,10 @@ public class Main {
         frame.setLayout(null);
 
         ImageIcon cardTownA = new ImageIcon("Kaart Dorp.png");
-        Kaart townA = new Kaart(100, 100, cardTownA.getIconWidth(), cardTownA.getIconHeight(), Kaart.Type.TOWN, cardTownA);
+        Kaart townA = new Kaart(100, 100, cardTownA.getIconWidth(), cardTownA.getIconHeight(), Kaart.Type.TOWN, cardTownA, 0, 100);
 
         ImageIcon cardTownB = new ImageIcon("Kaart Stad.png");
-        Kaart townB = new Kaart(townA.getX(), townA.getY(), cardTownB.getIconWidth(), cardTownB.getIconHeight(), Kaart.Type.CITY, cardTownB);
+        Kaart townB = new Kaart(townA.getX(), townA.getY(), cardTownB.getIconWidth(), cardTownB.getIconHeight(), Kaart.Type.CITY, cardTownB, 0, 100);
 
         JButton startButton = new JButton("Start Catan");
         startButton.setBounds(100, 100, 200, 50);

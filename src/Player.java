@@ -6,24 +6,17 @@ public class Player {
     private int cities;
     private int cityExtensions;
     private final String name;
-    private Kaart card;
-    private Kaart card2;
+    private final Kaart card;
+    private final Kaart card2;
 
-    private int cardX;
-    private int cardY;
-    private int card2X;
-    private int card2Y;
+    private int cardX = 0;
+    private int cardY = 100;
 
     public Player(String name, ImageIcon cardImage, ImageIcon card2Image) {
         this.name = name;
 
-        card = new Kaart(0, 100, cardImage.getIconWidth(), cardImage.getIconHeight(), Kaart.Type.TOWN, cardImage);
-        card2 = new Kaart(0, 100, card2Image.getIconWidth(), card2Image.getIconHeight(), Kaart.Type.CITY, card2Image);
-
-        cardX = card.getX();
-        cardY = card.getY();
-        card2X = card2.getX();
-        card2Y = card2.getY();
+        card = new Kaart(0, 100, cardImage.getIconWidth(), cardImage.getIconHeight(), Kaart.Type.TOWN, cardImage, 0, 100);
+        card2 = new Kaart(0, 100, card2Image.getIconWidth(), card2Image.getIconHeight(), Kaart.Type.CITY, card2Image, 0, 100);
     }
 
     public int getVictoryPoints() {
@@ -46,19 +39,30 @@ public class Player {
         }
     }
 
+    public int getCardX() {
+        return cardX;
+    }
+
+    public int getCardY() {
+        return cardY;
+    }
+
+    public void setCardCoordinates(int x, int y) {
+        this.cardX = x;
+        this.cardY = y;
+    }
+
+    public void restartCards() {
+        card.restartPosition();
+        card2.restartPosition();
+    }
+
     public Kaart getCard() {
         return card;
     }
 
     public Kaart getCard2() {
         return card2;
-    }
-
-    public void refreshCardCoordinates() {
-        card.setX(card.getX());
-        card.setY(card.getY());
-        card2.setX(card2.getX());
-        card2.setY(card2.getY());
     }
 
     public String getName() {

@@ -8,6 +8,10 @@ public class Game {
         this.players = players;
     }
 
+    public Player[] getPlayers() {
+        return players;
+    }
+
     public Player getCurrentPlayer() {
         return players[currentPlayerIndex];
     }

@@ -15,8 +15,8 @@ public class Player {
     public Player(String name, ImageIcon cardImage, ImageIcon card2Image) {
         this.name = name;
 
-        card = new Kaart(0, 100, cardImage.getIconWidth(), cardImage.getIconHeight(), Kaart.Type.TOWN, cardImage, 0, 100);
-        card2 = new Kaart(0, 100, card2Image.getIconWidth(), card2Image.getIconHeight(), Kaart.Type.CITY, card2Image, 0, 100);
+        card = new Kaart(cardX, cardY, cardImage.getIconWidth(), cardImage.getIconHeight(), Kaart.Type.TOWN, cardImage, 0, 100);
+        card2 = new Kaart(cardX, cardY, card2Image.getIconWidth(), card2Image.getIconHeight(), Kaart.Type.CITY, card2Image, 0, 100);
     }
 
     public int getVictoryPoints() {

@@ -102,6 +102,7 @@ public class StartButtonActionListener implements ActionListener {
             card2.setVisible(false);
 
             turns = 0;
+            currentPlayer.getVictoryPoints();
             points.setText(currentPlayer.getName() + " heeft: " + currentPlayer.getVictoryPoints() + " overwinningspunt(en)");
         };
 

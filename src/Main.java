@@ -24,7 +24,7 @@ public class Main {
         frame.add(startButton);
 
         Player[] players = new Player[2];   // Makes a player Array
-        players[0] = new Player("Jens", cardTownA, cardTownB);
+        players[0] = new Player("X", cardTownA, cardTownB);
         players[1] = new Player("Feltse", cardTownA, cardTownB);
 
         Game game = new Game(players);

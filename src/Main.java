@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 public class Main {
 
@@ -23,9 +24,12 @@ public class Main {
         startButton.setBackground(new Color(200, 0, 0));
         frame.add(startButton);
 
+        ArrayList<String> playerNames = new ArrayList<>();
+        playerNames.add("X");
+        playerNames.add("Feltse");
         Player[] players = new Player[2];   // Makes a player Array
-        players[0] = new Player("X", cardTownA, cardTownB);
-        players[1] = new Player("Feltse", cardTownA, cardTownB);
+        players[0] = new Player(playerNames.get(0), cardTownA, cardTownB);
+        players[1] = new Player(playerNames.get(1), cardTownA, cardTownB);
 
         Game game = new Game(players);
 

@@ -8,16 +8,13 @@ public class StartButtonActionListener implements ActionListener {
     private Player currentPlayer;
     private Kaart card;
     private Kaart card2;
-    private int victoryPoints;
 
     public StartButtonActionListener(Game game) {
-        victoryPoints = 0;
         turns = 0;
         this.game = game;
     }
 
     public void actionPerformed(ActionEvent e) {
-        victoryPoints = 0;
         turns = 0;
 
         currentPlayer = game.getCurrentPlayer();
@@ -40,7 +37,7 @@ public class StartButtonActionListener implements ActionListener {
         card.setBounds(currentPlayer.getCardX(), currentPlayer.getCardY(), card.getWidth(), card.getHeight());
         card2.setBounds(currentPlayer.getCardX(), currentPlayer.getCardY(), card2.getWidth(), card2.getHeight());
 
-        JLabel points = new JLabel(currentPlayer.getName() + " heeft: " + currentPlayer.getVictoryPoints() + " overwinningspunt(en)");
+        JLabel points = new JLabel(currentPlayer.getName() + " heeft: " + currentPlayer.getVictorypoints() + " overwinningspunt(en)");
         points.setFont(new Font("Arial", Font.BOLD, 12));
         points.setBounds(60, 40, 200, 60);
         playingFrame.add(points);
@@ -85,7 +82,7 @@ public class StartButtonActionListener implements ActionListener {
                             currentPlayer.removeCard(backCard.getType());
                         }
                     }
-                    points.setText(currentPlayer.getName() + " heeft: " + currentPlayer.getVictoryPoints() + " overwinningspunt(en)");
+                    points.setText(currentPlayer.getName() + " heeft: " + currentPlayer.getVictorypoints() + " overwinningspunt(en)");
                 }
             }
         });
@@ -103,8 +100,7 @@ public class StartButtonActionListener implements ActionListener {
             card2.setVisible(false);
 
             turns = 0;
-            currentPlayer.getVictoryPoints();
-            points.setText(currentPlayer.getName() + " heeft: " + currentPlayer.getVictoryPoints() + " overwinningspunt(en)");
+            points.setText(currentPlayer.getName() + " heeft: " + currentPlayer.getVictorypoints() + " overwinningspunt(en)");
         };
 
         JButton nextButton = new JButton("Volgende ronde");
@@ -122,6 +118,7 @@ public class StartButtonActionListener implements ActionListener {
                 p.getCard().setVisible(false);
                 p.getCard2().setVisible(false);
                 timer.stop();
+                p.setVictorypoints(0);
             }
         };
 

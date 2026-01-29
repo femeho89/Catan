@@ -2,15 +2,13 @@ import javax.swing.*;
 
 public class Player {
 
+    private int victorypoints = 0;
     private int towns;
     private int cities;
     private int cityExtensions;
     private final String name;
     private final Kaart card;
     private final Kaart card2;
-
-    private int cardX = 0;
-    private int cardY = 100;
 
     public Player(String name, ImageIcon cardImage, ImageIcon card2Image) {
         this.name = name;
@@ -20,37 +18,54 @@ public class Player {
         addCard(Kaart.Type.TOWN);
     }
 
-    public int getVictoryPoints() {
-        return towns + 2 * cities + 3 * cityExtensions;
+    public int getVictorypoints() {
+        return victorypoints;
+    }
+
+    public void setVictorypoints(int victorypoints) {
+        this.victorypoints = victorypoints;
     }
 
     public void addCard(Kaart.Type type) {
         switch(type) {
-            case TOWN -> towns++;
-            case CITY -> cities++;
-            case CITY_EXTENSION -> cityExtensions++;
+            case TOWN -> {
+                towns++;
+                victorypoints += 1;
+            }
+            case CITY -> {
+                cities++;
+                victorypoints += 2;
+            }
+            case CITY_EXTENSION -> {
+                cityExtensions++;
+                victorypoints += 3;
+            }
         }
     }
 
     public void removeCard(Kaart.Type type) {
         switch(type) {
-            case TOWN -> towns--;
-            case CITY -> cities--;
-            case CITY_EXTENSION -> cityExtensions--;
+            case TOWN -> {
+                towns--;
+                victorypoints -= 1;
+            }
+            case CITY -> {
+                cities--;
+                victorypoints -= 2;
+            }
+            case CITY_EXTENSION -> {
+                cityExtensions--;
+                victorypoints -= 3;
+            }
         }
     }
 
     public int getCardX() {
-        return cardX;
+        return card.getX();
     }
 
     public int getCardY() {
-        return cardY;
-    }
-
-    public void setCardCoordinates(int x, int y) {
-        this.cardX = x;
-        this.cardY = y;
+        return card.getY();
     }
 
     public Kaart getCard() {

@@ -15,8 +15,9 @@ public class Player {
     public Player(String name, ImageIcon cardImage, ImageIcon card2Image) {
         this.name = name;
 
-        card = new Kaart(cardX, cardY, cardImage.getIconWidth(), cardImage.getIconHeight(), Kaart.Type.TOWN, cardImage, 0, 100);
-        card2 = new Kaart(cardX, cardY, card2Image.getIconWidth(), card2Image.getIconHeight(), Kaart.Type.CITY, card2Image, 0, 100);
+        card = new Kaart(0, 100, cardImage.getIconWidth(), cardImage.getIconHeight(), Kaart.Type.TOWN, cardImage);
+        card2 = new Kaart(0, 100, card2Image.getIconWidth(), card2Image.getIconHeight(), Kaart.Type.CITY, card2Image);
+        addCard(Kaart.Type.TOWN);
     }
 
     public int getVictoryPoints() {
@@ -50,11 +51,6 @@ public class Player {
     public void setCardCoordinates(int x, int y) {
         this.cardX = x;
         this.cardY = y;
-    }
-
-    public void restartCards() {
-        card.restartPosition();
-        card2.restartPosition();
     }
 
     public Kaart getCard() {

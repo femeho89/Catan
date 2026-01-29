@@ -48,6 +48,7 @@ public class StartButtonActionListener implements ActionListener {
         Timer timer = new Timer(9, event -> {
             game.getCurrentPlayer().getCard().moveX(1);
             game.getCurrentPlayer().getCard2().moveX(1);
+            playingFrame.repaint();
         });
 
         timer.start();
@@ -115,11 +116,13 @@ public class StartButtonActionListener implements ActionListener {
         ActionListener endListener = g -> {
             Main.frame.setVisible(true);
             playingFrame.setVisible(false);
-            card.setVisible(false);
-            card.setX(0);
-            card2.setVisible(false);
-            card2.setX(0);
-            timer.stop();
+            for(Player p : players) {
+                p.getCard().setLocation(0, card.getY());
+                p.getCard2().setLocation(0, card2.getY());
+                p.getCard().setVisible(false);
+                p.getCard2().setVisible(false);
+                timer.stop();
+            }
         };
 
         JButton endButton = new JButton("Stop Catan");

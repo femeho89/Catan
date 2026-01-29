@@ -14,10 +14,10 @@ public class Main {
         frame.setLayout(null);
 
         ImageIcon cardTownA = new ImageIcon("Kaart Dorp.png");
-        Kaart townA = new Kaart(100, 100, cardTownA.getIconWidth(), cardTownA.getIconHeight(), Kaart.Type.TOWN, cardTownA, 0, 100);
+        Kaart townA = new Kaart(0, 100, cardTownA.getIconWidth(), cardTownA.getIconHeight(), Kaart.Type.TOWN, cardTownA);
 
         ImageIcon cardTownB = new ImageIcon("Kaart Stad.png");
-        Kaart townB = new Kaart(townA.getX(), townA.getY(), cardTownB.getIconWidth(), cardTownB.getIconHeight(), Kaart.Type.CITY, cardTownB, 0, 100);
+        Kaart townB = new Kaart(0, 100, cardTownB.getIconWidth(), cardTownB.getIconHeight(), Kaart.Type.CITY, cardTownB);
 
         JButton startButton = new JButton("Start Catan");
         startButton.setBounds(100, 100, 200, 50);
@@ -25,16 +25,13 @@ public class Main {
         frame.add(startButton);
 
         ArrayList<String> playerNames = new ArrayList<>();
-        playerNames.add("X");
+        playerNames.add("Jens");
         playerNames.add("Feltse");
         Player[] players = new Player[2];   // Makes a player Array
         players[0] = new Player(playerNames.get(0), cardTownA, cardTownB);
         players[1] = new Player(playerNames.get(1), cardTownA, cardTownB);
 
         Game game = new Game(players);
-
-        Player current = game.getCurrentPlayer();
-        current.addCard(Kaart.Type.TOWN);
 
         ActionListener listener = new StartButtonActionListener(game);
 

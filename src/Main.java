@@ -19,7 +19,7 @@ public class Main {
         Er moet een informatieButton komen op elke frame. Dat moet een nieuwe class worden.
          */
         JTextField textField = new JTextField(20);
-        textField.setBounds(300, 600, 200, 50);
+        textField.setBounds(400, 600, 200, 50);
         JButton textButton = new JButton("Voer in");
         textButton.setBounds(200, 600, 200, 50);
         JLabel outputLabel = new JLabel();
@@ -36,7 +36,6 @@ public class Main {
                 String input = textField.getText().trim();
                 if(input.isEmpty()) {
                     outputLabel.setText("Vul namen in.");
-                    return;
                 }
                 else{
                     outputLabel.setText("De namen zijn ingevuld!");

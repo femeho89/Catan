@@ -8,16 +8,13 @@ public class StartButtonActionListener implements ActionListener {
     private Player currentPlayer;
     private Kaart card;
     private Kaart card2;
-    private int victoryPoints;
 
     public StartButtonActionListener(Game game) {
-        victoryPoints = 0;
         turns = 0;
         this.game = game;
     }
 
     public void actionPerformed(ActionEvent e) {
-        victoryPoints = 0;
         turns = 0;
 
         currentPlayer = game.getCurrentPlayer();
@@ -40,7 +37,7 @@ public class StartButtonActionListener implements ActionListener {
         card.setBounds(currentPlayer.getCardX(), currentPlayer.getCardY(), card.getWidth(), card.getHeight());
         card2.setBounds(currentPlayer.getCardX(), currentPlayer.getCardY(), card2.getWidth(), card2.getHeight());
 
-        JLabel points = new JLabel(currentPlayer.getName() + " heeft: " + currentPlayer.getVictoryPoints() + " overwinningspunt(en)");
+        JLabel points = new JLabel(currentPlayer.getName() + " heeft: " + currentPlayer.getVictorypoints() + " overwinningspunt(en)");
         points.setFont(new Font("Arial", Font.BOLD, 12));
         points.setBounds(60, 40, 200, 60);
         playingFrame.add(points);
@@ -48,6 +45,7 @@ public class StartButtonActionListener implements ActionListener {
         Timer timer = new Timer(9, event -> {
             game.getCurrentPlayer().getCard().moveX(1);
             game.getCurrentPlayer().getCard2().moveX(1);
+            playingFrame.repaint();
         });
 
         timer.start();
@@ -61,9 +59,8 @@ public class StartButtonActionListener implements ActionListener {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                Player active = game.getCurrentPlayer();
-                Kaart mainCard = active.getCard();
-                Kaart backCard = active.getCard2();
+                Kaart mainCard = currentPlayer.getCard();
+                Kaart backCard = currentPlayer.getCard2();
 
                 if (SwingUtilities.isRightMouseButton(e)) {
                     int mouseX = e.getX();
@@ -84,7 +81,7 @@ public class StartButtonActionListener implements ActionListener {
                             currentPlayer.removeCard(backCard.getType());
                         }
                     }
-                    points.setText(currentPlayer.getName() + " heeft: " + currentPlayer.getVictoryPoints() + " overwinningspunt(en)");
+                    points.setText(currentPlayer.getName() + " heeft: " + currentPlayer.getVictorypoints() + " overwinningspunt(en)");
                 }
             }
         });
@@ -98,12 +95,15 @@ public class StartButtonActionListener implements ActionListener {
             card = currentPlayer.getCard();
             card2 = currentPlayer.getCard2();
 
-            card.setVisible(true);
-            card2.setVisible(false);
-
+            if(turns % 2 == 0) {
+                card.setVisible(true);
+                card2.setVisible(false);
+            } else{
+                card.setVisible(false);
+                card2.setVisible(true);
+            }
             turns = 0;
-            currentPlayer.getVictoryPoints();
-            points.setText(currentPlayer.getName() + " heeft: " + currentPlayer.getVictoryPoints() + " overwinningspunt(en)");
+            points.setText(currentPlayer.getName() + " heeft: " + currentPlayer.getVictorypoints() + " overwinningspunt(en)");
         };
 
         JButton nextButton = new JButton("Volgende ronde");
@@ -113,13 +113,32 @@ public class StartButtonActionListener implements ActionListener {
         nextButton.addActionListener(nextListener);
 
         ActionListener endListener = g -> {
-            Main.frame.setVisible(true);
+            JFrame endFrame = new JFrame(Main.file1);
+            endFrame.setSize(1366, 720);
+            endFrame.setVisible(true);
             playingFrame.setVisible(false);
-            card.setVisible(false);
-            card.setX(0);
-            card2.setVisible(false);
-            card2.setX(0);
-            timer.stop();
+            endFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            endFrame.setLayout(null);
+
+            ActionListener backListener = h -> {
+                Main.frame.setVisible(true);
+                endFrame.setVisible(false);
+            };
+            JButton backButton = new JButton("Terug naar start");
+            backButton.setBounds(600, 200, 200, 50);
+            backButton.setBackground(new Color(200, 0, 0));
+            endFrame.add(backButton);
+            backButton.addActionListener(backListener);
+            for(Player p : players) {
+                p.getCard().setLocation(0, card.getY());
+                p.getCard2().setLocation(0, card2.getY());
+                p.getCard().setVisible(false);
+                p.getCard2().setVisible(false);
+                timer.stop();
+                p.setTowns(0);
+                p.setCities(0);
+                p.setCityExtensions(0);
+            }
         };
 
         JButton endButton = new JButton("Stop Catan");

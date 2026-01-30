@@ -2,6 +2,7 @@ import javax.swing.*;
 
 public class Player {
 
+    private int victorypoints = 0;
     private int towns;
     private int cities;
     private int cityExtensions;
@@ -9,62 +10,120 @@ public class Player {
     private final Kaart card;
     private final Kaart card2;
 
-    private int cardX = 0;
-    private int cardY = 100;
-
     public Player(String name, ImageIcon cardImage, ImageIcon card2Image) {
         this.name = name;
 
-        card = new Kaart(cardX, cardY, cardImage.getIconWidth(), cardImage.getIconHeight(), Kaart.Type.TOWN, cardImage, 0, 100);
-        card2 = new Kaart(cardX, cardY, card2Image.getIconWidth(), card2Image.getIconHeight(), Kaart.Type.CITY, card2Image, 0, 100);
+        card = new Kaart(0, 100, cardImage.getIconWidth(), cardImage.getIconHeight(), Kaart.Type.TOWN, cardImage);
+        card2 = new Kaart(0, 100, card2Image.getIconWidth(), card2Image.getIconHeight(), Kaart.Type.CITY, card2Image);
+        addCard(Kaart.Type.TOWN);
     }
 
-    public int getVictoryPoints() {
-        return towns + 2 * cities + 3 * cityExtensions;
+    public void setTowns(int towns) {
+        this.towns = towns;
     }
 
+    public void setCities(int cities) {
+        this.cities = cities;
+    }
+
+    public void setCityExtensions(int cityExtensions) {
+        this.cityExtensions = cityExtensions;
+    }
+
+    /**
+     * A getter for victorypoints
+     * @return the victorypoints of a player
+     */
+    public int getVictorypoints() {
+        return victorypoints;
+    }
+
+    /**
+     * A setter for the attribute victorypoints
+     * @param victorypoints of the player
+     */
+    public void setVictorypoints(int victorypoints) {
+        this.victorypoints = victorypoints;
+    }
+
+    /**
+     * A method for adding cards to acquire vitorypoints
+     * @param type of the card that has to be added
+     */
     public void addCard(Kaart.Type type) {
         switch(type) {
-            case TOWN -> towns++;
-            case CITY -> cities++;
-            case CITY_EXTENSION -> cityExtensions++;
+            case TOWN -> {
+                towns++;
+                victorypoints += 1;
+            }
+            case CITY -> {
+                cities++;
+                victorypoints += 2;
+            }
+            case CITY_EXTENSION -> {
+                cityExtensions++;
+                victorypoints += 3;
+            }
         }
     }
 
+    /**
+     * A method for removing cards from a player to acquire victorypoints
+     * @param type of the card that has to be removed
+     */
     public void removeCard(Kaart.Type type) {
         switch(type) {
-            case TOWN -> towns--;
-            case CITY -> cities--;
-            case CITY_EXTENSION -> cityExtensions--;
+            case TOWN -> {
+                towns--;
+                victorypoints -= 1;
+            }
+            case CITY -> {
+                cities--;
+                victorypoints -= 2;
+            }
+            case CITY_EXTENSION -> {
+                cityExtensions--;
+                victorypoints -= 3;
+            }
         }
     }
 
+    /**
+     * A getter for the attribute cardX
+     * @return the x-coordinate of card
+     */
     public int getCardX() {
-        return cardX;
+        return card.getX();
     }
 
+    /**
+     * A getter for the attribute cardY
+     * @return the y-coordinate of card
+     */
     public int getCardY() {
-        return cardY;
+        return card.getY();
     }
 
-    public void setCardCoordinates(int x, int y) {
-        this.cardX = x;
-        this.cardY = y;
-    }
-
-    public void restartCards() {
-        card.restartPosition();
-        card2.restartPosition();
-    }
-
+    /**
+     * A getter for card
+     * @return the Kaart card
+     */
     public Kaart getCard() {
         return card;
     }
 
+    /**
+     * A getter for card2
+     * @return the Kaart card2
+     */
     public Kaart getCard2() {
         return card2;
     }
 
+    /**
+     * A getter for the attribute name
+     * @return the name of a player
+     */
     public String getName() {
         return name;
     }

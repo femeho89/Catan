@@ -67,7 +67,7 @@ public class StartButtonActionListener implements ActionListener {
                     int mouseY = e.getY();
 
                     if (mouseX <= mainCard.getX() + mainCard.image.getIconWidth() && mouseX >= mainCard.getX() && mouseY <= mainCard.getY() + mainCard.image.getIconHeight() && mouseY >= mainCard.getY()) {    // Makes the card turn when the right mouse button is pressed
-                        currentPlayer.getCard().setTurns(card.getTurns() + 1);
+                        turns += 1;
 
                         if (turns % 2 == 1) {
                             mainCard.setVisible(false);
@@ -102,7 +102,7 @@ public class StartButtonActionListener implements ActionListener {
                 card.setVisible(false);
                 card2.setVisible(true);
             }
-
+            turns = 0;
             points.setText(currentPlayer.getName() + " heeft: " + currentPlayer.getVictorypoints() + " overwinningspunt(en)");
         };
 
@@ -121,7 +121,9 @@ public class StartButtonActionListener implements ActionListener {
                 p.getCard().setVisible(false);
                 p.getCard2().setVisible(false);
                 timer.stop();
-                p.setVictorypoints(0);
+                p.setTowns(0);
+                p.setCities(0);
+                p.setCityExtensions(0);
             }
         };
 

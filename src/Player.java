@@ -18,6 +18,18 @@ public class Player {
         addCard(Kaart.Type.TOWN);
     }
 
+    public void setTowns(int towns) {
+        this.towns = towns;
+    }
+
+    public void setCities(int cities) {
+        this.cities = cities;
+    }
+
+    public void setCityExtensions(int cityExtensions) {
+        this.cityExtensions = cityExtensions;
+    }
+
     /**
      * A getter for victorypoints
      * @return the victorypoints of a player

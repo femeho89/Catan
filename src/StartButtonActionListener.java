@@ -59,16 +59,15 @@ public class StartButtonActionListener implements ActionListener {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                Player active = game.getCurrentPlayer();
-                Kaart mainCard = active.getCard();
-                Kaart backCard = active.getCard2();
+                Kaart mainCard = currentPlayer.getCard();
+                Kaart backCard = currentPlayer.getCard2();
 
                 if (SwingUtilities.isRightMouseButton(e)) {
                     int mouseX = e.getX();
                     int mouseY = e.getY();
 
                     if (mouseX <= mainCard.getX() + mainCard.image.getIconWidth() && mouseX >= mainCard.getX() && mouseY <= mainCard.getY() + mainCard.image.getIconHeight() && mouseY >= mainCard.getY()) {    // Makes the card turn when the right mouse button is pressed
-                        turns += 1;
+                        currentPlayer.getCard().setTurns(card.getTurns() + 1);
 
                         if (turns % 2 == 1) {
                             mainCard.setVisible(false);
@@ -96,10 +95,14 @@ public class StartButtonActionListener implements ActionListener {
             card = currentPlayer.getCard();
             card2 = currentPlayer.getCard2();
 
-            card.setVisible(true);
-            card2.setVisible(false);
+            if(turns % 2 == 0) {
+                card.setVisible(true);
+                card2.setVisible(false);
+            } else{
+                card.setVisible(false);
+                card2.setVisible(true);
+            }
 
-            turns = 0;
             points.setText(currentPlayer.getName() + " heeft: " + currentPlayer.getVictorypoints() + " overwinningspunt(en)");
         };
 

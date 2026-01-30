@@ -23,6 +23,7 @@ public class Kaart extends JLabel {
         }
     }
 
+    private int turns = 0;
     private final Type type;
     public ImageIcon image;
 
@@ -33,10 +34,34 @@ public class Kaart extends JLabel {
         setBounds(x, y, width, height);
     }
 
+    /**
+     * A method to move the x-coordinate of a card
+     * @param pixels that the card has to move
+     */
     public void moveX(int pixels) {
         setLocation(getX() + pixels, getY());
     }
 
+    /**
+     * A getter for the attribute turns
+     * @return the turns of a card
+     */
+    public int getTurns() {
+        return turns;
+    }
+
+    /**
+     * A setter for the attribute turns
+     * @param turns of a card
+     */
+    public void setTurns(int turns) {
+        this.turns = turns;
+    }
+
+    /**
+     * A getter for the attribute type
+     * @return the type of a card
+     */
     public Type getType() {
         return type;
     }

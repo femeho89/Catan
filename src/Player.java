@@ -18,14 +18,26 @@ public class Player {
         addCard(Kaart.Type.TOWN);
     }
 
+    /**
+     * A getter for victorypoints
+     * @return the victorypoints of a player
+     */
     public int getVictorypoints() {
         return victorypoints;
     }
 
+    /**
+     * A setter for the attribute victorypoints
+     * @param victorypoints of the player
+     */
     public void setVictorypoints(int victorypoints) {
         this.victorypoints = victorypoints;
     }
 
+    /**
+     * A method for adding cards to acquire vitorypoints
+     * @param type of the card that has to be added
+     */
     public void addCard(Kaart.Type type) {
         switch(type) {
             case TOWN -> {
@@ -43,6 +55,10 @@ public class Player {
         }
     }
 
+    /**
+     * A method for removing cards from a player to acquire victorypoints
+     * @param type of the card that has to be removed
+     */
     public void removeCard(Kaart.Type type) {
         switch(type) {
             case TOWN -> {
@@ -60,22 +76,42 @@ public class Player {
         }
     }
 
+    /**
+     * A getter for the attribute cardX
+     * @return the x-coordinate of card
+     */
     public int getCardX() {
         return card.getX();
     }
 
+    /**
+     * A getter for the attribute cardY
+     * @return the y-coordinate of card
+     */
     public int getCardY() {
         return card.getY();
     }
 
+    /**
+     * A getter for card
+     * @return the Kaart card
+     */
     public Kaart getCard() {
         return card;
     }
 
+    /**
+     * A getter for card2
+     * @return the Kaart card2
+     */
     public Kaart getCard2() {
         return card2;
     }
 
+    /**
+     * A getter for the attribute name
+     * @return the name of a player
+     */
     public String getName() {
         return name;
     }

@@ -58,6 +58,9 @@ public class Main {
         frame.add(startButton);
 
         startButton.addActionListener(e -> {
+            if(playerNames.size() < 2) {
+                return;
+            }
             Player[] players = new Player[2];   // Makes a player Array
             players[0] = new Player(playerNames.get(0), cardTownA, cardTownB);
             players[1] = new Player(playerNames.get(1), cardTownA, cardTownB);

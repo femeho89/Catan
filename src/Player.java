@@ -18,14 +18,26 @@ public class Player {
         addCard(Kaart.Type.TOWN);
     }
 
+    /**
+     * A setter for the attribute towns
+     * @param towns of the player
+     */
     public void setTowns(int towns) {
         this.towns = towns;
     }
 
+    /**
+     * A setter for the attribute cities
+     * @param cities of the player
+     */
     public void setCities(int cities) {
         this.cities = cities;
     }
 
+    /**
+     * A getter for cityExtensions
+     * @return the cityExtensions of a player
+     */
     public void setCityExtensions(int cityExtensions) {
         this.cityExtensions = cityExtensions;
     }

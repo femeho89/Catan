@@ -51,7 +51,7 @@ public class Main {
         ImageIcon cardTownB = new ImageIcon("Kaart Stad.png");
         Kaart townB = new Kaart(0, 100, cardTownB.getIconWidth(), cardTownB.getIconHeight(), Kaart.Type.CITY, cardTownB);
 
-        JButton startButton = new JButton("Start Catan");
+        JButton startButton = new JButton("Start Catan");   //makes button to start game
         startButton.setBounds(100, 100, 200, 50);
         startButton.setBackground(new Color(200, 0, 0));
         frame.add(startButton);

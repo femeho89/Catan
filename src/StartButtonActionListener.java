@@ -147,6 +147,11 @@ public class StartButtonActionListener implements ActionListener {
         playingFrame.add(endButton);
         endButton.addActionListener(endListener);
 
+        JButton marketButton = new JButton("Naar de markt!");
+        marketButton.setBounds(50, 550, 200, 50);
+        marketButton.setBackground(new Color(200, 0, 0));
+        playingFrame.add(marketButton);
+
 
         playingFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }

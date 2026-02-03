@@ -148,7 +148,7 @@ public class StartButtonActionListener implements ActionListener {
             marketFrame.setLayout(null);
             playingFrame.setVisible(false);
             marketFrame.setVisible(true);
-            playingFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            marketFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         };
 
         JButton endButton = new JButton("Stop Catan");

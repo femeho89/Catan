@@ -125,6 +125,7 @@ public class StartButtonActionListener implements ActionListener {
                 Main.frame.setVisible(true);
                 endFrame.setVisible(false);
             };
+
             JButton backButton = new JButton("Terug naar start");
             backButton.setBounds(600, 200, 200, 50);
             backButton.setBackground(new Color(200, 0, 0));
@@ -148,6 +149,15 @@ public class StartButtonActionListener implements ActionListener {
             marketFrame.setLayout(null);
             playingFrame.setVisible(false);
             marketFrame.setVisible(true);
+            ActionListener marketBackListener = back -> {
+                playingFrame.setVisible(true);
+                marketFrame.setVisible(false);
+            };
+            JButton marketExitButton = new JButton("terug naar het spel!");
+            marketExitButton.setBounds(50, 550, 200, 50);
+            marketExitButton.setBackground(new Color(200, 0, 0));
+            marketFrame.add(marketExitButton);
+            marketExitButton.addActionListener(marketBackListener);
             marketFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         };
 

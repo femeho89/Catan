@@ -131,27 +131,26 @@ public class StartButtonActionListener implements ActionListener {
         marketButton.addActionListener(marketActionListener.marketListener);
         System.out.println("kiv");
 
-            ActionListener backListener = h -> {
-                Main.frame.setVisible(true);
-                EndListener.getEndFrame().setVisible(false);
-            };
+        ActionListener backListener = h -> {        //something, I don't know what makes it that
+            Main.frame.setVisible(true);                       //if the backListener or the backButton are
+            EndListener.getEndFrame().setVisible(false);       //moved to a different class, the cards no
+        };                                                     //longer move.
+        JButton backButton = new JButton("Terug naar start");
+        backButton.setBounds(600, 200, 200, 50);
+        backButton.setBackground(new Color(200, 0, 0));
+        EndListener.getEndFrame().add(backButton);
+        backButton.addActionListener(backListener);
 
-            JButton backButton = new JButton("Terug naar start");
-            backButton.setBounds(600, 200, 200, 50);
-            backButton.setBackground(new Color(200, 0, 0));
-            EndListener.getEndFrame().add(backButton);
-            backButton.addActionListener(backListener);
-            for(Player p : players) {
-                p.getCard().setLocation(0, card.getY());
-                p.getCard2().setLocation(0, card2.getY());
-                p.getCard().setVisible(false);
-                p.getCard2().setVisible(false);
-                timer.stop();
-                p.setTowns(0);
-                p.setCities(0);
-                p.setCityExtensions(0);
-            }
-
+        for(Player p : players) {
+            p.getCard().setLocation(0, card.getY());
+            p.getCard2().setLocation(0, card2.getY());
+            p.getCard().setVisible(false);
+            p.getCard2().setVisible(false);
+            timer.stop();
+            p.setTowns(0);
+            p.setCities(0);
+            p.setCityExtensions(0);
+        }
 
         playingFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }

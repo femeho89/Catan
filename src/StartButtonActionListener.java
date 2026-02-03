@@ -117,24 +117,29 @@ public class StartButtonActionListener implements ActionListener {
         playingFrame.add(nextButton);
         nextButton.addActionListener(nextListener);
 
-        ActionListener endListener = g -> {
-            JFrame endFrame = new JFrame(Main.file1);
-            endFrame.setSize(1366, 720);
-            endFrame.setVisible(true);
-            playingFrame.setVisible(false);
-            playingFrame.dispose();
-            endFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            endFrame.setLayout(null);
+        JButton endButton = new JButton("Stop Catan");
+        endButton.setBounds(1100, 50, 200, 50);
+        endButton.setBackground(new Color(200, 0, 0));
+        playingFrame.add(endButton);
+        endButton.addActionListener(EndListener.getEndListener());
+        System.out.println("ihv");
+
+        JButton marketButton = new JButton("Naar de markt!");
+        marketButton.setBounds(50, 550, 200, 50);
+        marketButton.setBackground(new Color(200, 0, 0));
+        playingFrame.add(marketButton);
+        marketButton.addActionListener(marketActionListener.marketListener);
+        System.out.println("kiv");
 
             ActionListener backListener = h -> {
                 Main.frame.setVisible(true);
-                endFrame.setVisible(false);
+                EndListener.getEndFrame().setVisible(false);
             };
 
             JButton backButton = new JButton("Terug naar start");
             backButton.setBounds(600, 200, 200, 50);
             backButton.setBackground(new Color(200, 0, 0));
-            endFrame.add(backButton);
+            EndListener.getEndFrame().add(backButton);
             backButton.addActionListener(backListener);
             for(Player p : players) {
                 p.getCard().setLocation(0, card.getY());
@@ -146,19 +151,6 @@ public class StartButtonActionListener implements ActionListener {
                 p.setCities(0);
                 p.setCityExtensions(0);
             }
-        };
-
-        JButton endButton = new JButton("Stop Catan");
-        endButton.setBounds(1100, 50, 200, 50);
-        endButton.setBackground(new Color(200, 0, 0));
-        playingFrame.add(endButton);
-        endButton.addActionListener(endListener);
-
-        JButton marketButton = new JButton("Naar de markt!");
-        marketButton.setBounds(50, 550, 200, 50);
-        marketButton.setBackground(new Color(200, 0, 0));
-        playingFrame.add(marketButton);
-        marketButton.addActionListener(marketActionListener.marketListener);
 
 
         playingFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

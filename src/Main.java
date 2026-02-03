@@ -8,7 +8,6 @@ public class Main {
     public static String file1 = "Catan";
     public static JFrame frame = new JFrame(file1);     // Makes the frame for the game
     static ArrayList<String> playerNames = new ArrayList<>();
-    static Player[] players;
 
     public static void main(String[] args) {
 
@@ -18,6 +17,12 @@ public class Main {
         /*
         Er moet een informatieButton komen op elke frame. Dat moet een nieuwe class worden.
          */
+
+        JButton infoButton = new JButton("i");
+        infoButton.setBounds(1200, 50, 50, 50);
+        infoButton.setBackground(new Color(255, 255, 255));
+        frame.add(infoButton);
+
         JTextField textField = new JTextField(20);
         textField.setBounds(400, 600, 200, 50);
         JButton textButton = new JButton("Voer in");
@@ -30,18 +35,15 @@ public class Main {
         frame.add(textButton);
         frame.add(outputLabel);
 
-        textButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String input = textField.getText().trim();
-                if(input.isEmpty()) {
-                    outputLabel.setText("Vul namen in.");
-                }
-                else{
-                    outputLabel.setText("De namen zijn ingevuld!");
-                    playerNames.add(input);
-                    textField.setText("");
-                }
+        textButton.addActionListener(e -> {
+            String input = textField.getText().trim();
+            if(input.isEmpty()) {
+                outputLabel.setText("Vul namen in.");
+            }
+            else{
+                outputLabel.setText("De namen zijn ingevuld!");
+                playerNames.add(input);
+                textField.setText("");
             }
         });
 

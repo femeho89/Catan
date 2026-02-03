@@ -25,10 +25,6 @@ public class StartButtonActionListener implements ActionListener {
         playingFrame.setSize(1366, 720);
         playingFrame.setLayout(null);
 
-        JFrame marketFrame = new JFrame(Main.file1);
-        playingFrame.setSize(1366,720);
-        playingFrame.setLayout(null);
-
         Player[] players = game.getPlayers();
 
         for(Player p : players) {
@@ -147,8 +143,12 @@ public class StartButtonActionListener implements ActionListener {
         };
 
         ActionListener marketListener = ma -> {
+            JFrame marketFrame = new JFrame(Main.file1);
+            marketFrame.setSize(1366,720);
+            marketFrame.setLayout(null);
             playingFrame.setVisible(false);
             marketFrame.setVisible(true);
+            playingFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         };
 
         JButton endButton = new JButton("Stop Catan");
@@ -161,7 +161,7 @@ public class StartButtonActionListener implements ActionListener {
         marketButton.setBounds(50, 550, 200, 50);
         marketButton.setBackground(new Color(200, 0, 0));
         playingFrame.add(marketButton);
-        marketButton.addActionListener(endListener);
+        marketButton.addActionListener(marketListener);
 
 
         playingFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

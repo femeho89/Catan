@@ -43,7 +43,7 @@ public class Player {
     }
 
     /**
-     * A getter for victorypoints
+     * A getter for the victorypoints
      * @return the victorypoints of a player
      */
     public int getVictorypoints() {

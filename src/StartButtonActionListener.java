@@ -8,6 +8,11 @@ public class StartButtonActionListener implements ActionListener {
     private Player currentPlayer;
     private Kaart card;
     private Kaart card2;
+    private static JFrame playingFrame;
+
+    public static JFrame getPlayingFrame() {
+        return playingFrame;
+    }
 
     public StartButtonActionListener(Game game) {
         turns = 0;
@@ -21,7 +26,7 @@ public class StartButtonActionListener implements ActionListener {
         card = currentPlayer.getCard();
         card2 = currentPlayer.getCard2();
 
-        JFrame playingFrame = new JFrame(Main.file1);    // The playing screen
+        playingFrame = new JFrame(Main.file1);    // The playing screen
         playingFrame.setSize(1366, 720);
         playingFrame.setLayout(null);
 
@@ -143,24 +148,6 @@ public class StartButtonActionListener implements ActionListener {
             }
         };
 
-        ActionListener marketListener = ma -> {
-            JFrame marketFrame = new JFrame(Main.file1);
-            marketFrame.setSize(1366,720);
-            marketFrame.setLayout(null);
-            playingFrame.setVisible(false);
-            marketFrame.setVisible(true);
-            ActionListener marketBackListener = back -> {
-                playingFrame.setVisible(true);
-                marketFrame.setVisible(false);
-            };
-            JButton marketExitButton = new JButton("terug naar het spel!");
-            marketExitButton.setBounds(50, 550, 200, 50);
-            marketExitButton.setBackground(new Color(200, 0, 0));
-            marketFrame.add(marketExitButton);
-            marketExitButton.addActionListener(marketBackListener);
-            marketFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        };
-
         JButton endButton = new JButton("Stop Catan");
         endButton.setBounds(1100, 50, 200, 50);
         endButton.setBackground(new Color(200, 0, 0));
@@ -171,7 +158,7 @@ public class StartButtonActionListener implements ActionListener {
         marketButton.setBounds(50, 550, 200, 50);
         marketButton.setBackground(new Color(200, 0, 0));
         playingFrame.add(marketButton);
-        marketButton.addActionListener(marketListener);
+        marketButton.addActionListener(marketActionListener.marketListener);
 
 
         playingFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

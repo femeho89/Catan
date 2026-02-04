@@ -21,6 +21,8 @@ public class Main {
         JButton infoButton = new JButton("i");
         infoButton.setBounds(1200, 50, 50, 50);
         infoButton.setBackground(new Color(255, 255, 255));
+        ActionListener infoActionListener = new InfoActionListener();
+        infoButton.addActionListener(infoActionListener);
         frame.add(infoButton);
 
         JTextField textField = new JTextField(20);

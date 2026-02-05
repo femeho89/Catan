@@ -47,13 +47,13 @@ public class StartButtonActionListener implements ActionListener {
         points.setBounds(60, 40, 200, 60);
         playingFrame.add(points);
 
-        Timer timer = new Timer(9, event -> {
+        GameTimer gameTimer = new GameTimer(9, event -> {
             game.getCurrentPlayer().getCard().moveX(1);
             game.getCurrentPlayer().getCard2().moveX(1);
             playingFrame.repaint();
         });
 
-        timer.start();
+        gameTimer.start();
 
         card.setVisible(true);
         card2.setVisible(false);
@@ -142,7 +142,7 @@ public class StartButtonActionListener implements ActionListener {
             p.getCard2().setLocation(0, card2.getY());
             p.getCard().setVisible(false);
             p.getCard2().setVisible(false);
-            timer.stop();
+            gameTimer.stop();
             p.setTowns(0);
             p.setCities(0);
             p.setCityExtensions(0);

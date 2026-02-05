@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class marketActionListener {
+public class marketActionListener implements ActionListener{
     static ActionListener marketListener = ma -> {
         JFrame marketFrame = new JFrame(Main.file1);
         marketFrame.setSize(1366,720);
@@ -20,4 +20,9 @@ public class marketActionListener {
         marketExitButton.addActionListener(marketBackListener);
         marketFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     };
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+    }
 }

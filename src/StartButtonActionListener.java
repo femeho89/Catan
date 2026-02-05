@@ -131,15 +131,11 @@ public class StartButtonActionListener implements ActionListener {
         marketButton.addActionListener(marketActionListener.marketListener);
         System.out.println("kiv");
 
-        ActionListener backListener = h -> {        //something, I don't know what makes it that
-            Main.frame.setVisible(true);                       //if the backListener or the backButton are
-            EndListener.getEndFrame().setVisible(false);       //moved to a different class, the cards no
-        };                                                     //longer move.
         JButton backButton = new JButton("Terug naar start");
         backButton.setBounds(600, 200, 200, 50);
         backButton.setBackground(new Color(200, 0, 0));
         EndListener.getEndFrame().add(backButton);
-        backButton.addActionListener(backListener);
+        backButton.addActionListener(EndListener.getBackListener());
 
         for(Player p : players) {
             p.getCard().setLocation(0, card.getY());

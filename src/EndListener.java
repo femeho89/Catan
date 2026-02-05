@@ -5,7 +5,10 @@ import java.awt.event.ActionListener;
 
 public class EndListener implements ActionListener {
     private static JFrame endFrame;
-
+    private static ActionListener backListener = h -> {
+        Main.frame.setVisible(true);
+        endFrame.setVisible(false);
+    };
     private static ActionListener endListener = g -> {
         endFrame = new JFrame(Main.file1);
         endFrame.setSize(1366, 720);
@@ -14,11 +17,6 @@ public class EndListener implements ActionListener {
         StartButtonActionListener.getPlayingFrame().dispose();
         endFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         endFrame.setLayout(null);
-
-        ActionListener backListener = h -> {
-            Main.frame.setVisible(true);
-            endFrame.setVisible(false);
-        };
 
         JButton backButton = new JButton("Terug naar start");
         backButton.setBounds(600, 200, 200, 50);
@@ -32,6 +30,9 @@ public class EndListener implements ActionListener {
     }
     public static ActionListener getEndListener() {
         return endListener;
+    }
+    public static ActionListener getBackListener() {
+        return backListener;
     }
 
     @Override

@@ -8,6 +8,11 @@ public class Main {
     public static String file1 = "Catan";
     public static JFrame frame = new JFrame(file1);     // Makes the frame for the game
     static ArrayList<String> playerNames = new ArrayList<>();
+    static ArrayList<Integer> cardTextsStreet = new ArrayList<>();
+    static ArrayList<Integer> cardTextsKnight = new ArrayList<>();
+    static ArrayList<Integer> cardTextsTown = new ArrayList<>();
+    static ArrayList<Integer> cardTextsCity = new ArrayList<>();
+    static ArrayList<Integer> cardTextsCityExtension = new ArrayList<>();
 
     public static void main(String[] args) {
 

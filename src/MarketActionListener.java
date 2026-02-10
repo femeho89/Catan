@@ -6,8 +6,9 @@ public class MarketActionListener implements ActionListener{
     public MarketActionListener() {
     }
 
-    ImageIcon cardErts = new ImageIcon("Kaart Erts.png");
-    Kaart erts = new Kaart(0, 100, cardErts.getIconWidth(), cardErts.getIconHeight(), Kaart.Type.ERTS, cardErts);
+    GrondstofKaart.getRandom();
+//    ImageIcon cardErts = new ImageIcon("Kaart Erts.png");
+//    Kaart grondstofCard1 = new Kaart(0, 100, cardErts.getIconWidth(), cardErts.getIconHeight(), GrondstofKaart.Type.ORE, cardErts);
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -19,7 +20,7 @@ public class MarketActionListener implements ActionListener{
         StartButtonActionListener.getPlayingFrame().setVisible(false);
         marketFrame.setVisible(true);
 
-        JLabel grondstofKaart = new JLabel()
+        JLabel grondstofKaart = new JLabel();
 
         ActionListener marketBackListener = back -> {
             StartButtonActionListener.getPlayingFrame().setVisible(true);

@@ -6,6 +6,7 @@ public class MarketActionListener implements ActionListener{
     public MarketActionListener() {
     }
 
+
     @Override
     public void actionPerformed(ActionEvent e) {
         StartButtonActionListener.timer.stop();
@@ -25,5 +26,10 @@ public class MarketActionListener implements ActionListener{
         marketFrame.add(marketExitButton);
         marketExitButton.addActionListener(marketBackListener);
         marketFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+
+        public Market(){
+            card3 = new Kaart(0, 100, cardImage.getIconWidth(), cardImage.getIconHeight(), Kaart.Type.TOWN, cardImage);
+        }
     }
 }

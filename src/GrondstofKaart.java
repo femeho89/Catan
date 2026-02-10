@@ -1,21 +1,30 @@
+import javax.swing.*;
 import java.util.Random;
 
-public enum GrondstofKaart {
-    ERTS,
-    GRAAN,
-    HOUT,
-    SCHAAP,
-    STEEN;
+public class GrondstofKaart extends Kaart{
 
-    public static GrondstofKaart getRandom() {
-        Random rng = new Random();
-        switch(rng.nextInt(1, 5)) {
-            case 1 -> {return ERTS;}
-            case 2 -> {return GRAAN;}
-            case 3 -> {return HOUT;}
-            case 4 -> {return SCHAAP;}
-            case 5 -> {return STEEN;}
+    public enum Type {
+        ORE,
+        GRAIN,
+        WOOD,
+        SHEEP,
+        ROCK;
+
+        public static GrondstofKaart getRandom() {
+            Random rng = new Random();
+            switch(rng.nextInt(0, 4)) {
+                case 1 -> {return ORE;}
+                case 2 -> {return GRAIN;}
+                case 3 -> {return WOOD;}
+                case 4 -> {return SHEEP;}
+                case 5 -> {return ROCK;}
+            }
+            return ORE;
         }
-        return ERTS;
+    }
+
+    public GrondstofKaart(int x, int y, int height, int width, Kaart.Type type, ImageIcon image) {
+        super(x, y, height, width, type, image);
     }
 }
+

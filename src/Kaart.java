@@ -7,8 +7,7 @@ public class Kaart extends JLabel {
         TOWN,
         CITY,
         STREET,
-        CITY_EXTENSION,
-        ROCK;
+        CITY_EXTENSION;
 
         public ImageIcon getImage() {
             switch(this) {
@@ -17,7 +16,6 @@ public class Kaart extends JLabel {
                 case CITY -> {return new ImageIcon("Kaart Stad");}
                 case STREET -> {return new ImageIcon("Kaart Straat");}
                 case CITY_EXTENSION -> {return new ImageIcon("Kaart Stadsuitbreiding");}
-                case ROCK -> {return new ImageIcon("Kaart Steen");}
             }
             return new ImageIcon("error");
         }

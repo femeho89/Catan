@@ -5,10 +5,8 @@ import java.awt.event.*;
 public class MarketActionListener implements ActionListener{
     public MarketActionListener() {
     }
-
-    GrondstofKaart.getRandom();
-//    ImageIcon cardErts = new ImageIcon("Kaart Erts.png");
-//    Kaart grondstofCard1 = new Kaart(0, 100, cardErts.getIconWidth(), cardErts.getIconHeight(), GrondstofKaart.Type.ORE, cardErts);
+    ImageIcon cardErts = new ImageIcon("Kaart Erts.png");
+    GrondstofKaart grondstofCard1 = new Kaart(0, 100, cardErts.getIconWidth(), cardErts.getIconHeight(), GrondstofKaart.Type.getRandom(), cardErts);
 
     @Override
     public void actionPerformed(ActionEvent e) {

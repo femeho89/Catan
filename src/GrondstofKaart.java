@@ -30,12 +30,13 @@ public class GrondstofKaart extends Kaart{
                 case 4 -> {return SHEEP;}
                 case 5 -> {return ROCK;}
             }
-            return ORE;
+            return getRandom();
         }
     }
 
     public GrondstofKaart(int x, int y, int height, int width, Kaart.Type type, ImageIcon image) {
         super(x, y, height, width, type, image);
+        //this.type = type;
     }
 }
 

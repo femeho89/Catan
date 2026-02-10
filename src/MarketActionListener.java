@@ -6,12 +6,14 @@ public class MarketActionListener implements ActionListener{
     public MarketActionListener() {
     }
 
+    ImageIcon cardErts = new ImageIcon("Kaart Erts.png");
+    Kaart erts = new Kaart(0, 100, cardErts.getIconWidth(), cardErts.getIconHeight(), Kaart.Type.ERTS, cardErts);
 
     @Override
     public void actionPerformed(ActionEvent e) {
         StartButtonActionListener.timer.stop();
         JFrame marketFrame = new JFrame(Main.file1);
-        marketFrame.setSize(1366,720);
+        marketFrame.setSize(1366, 720);
         marketFrame.setLayout(null);
         StartButtonActionListener.getPlayingFrame().setVisible(false);
         marketFrame.setVisible(true);
@@ -26,10 +28,5 @@ public class MarketActionListener implements ActionListener{
         marketFrame.add(marketExitButton);
         marketExitButton.addActionListener(marketBackListener);
         marketFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-
-        public Market(){
-            card3 = new Kaart(0, 100, cardImage.getIconWidth(), cardImage.getIconHeight(), Kaart.Type.TOWN, cardImage);
-        }
     }
 }

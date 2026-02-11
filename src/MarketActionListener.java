@@ -26,8 +26,13 @@ public class MarketActionListener implements ActionListener{
         marketFrame.setLayout(null);
         StartButtonActionListener.getPlayingFrame().setVisible(false);
         marketFrame.setVisible(true);
-//        Kaart card1 = new Kaart(0, 100, cardImage.getIconWidth(), cardImage.getIconHeight(), Kaart.Type.TOWN, cardImage);
         JLabel grondstofKaart = new JLabel();
+        GrondstofKaart grondstofCard1 = new GrondstofKaart(0,
+                100,
+                cardORE.getIconWidth(),
+                cardORE.getIconHeight(),
+                Kaart.Type.ORE,
+                cardORE);
 
         ActionListener marketBackListener = back -> {
             StartButtonActionListener.getPlayingFrame().setVisible(true);

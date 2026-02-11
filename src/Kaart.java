@@ -7,7 +7,12 @@ public class Kaart extends JLabel {
         TOWN,
         CITY,
         STREET,
-        CITY_EXTENSION;
+        CITY_EXTENSION,
+        ORE,
+        GRAIN,
+        WOOD,
+        SHEEP,
+        ROCK;
 
         public ImageIcon getImage() {
             switch(this) {
@@ -16,6 +21,11 @@ public class Kaart extends JLabel {
                 case CITY -> {return new ImageIcon("Kaart Stad");}
                 case STREET -> {return new ImageIcon("Kaart Straat");}
                 case CITY_EXTENSION -> {return new ImageIcon("Kaart Stadsuitbreiding");}
+                case ORE -> {return new ImageIcon("Kaart Erts");}
+                case GRAIN -> {return new ImageIcon("Kaart Graan");}
+                case WOOD -> {return new ImageIcon("Kaart Hout");}
+                case SHEEP -> {return new ImageIcon("Kaart Schaap");}
+                case ROCK -> {return new ImageIcon("Kaart Steen");}
             }
             return new ImageIcon("error");
         }

@@ -3,10 +3,19 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class MarketActionListener implements ActionListener{
+    ImageIcon cardORE = new ImageIcon("Kaart Erts.png");
+    ImageIcon cardGRAIN = new ImageIcon("Kaart Graan.png");
+    ImageIcon cardWOOD = new ImageIcon("Kaart Hout.png");
+    ImageIcon cardSHEEP = new ImageIcon("Kaart Schaap.png");
+    ImageIcon cardROCK = new ImageIcon("Kaart Steen.png");
     public MarketActionListener() {
     }
-    ImageIcon cardErts = new ImageIcon("Kaart Erts.png");
-    GrondstofKaart grondstofCard1 = new Kaart(0, 100, cardErts.getIconWidth(), cardErts.getIconHeight(), GrondstofKaart.Type.getRandom(), cardErts);
+    GrondstofKaart grondstofCard1 = new GrondstofKaart(0,
+            100,
+            cardORE.getIconWidth(),
+            cardORE.getIconHeight(),
+            Kaart.Type.ORE,
+            cardORE);
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -17,7 +26,7 @@ public class MarketActionListener implements ActionListener{
         marketFrame.setLayout(null);
         StartButtonActionListener.getPlayingFrame().setVisible(false);
         marketFrame.setVisible(true);
-
+//        Kaart card1 = new Kaart(0, 100, cardImage.getIconWidth(), cardImage.getIconHeight(), Kaart.Type.TOWN, cardImage);
         JLabel grondstofKaart = new JLabel();
 
         ActionListener marketBackListener = back -> {

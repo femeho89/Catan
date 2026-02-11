@@ -11,12 +11,13 @@ public class GrondstofKaart extends Kaart{
         ROCK;
 
         public ImageIcon getImage() {
-            switch (this) {
-                case ORE -> {return new ImageIcon("Kaart Erts.png");}
-                case GRAIN -> {return new ImageIcon("Kaart Graan");}
-                case WOOD -> {return new ImageIcon("Kaart Hout");}
-                case SHEEP -> {return new ImageIcon("Kaart Schaap");}
-                case ROCK -> {return new ImageIcon("Kaart Steen");}
+            Random rng = new Random();
+            switch(rng.nextInt(0, 4)) {
+                case 1 -> {return new ImageIcon("Kaart Erts.png");}
+                case 2 -> {return new ImageIcon("Kaart Graan");}
+                case 3 -> {return new ImageIcon("Kaart Hout");}
+                case 4 -> {return new ImageIcon("Kaart Schaap");}
+                case 5 -> {return new ImageIcon("Kaart Steen");}
             }
             return new ImageIcon("error");
         }

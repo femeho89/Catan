@@ -9,11 +9,16 @@ public class InfoActionListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        //intialises dialog & declares it a new JDialog with the attributes: frame from Main Class, String title, boolean modal
         JDialog dialog = new JDialog(Main.frame, "Game explanation", true);
+        //sets size of GUI component dialog
         dialog.setSize(400, 400);
+        //sets location of GUI component dialog
         dialog.setLocation(960, 0);
+        //sets layout of GUI component dialog as new BorderLayout?
         dialog.setLayout(new BorderLayout());
 
+        //intialises TextArea& declares it as a new JTextArea with a lot of text
         JTextArea textArea = new JTextArea("""
                 Welkom bij Catan! De speluitleg staat hieronder.
                 
@@ -55,12 +60,16 @@ public class InfoActionListener implements ActionListener {
                 overwinningspunten heeft behaald wint het spel.
                 
                 """);
-
+        //sets textArea uneditable
         textArea.setEditable(false);
+        //sets textArea to be wrapped??
         textArea.setWrapStyleWord(true);
+        //sets textArea background colour
         textArea.setBackground(new Color(255, 255, 255));
 
+        //adds scrolling to dialog
         dialog.add(new JScrollPane(textArea), BorderLayout.CENTER);
+        //sets dialog visible
         dialog.setVisible(true);
     }
 }

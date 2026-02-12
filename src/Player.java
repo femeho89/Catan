@@ -2,19 +2,29 @@ import javax.swing.*;
 
 public class Player {
 
+    //initialises integer 'victorypoints' and declares it as 0
     private int victorypoints = 0;
+    //initialises integer 'towns'
     private int towns;
+    //initialises integer 'cities'
     private int cities;
+    //initialises integer 'cityExtensions'
     private int cityExtensions;
     private final String name;
+    //initialises BouwKaart 'card'
     private final BouwKaart card;
+    //initialises BouwKaart 'card2'
     private final BouwKaart card2;
 
+    //?
     public Player(String name, ImageIcon cardImage, ImageIcon card2Image) {
         this.name = name;
 
-        card = new BouwKaart(0, 100, cardImage.getIconWidth(), cardImage.getIconHeight(), cardImage, BouwKaart.BouwType.TOWN);
-        card2 = new BouwKaart(0, 100, card2Image.getIconWidth(), card2Image.getIconHeight(), card2Image, BouwKaart.BouwType.CITY);
+        //declares card as a new BouwKaart with the attributes int x, int y, int height, int width, ImageIcon Image, BouwType type from BouwKaart Class
+        card = new BouwKaart(0, 100, cardImage.getIconHeight(), cardImage.getIconWidth(), cardImage, BouwKaart.BouwType.TOWN);
+        //declares card2 as a new BouwKaart with the attributes int x, int y, int height, int width, ImageIcon Image, BouwType type from BouwKaart Class
+        card2 = new BouwKaart(0, 100, card2Image.getIconHeight(), card2Image.getIconWidth(), card2Image, BouwKaart.BouwType.CITY);
+        //calls addCard function
         addCard(BouwKaart.BouwType.TOWN);
     }
 

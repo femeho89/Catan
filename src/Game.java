@@ -1,9 +1,12 @@
 import java.util.*;
 
 public class Game {
+    //Initialises Player[] Array 'player'
     private final Player[] players;
+    //Initialises integer 'currentPlayerIndex'
     private int currentPlayerIndex;
 
+    //?
     public Game(Player[] players) {
         this.players = players;
     }

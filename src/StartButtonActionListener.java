@@ -228,17 +228,26 @@ public class StartButtonActionListener implements ActionListener {
         //assigns ActionListener 'endListener' from EndListener Class to backButton
         backButton.addActionListener(EndListener.getBackListener());
 
+        //for loop of the amount of players in the Player Array
         for(Player p : players) {
+            //sets the location of card to X = 0 and Y = Y
             p.getCard().setLocation(0, card.getY());
+            //sets the location of card2 to X = - and Y = Y
             p.getCard2().setLocation(0, card2.getY());
+            //sets card invisible
             p.getCard().setVisible(false);
+            //sets card2 invisible
             p.getCard2().setVisible(false);
+            //stops timer
             timer.stop();
+            //sets Int attribute Towns to 0
             p.setTowns(0);
+            //sets Int attribute Cities to 0
             p.setCities(0);
+            //sets Int attribute CityExtensions to 0
             p.setCityExtensions(0);
         }
-
+        //ends code upon clicking the X in the game tab
         playingFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }

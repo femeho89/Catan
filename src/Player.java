@@ -16,7 +16,7 @@ public class Player {
     //initialises BouwKaart 'card2'
     private final BouwKaart card2;
 
-    //
+    //?
     public Player(String name, ImageIcon cardImage, ImageIcon card2Image) {
         this.name = name;
 

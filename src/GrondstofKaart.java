@@ -21,7 +21,7 @@ public class GrondstofKaart extends Kaart{
                 case 4 -> {return SHEEP;}
                 case 5 -> {return ROCK;}
             }
-            return ORE;
+            return getRandom();
         }
     }
 
@@ -36,6 +36,7 @@ public class GrondstofKaart extends Kaart{
      */
     public GrondType getGrondType() {
         return type;
+        //this.type = type;
     }
 }
 

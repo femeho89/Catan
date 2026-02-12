@@ -3,21 +3,31 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class MarketActionListener implements ActionListener{
+    ImageIcon cardORE = new ImageIcon("Kaart Erts.png");
+    ImageIcon cardGRAIN = new ImageIcon("Kaart Graan.png");
+    ImageIcon cardWOOD = new ImageIcon("Kaart Hout.png");
+    ImageIcon cardSHEEP = new ImageIcon("Kaart Schaap.png");
+    ImageIcon cardROCK = new ImageIcon("Kaart Steen.png");
     public MarketActionListener() {
     }
-
+    GrondstofKaart grondstofCard1 = new GrondstofKaart(0,
+            100,
+            cardORE.getIconWidth(),
+            cardORE.getIconHeight(),
+            Kaart.Type.ORE,
+            cardORE);
 
     @Override
     public void actionPerformed(ActionEvent e) {
         StartButtonActionListener.timer.stop();
 
         JFrame marketFrame = new JFrame(Main.file1);
-        marketFrame.setSize(1366,720);
+        marketFrame.setSize(1366, 720);
         marketFrame.setLayout(null);
         StartButtonActionListener.getPlayingFrame().setVisible(false);
         marketFrame.setVisible(true);
-
-        JLabel grondstofKaart = new JLabel()
+//        Kaart card1 = new Kaart(0, 100, cardImage.getIconWidth(), cardImage.getIconHeight(), Kaart.Type.TOWN, cardImage);
+        JLabel grondstofKaart = new JLabel();
 
         ActionListener marketBackListener = back -> {
             StartButtonActionListener.getPlayingFrame().setVisible(true);
@@ -32,10 +42,5 @@ public class MarketActionListener implements ActionListener{
         marketExitButton.addActionListener(marketBackListener);
 
         marketFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-
-        public Market(){
-            card3 = new Kaart(0, 100, cardImage.getIconWidth(), cardImage.getIconHeight(), Kaart.Type.TOWN, cardImage);
-        }
     }
 }

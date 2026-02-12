@@ -176,7 +176,7 @@ public class StartButtonActionListener implements ActionListener {
             points.setText(currentPlayer.getName() + " heeft: " + currentPlayer.getVictorypoints() + " overwinningspunt(en)");
         };
 
-        //initialises 'nextButton' and declares it a new JButton with the text "Volgende ronde"
+        //initialises 'nextButton' & declares it a new JButton with the text "Volgende ronde"
         JButton nextButton = new JButton("Volgende ronde");
         //sets the position & size of GUI component nextButton
         nextButton.setBounds(890, 50, 200, 50);
@@ -187,7 +187,7 @@ public class StartButtonActionListener implements ActionListener {
         //assigns ActionListener 'nextListener' to nextButton
         nextButton.addActionListener(nextListener);
 
-        //initialises 'endButton' and declares it a new JButton with the text "Stop Catan"
+        //initialises 'endButton' & declares it a new JButton with the text "Stop Catan"
         JButton endButton = new JButton("Stop Catan");
         //sets the position & size of GUI component endButton
         endButton.setBounds(1100, 50, 200, 50);
@@ -198,21 +198,34 @@ public class StartButtonActionListener implements ActionListener {
         //assigns ActionListener 'endListener' from EndListener Class to endButton
         endButton.addActionListener(EndListener.getEndListener());
 
+        //initialises 'marketButton' & declares it a new JButton with the text "Naar de markt!"
         JButton marketButton = new JButton("Naar de markt!");
+        //sets the position & size of GUI component marketButton
         marketButton.setBounds(50, 550, 200, 50);
+        //sets the background colour of GUI component marketButton
         marketButton.setBackground(new Color(200, 0, 0));
+        //adds marketButton to playingFrame
         playingFrame.add(marketButton);
+        //initialises ActionListener 'marketListener' & declares it as a new MarketActionListener (?)
         ActionListener marketListener = new MarketActionListener();
+        //assigns ActionListener 'marketListener' to marketButton
         marketButton.addActionListener(marketListener);
 
+        //initialises 'backButton' & declares it a new JButton with the text "Terug naar start"
         JButton backButton = new JButton("Terug naar start");
+        //sets the position & size of GUI component backButton
         backButton.setBounds(600, 200, 200, 50);
+        //sets the background colour of GUI component backButton
         backButton.setBackground(new Color(200, 0, 0));
 
-        if(EndListener.getEndFrame() == null) {
+        //if-statement to return something, relying on:
+        if(EndListener.getEndFrame() == null) { //if the endFrame in EndListener Class equals null
+            //returns something
             return;
         }
+        //adds backButton to endFrame in EndListener Class
         EndListener.getEndFrame().add(backButton);
+        //assigns ActionListener 'endListener' from EndListener Class to backButton
         backButton.addActionListener(EndListener.getBackListener());
 
         for(Player p : players) {

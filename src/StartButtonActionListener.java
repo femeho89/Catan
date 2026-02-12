@@ -7,8 +7,8 @@ public class StartButtonActionListener implements ActionListener {
     private final Game game;
     private int turns;
     private Player currentPlayer;
-    private Kaart card;
-    private Kaart card2;
+    private BouwKaart card;
+    private BouwKaart card2;
     private static JFrame playingFrame;
 
     public static JFrame getPlayingFrame() {
@@ -77,7 +77,7 @@ public class StartButtonActionListener implements ActionListener {
                         if (turns % 2 == 1) {
                             mainCard.setVisible(false);
                             backCard.setVisible(true);
-                            currentPlayer.addCard(backCard.getType());
+                            currentPlayer.addCard(backCard.getBouwType());
                             currentPlayer.removeCard(mainCard.getType());
                         } else if (turns % 2 == 0) {
                             mainCard.setVisible(true);

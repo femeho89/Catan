@@ -13,9 +13,9 @@ public class Player {
     public Player(String name, ImageIcon cardImage, ImageIcon card2Image) {
         this.name = name;
 
-        card = new Kaart(0, 100, cardImage.getIconWidth(), cardImage.getIconHeight(), Kaart.Type.TOWN, cardImage);
-        card2 = new Kaart(0, 100, card2Image.getIconWidth(), card2Image.getIconHeight(), Kaart.Type.CITY, card2Image);
-        addCard(Kaart.Type.TOWN);
+        card = new BouwKaart(0, 100, cardImage.getIconWidth(), cardImage.getIconHeight(), cardImage, BouwKaart.BouwType.TOWN);
+        card2 = new BouwKaart(0, 100, card2Image.getIconWidth(), card2Image.getIconHeight(), card2Image, BouwKaart.BouwType.CITY);
+        addCard(BouwKaart.BouwType.TOWN);
     }
 
     /**
@@ -62,7 +62,7 @@ public class Player {
      * A method for adding cards to acquire vitorypoints
      * @param type of the card that has to be added
      */
-    public void addCard(Kaart.Type type) {
+    public void addCard(BouwKaart.BouwType type) {
         switch(type) {
             case TOWN -> {
                 towns++;
@@ -83,7 +83,7 @@ public class Player {
      * A method for removing cards from a player to acquire victorypoints
      * @param type of the card that has to be removed
      */
-    public void removeCard(Kaart.Type type) {
+    public void removeCard(BouwKaart.BouwType type) {
         switch(type) {
             case TOWN -> {
                 towns--;

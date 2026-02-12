@@ -27,12 +27,19 @@ public class StartButtonActionListener implements ActionListener {
         card = currentPlayer.getCard();
         card2 = currentPlayer.getCard2();
 
-        //The playing screen
-        playingFrame = new JFrame(Main.file1);
-        //Playing screen size
-        playingFrame.setSize(1366, 720);
-        //Sets layout to null
-        playingFrame.setLayout(null);
+        if(playingFrame == null) {
+            //The playing screen
+            playingFrame = new JFrame(Main.file1);
+            //Playing screen size
+            playingFrame.setSize(1366, 720);
+            //Sets layout to null
+            playingFrame.setLayout(null);
+            playingFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        }
+
+        if(playingFrame != null) {
+            playingFrame.getContentPane().removeAll();
+        }
 
         //Array of attributes 'player'
         Player[] players = game.getPlayers();
@@ -238,7 +245,5 @@ public class StartButtonActionListener implements ActionListener {
             p.setCities(0);
             p.setCityExtensions(0);
         }
-
-        playingFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }

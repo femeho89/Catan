@@ -87,19 +87,31 @@ public class StartButtonActionListener implements ActionListener {
         playingFrame.addMouseListener(new MouseAdapter() {
             //overrides something
             @Override
-            //function to ...
+            //function to executean action when the mouse clicks (somewhere?)
             public void mouseClicked(MouseEvent e) {
+                //takes variable mouseClicked(e) from somewhere
                 super.mouseClicked(e);
+                //initialises variable maincard & declares it as currentPlayer.getCard()
                 BouwKaart mainCard = currentPlayer.getCard();
+                //initialises variable backcard & declares it as currentPlayer.getCard2()
                 BouwKaart backCard = currentPlayer.getCard2();
 
+                //if-statement, relying on if something(the mouse click from MouseListener) is the right mouse button?
                 if (SwingUtilities.isRightMouseButton(e)) {
+                    //initialises variable mouseX & declares it as the X-coordinate of the mouse if the right mouse button is pressed
                     int mouseX = e.getX();
+                    //initialises variable mouseY & declares it as the Y-coordinate of the mouse if the right mouse button is pressed
                     int mouseY = e.getY();
 
-                    if (mouseX <= mainCard.getX() + mainCard.image.getIconWidth() && mouseX >= mainCard.getX() && mouseY <= mainCard.getY() + mainCard.image.getIconHeight() && mouseY >= mainCard.getY()) {    // Makes the card turn when the right mouse button is pressed
+                    //if-statement that Makes the card turn when the right mouse button is pressed, relying on:
+                    if (mouseX <= mainCard.getX() + mainCard.image.getIconWidth() && //if the X-coordinate of the mouse when pressed is smaller than or equal to the X-coordinate of the mainCard + the image width of the mainCard and
+                            mouseX >= mainCard.getX() && //if the X-coordinate of the mouse when pressed is larger than or equal to the X-coordinate of the mainCard and
+                            mouseY <= mainCard.getY() + mainCard.image.getIconHeight() && // if the Y-coordinate of the mouse when pressed is smaller than or equal to the Y-coordinate of the mainCard + the image height of the mainCard and
+                            mouseY >= mainCard.getY()) { //if the Y-coordinate of the mouse when pressed is larger than or equal to the Y-coordinate of the mainCard
+                        //adds 1 to the Int variable 'turns'
                         turns += 1;
 
+                        //if-statement that turns the card...
                         if (turns % 2 == 1) {
                             mainCard.setVisible(false);
                             backCard.setVisible(true);

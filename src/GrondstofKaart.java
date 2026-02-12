@@ -3,7 +3,7 @@ import java.util.Random;
 
 public class GrondstofKaart extends Kaart{
 
-    private final GrondType type;
+    //private final GrondType type;
 
     public enum GrondType {
         ORE,
@@ -25,18 +25,17 @@ public class GrondstofKaart extends Kaart{
         }
     }
 
-    public GrondstofKaart(int x, int y, int height, int width, ImageIcon image, GrondType type) {
+    public GrondstofKaart(int x, int y, int height, int width, ImageIcon image) {
         super(x, y, height, width, image);
-        this.type = type;
+
     }
 
     /**
      * A getter for the attribute type
      * @return the type of a card
      */
-    public GrondType getGrondType() {
-        return type;
-        //this.type = type;
-    }
+//    public GrondType getGrondType() {
+//        return type;
+//    }
 }
 

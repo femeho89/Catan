@@ -111,19 +111,30 @@ public class StartButtonActionListener implements ActionListener {
                         //adds 1 to the Int variable 'turns'
                         turns += 1;
 
-                        //if-statement that turns the card...
-                        if (turns % 2 == 1) {
+                        //if-statement that turns the card from the front side to the back side, relying on:
+                        if (turns % 2 == 1) { //if the turns modulus of 2 equals 1
+                            //sets mainCard invisible
                             mainCard.setVisible(false);
+                            //sets backCard visible
                             backCard.setVisible(true);
+                            //adds bouwType of backCard to object? currentPlayer
                             currentPlayer.addCard(backCard.getBouwType());
+                            //removes bouwType of mainCard from object? currentPlayer
                             currentPlayer.removeCard(mainCard.getBouwType());
-                        } else if (turns % 2 == 0) {
+                        }
+                        //else if-statement that turns the card from the back side tp the front side, relying on:
+                        else if (turns % 2 == 0) { //if the turns modulus of 2 equals 0
+                            //sets the mainCard visible
                             mainCard.setVisible(true);
+                            //sets the backCard invisible
                             backCard.setVisible(false);
+                            //adds bouwType of mainCard to object? currentPlayer
                             currentPlayer.addCard(mainCard.getBouwType());
+                            //removes bouwType of backCard from object? currentPlayer
                             currentPlayer.removeCard(backCard.getBouwType());
                         }
                     }
+                    //updates the text for the amount of points a player
                     points.setText(currentPlayer.getName() + " heeft: " + currentPlayer.getVictorypoints() + " overwinningspunt(en)");
                 }
             }

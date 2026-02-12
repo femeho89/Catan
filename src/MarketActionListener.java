@@ -3,18 +3,18 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class MarketActionListener implements ActionListener{
-    ImageIcon cardORE = new ImageIcon("Kaart Erts.png");
-    ImageIcon cardGRAIN = new ImageIcon("Kaart Graan.png");
-    ImageIcon cardWOOD = new ImageIcon("Kaart Hout.png");
-    ImageIcon cardSHEEP = new ImageIcon("Kaart Schaap.png");
-    ImageIcon cardROCK = new ImageIcon("Kaart Steen.png");
+//    ImageIcon cardORE = new ImageIcon("Kaart Erts.png");
+//    ImageIcon cardGRAIN = new ImageIcon("Kaart Graan.png");
+//    ImageIcon cardWOOD = new ImageIcon("Kaart Hout.png");
+//    ImageIcon cardSHEEP = new ImageIcon("Kaart Schaap.png");
+//    ImageIcon cardROCK = new ImageIcon("Kaart Steen.png");
     public MarketActionListener() {
     }
     GrondstofKaart grondstofCard1 = new GrondstofKaart(0,
             100,
-            cardORE.getIconWidth(),
-            cardORE.getIconHeight(),
-            cardORE);
+            GrondstofKaart.GrondType.getRandom().getIconWidth(),
+            GrondstofKaart.GrondType.getRandom().getIconHeight(),
+            GrondstofKaart.GrondType.getRandom());
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -26,11 +26,8 @@ public class MarketActionListener implements ActionListener{
         StartButtonActionListener.getPlayingFrame().setVisible(false);
         marketFrame.setVisible(true);
         JLabel grondstofKaart = new JLabel();
-        GrondstofKaart grondstofCard1 = new GrondstofKaart(0,
-                100,
-                cardORE.getIconWidth(),
-                cardORE.getIconHeight(),
-                cardORE);
+        marketFrame.add(grondstofCard1);
+
 
         ActionListener marketBackListener = back -> {
             StartButtonActionListener.getPlayingFrame().setVisible(true);

@@ -15,9 +15,9 @@ public class StartButtonActionListener implements ActionListener {
         return playingFrame;
     }
 
-    public StartButtonActionListener(Game game) {
-        turns = 0;
-        this.game = game;
+    public StartButtonActionListener(Game game) {   //Purpose: unknown
+        turns = 0;                                  //Variable: game
+        this.game = game;                           //Return: None
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -27,41 +27,67 @@ public class StartButtonActionListener implements ActionListener {
         card = currentPlayer.getCard();
         card2 = currentPlayer.getCard2();
 
-        playingFrame = new JFrame(Main.file1);    // The playing screen
+        //The playing screen
+        playingFrame = new JFrame(Main.file1);
+        //Playing screen size
         playingFrame.setSize(1366, 720);
+        //Sets layout to null
         playingFrame.setLayout(null);
 
+        //Array of attributes 'player'
         Player[] players = game.getPlayers();
 
+        //for loop of players in Player[]
         for(Player p : players) {
+            //adds Card to playingFrame
             playingFrame.add(p.getCard());
+            //adds Card2 to playingFrame
             playingFrame.add(p.getCard2());
+            //sets Card invisible
             p.getCard().setVisible(false);
+            //sets Card2 invisible
             p.getCard2().setVisible(false);
         }
 
+        //sets position & size of GUI component 'card'
         card.setBounds(currentPlayer.getCardX(), currentPlayer.getCardY(), card.getWidth(), card.getHeight());
+        //sets position & size of GUI component 'card2'
         card2.setBounds(currentPlayer.getCardX(), currentPlayer.getCardY(), card2.getWidth(), card2.getHeight());
 
+        //sets text for amount of points a player
         JLabel points = new JLabel(currentPlayer.getName() + " heeft: " + currentPlayer.getVictorypoints() + " overwinningspunt(en)");
+        //sets font for text
         points.setFont(new Font("Arial", Font.BOLD, 12));
+        //sets position & size for text
         points.setBounds(60, 40, 200, 60);
+        //shows text on playingFrame
         playingFrame.add(points);
 
+        //timer to move cards
         timer = new Timer(9, event -> {
+            //adds 1 pixel to X position of card
             game.getCurrentPlayer().getCard().moveX(1);
+            //adds 1 pizel to X position of card2
             game.getCurrentPlayer().getCard2().moveX(1);
         });
 
+        //starts timer to move cards
         timer.start();
 
+        //sets card to visible
         card.setVisible(true);
+        //sets card2 to invisible
         card2.setVisible(false);
+        //sets frame to invisible
         Main.frame.setVisible(false);
+        //sets playingFrame to visible
         playingFrame.setVisible(true);
 
+        //adds MouseListener to playing Frame
         playingFrame.addMouseListener(new MouseAdapter() {
+            //overrides something
             @Override
+            //function to ...
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 BouwKaart mainCard = currentPlayer.getCard();

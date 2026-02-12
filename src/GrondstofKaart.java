@@ -3,8 +3,6 @@ import java.util.Random;
 
 public class GrondstofKaart extends Kaart{
 
-    //private final GrondType type;
-
     public enum GrondType {
         ORE,
         GRAIN,
@@ -12,14 +10,14 @@ public class GrondstofKaart extends Kaart{
         SHEEP,
         ROCK;
 
-        public static GrondType getRandom() {
+        public static ImageIcon getRandom() {
             Random rng = new Random();
             switch(rng.nextInt(0, 4)) {
-                case 1 -> {return ORE;}
-                case 2 -> {return GRAIN;}
-                case 3 -> {return WOOD;}
-                case 4 -> {return SHEEP;}
-                case 5 -> {return ROCK;}
+                case 1 -> {return new ImageIcon("Kaart Erts");}
+                case 2 -> {return new ImageIcon("Kaart Graan");}
+                case 3 -> {return new ImageIcon("Kaart Hout");}
+                case 4 -> {return new ImageIcon("Kaart Schaap");}
+                case 5 -> {return new ImageIcon("Kaart Steen");}
             }
             return getRandom();
         }
@@ -34,8 +32,5 @@ public class GrondstofKaart extends Kaart{
      * A getter for the attribute type
      * @return the type of a card
      */
-//    public GrondType getGrondType() {
-//        return type;
-//    }
 }
 

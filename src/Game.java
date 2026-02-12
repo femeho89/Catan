@@ -9,7 +9,7 @@ public class Game {
     }
 
     /**
-     * A getter for the attrubute players
+     * A getter for the attribute players
      * @return the players of a game
      */
     public Player[] getPlayers() {

@@ -7,8 +7,8 @@ public class Player {
     private int cities;
     private int cityExtensions;
     private final String name;
-    private final Kaart card;
-    private final Kaart card2;
+    private final BouwKaart card;
+    private final BouwKaart card2;
 
     public Player(String name, ImageIcon cardImage, ImageIcon card2Image) {
         this.name = name;
@@ -120,7 +120,7 @@ public class Player {
      * A getter for card
      * @return the Kaart card
      */
-    public Kaart getCard() {
+    public BouwKaart getCard() {
         return card;
     }
 
@@ -128,7 +128,7 @@ public class Player {
      * A getter for card2
      * @return the Kaart card2
      */
-    public Kaart getCard2() {
+    public BouwKaart getCard2() {
         return card2;
     }
 

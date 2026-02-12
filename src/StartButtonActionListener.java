@@ -139,21 +139,35 @@ public class StartButtonActionListener implements ActionListener {
                 }
             }
         });
+        //makes ActionListener 'nextListener' to switch players
         ActionListener nextListener = h -> {
+            //sets card from currentPlayer invisible
             currentPlayer.getCard().setVisible(false);
+            //set card2 from currentPlayer invisible
             currentPlayer.getCard2().setVisible(false);
 
+            //switches player
             game.switchPlayer();
+            //sets currenttPlayer to new current player after switch
             currentPlayer = game.getCurrentPlayer();
 
+            //gets card for from new currentPlayer
             card = currentPlayer.getCard();
+            //gets card2 for from new currentPlayer
             card2 = currentPlayer.getCard2();
 
-            if(turns % 2 == 0) {
+            //if-statement to check and make which card side to show when switching player, relying on:
+            if(turns % 2 == 0) {    //if turns modulus of 2 equals 0
+                //sets card visible
                 card.setVisible(true);
+                //sets card2 invisible
                 card2.setVisible(false);
-            } else{
+            }
+            //else-statement to show card2
+            else{
+                //sets card invisible
                 card.setVisible(false);
+                //sets card2 visible
                 card2.setVisible(true);
             }
             turns = 0;

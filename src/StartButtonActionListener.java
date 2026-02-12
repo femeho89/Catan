@@ -170,20 +170,32 @@ public class StartButtonActionListener implements ActionListener {
                 //sets card2 visible
                 card2.setVisible(true);
             }
+            //sets variable 'turns' to 0
             turns = 0;
+            //updates text to for the amount of points a player
             points.setText(currentPlayer.getName() + " heeft: " + currentPlayer.getVictorypoints() + " overwinningspunt(en)");
         };
 
+        //initialises 'nextButton' and declares it a new JButton with the text "Volgende ronde"
         JButton nextButton = new JButton("Volgende ronde");
+        //sets the position & size of GUI component nextButton
         nextButton.setBounds(890, 50, 200, 50);
+        //sets the background colour of GUI component nextButton
         nextButton.setBackground(new Color(200, 0, 0));
+        //adds nextButton to playingFrame
         playingFrame.add(nextButton);
+        //assigns ActionListener 'nextListener' to nextButton
         nextButton.addActionListener(nextListener);
 
+        //initialises 'endButton' and declares it a new JButton with the text "Stop Catan"
         JButton endButton = new JButton("Stop Catan");
+        //sets the position & size of GUI component endButton
         endButton.setBounds(1100, 50, 200, 50);
+        //sets the background colour of GUI component endButton
         endButton.setBackground(new Color(200, 0, 0));
+        //adds endButton to playingFrame
         playingFrame.add(endButton);
+        //assigns ActionListener 'endListener' from EndListener Class to endButton
         endButton.addActionListener(EndListener.getEndListener());
 
         JButton marketButton = new JButton("Naar de markt!");

@@ -14,8 +14,8 @@ public class MarketActionListener implements ActionListener{
             100,
             cardORE.getIconWidth(),
             cardORE.getIconHeight(),
-            Kaart.Type.ORE,
-            cardORE);
+            cardORE,
+            GrondstofKaart.GrondType.ORE);
 
     @Override
     public void actionPerformed(ActionEvent e) {

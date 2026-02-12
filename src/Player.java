@@ -7,15 +7,15 @@ public class Player {
     private int cities;
     private int cityExtensions;
     private final String name;
-    private final Kaart card;
-    private final Kaart card2;
+    private final BouwKaart card;
+    private final BouwKaart card2;
 
     public Player(String name, ImageIcon cardImage, ImageIcon card2Image) {
         this.name = name;
 
-        card = new Kaart(0, 100, cardImage.getIconWidth(), cardImage.getIconHeight(), Kaart.Type.TOWN, cardImage);
-        card2 = new Kaart(0, 100, card2Image.getIconWidth(), card2Image.getIconHeight(), Kaart.Type.CITY, card2Image);
-        addCard(Kaart.Type.TOWN);
+        card = new BouwKaart(0, 100, cardImage.getIconWidth(), cardImage.getIconHeight(), cardImage, BouwKaart.BouwType.TOWN);
+        card2 = new BouwKaart(0, 100, card2Image.getIconWidth(), card2Image.getIconHeight(), card2Image, BouwKaart.BouwType.CITY);
+        addCard(BouwKaart.BouwType.TOWN);
     }
 
     /**
@@ -62,7 +62,7 @@ public class Player {
      * A method for adding cards to acquire vitorypoints
      * @param type of the card that has to be added
      */
-    public void addCard(Kaart.Type type) {
+    public void addCard(BouwKaart.BouwType type) {
         switch(type) {
             case TOWN -> {
                 towns++;
@@ -83,7 +83,7 @@ public class Player {
      * A method for removing cards from a player to acquire victorypoints
      * @param type of the card that has to be removed
      */
-    public void removeCard(Kaart.Type type) {
+    public void removeCard(BouwKaart.BouwType type) {
         switch(type) {
             case TOWN -> {
                 towns--;
@@ -120,7 +120,7 @@ public class Player {
      * A getter for card
      * @return the Kaart card
      */
-    public Kaart getCard() {
+    public BouwKaart getCard() {
         return card;
     }
 
@@ -128,7 +128,7 @@ public class Player {
      * A getter for card2
      * @return the Kaart card2
      */
-    public Kaart getCard2() {
+    public BouwKaart getCard2() {
         return card2;
     }
 

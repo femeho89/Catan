@@ -7,8 +7,8 @@ public class StartButtonActionListener implements ActionListener {
     private final Game game;
     private int turns;
     private Player currentPlayer;
-    private Kaart card;
-    private Kaart card2;
+    private BouwKaart card;
+    private BouwKaart card2;
     private static JFrame playingFrame;
 
     public static JFrame getPlayingFrame() {
@@ -64,8 +64,8 @@ public class StartButtonActionListener implements ActionListener {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                Kaart mainCard = currentPlayer.getCard();
-                Kaart backCard = currentPlayer.getCard2();
+                BouwKaart mainCard = currentPlayer.getCard();
+                BouwKaart backCard = currentPlayer.getCard2();
 
                 if (SwingUtilities.isRightMouseButton(e)) {
                     int mouseX = e.getX();
@@ -77,13 +77,13 @@ public class StartButtonActionListener implements ActionListener {
                         if (turns % 2 == 1) {
                             mainCard.setVisible(false);
                             backCard.setVisible(true);
-                            currentPlayer.addCard(backCard.getType());
-                            currentPlayer.removeCard(mainCard.getType());
+                            currentPlayer.addCard(backCard.getBouwType());
+                            currentPlayer.removeCard(mainCard.getBouwType());
                         } else if (turns % 2 == 0) {
                             mainCard.setVisible(true);
                             backCard.setVisible(false);
-                            currentPlayer.addCard(mainCard.getType());
-                            currentPlayer.removeCard(backCard.getType());
+                            currentPlayer.addCard(mainCard.getBouwType());
+                            currentPlayer.removeCard(backCard.getBouwType());
                         }
                     }
                     points.setText(currentPlayer.getName() + " heeft: " + currentPlayer.getVictorypoints() + " overwinningspunt(en)");
@@ -134,6 +134,9 @@ public class StartButtonActionListener implements ActionListener {
         backButton.setBounds(600, 200, 200, 50);
         backButton.setBackground(new Color(200, 0, 0));
 
+        if(EndListener.getEndFrame() == null) {
+            return;
+        }
         EndListener.getEndFrame().add(backButton);
         backButton.addActionListener(EndListener.getBackListener());
 

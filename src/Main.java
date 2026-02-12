@@ -55,10 +55,10 @@ public class Main {
         });
 
         ImageIcon cardTownA = new ImageIcon("Kaart Dorp.png");
-        Kaart townA = new Kaart(0, 100, cardTownA.getIconWidth(), cardTownA.getIconHeight(), Kaart.Type.TOWN, cardTownA);
+        Kaart townA = new BouwKaart(0, 100, cardTownA.getIconWidth(), cardTownA.getIconHeight(), cardTownA, BouwKaart.BouwType.TOWN);
 
         ImageIcon cardTownB = new ImageIcon("Kaart Stad.png");
-        Kaart townB = new Kaart(0, 100, cardTownB.getIconWidth(), cardTownB.getIconHeight(), Kaart.Type.CITY, cardTownB);
+        Kaart townB = new BouwKaart(0, 100, cardTownB.getIconWidth(), cardTownB.getIconHeight(), cardTownB, BouwKaart.BouwType.CITY);
 
         JButton startButton = new JButton("Start Catan");   //makes button to start game
         startButton.setBounds(100, 100, 200, 50);

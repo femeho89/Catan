@@ -78,6 +78,10 @@ public class StartButtonActionListener implements ActionListener {
         //shows text on playingFrame
         playingFrame.add(points);
 
+        if (10 <= currentPlayer.getVictorypoints()){
+
+        }
+
         //timer to move cards
         timer = new Timer(9, event -> {
             //adds 1 pixel to X position of card

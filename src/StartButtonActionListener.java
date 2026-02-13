@@ -10,6 +10,11 @@ public class StartButtonActionListener implements ActionListener {
     private BouwKaart card;
     private BouwKaart card2;
     private static JFrame playingFrame;
+    private final ImageIcon oreCard = new ImageIcon("Kaart Erts.png");
+    private final ImageIcon grainCard = new ImageIcon("Kaart Graan.png");
+    private final ImageIcon woodCard = new ImageIcon("Kaart Hout.png");
+    private final ImageIcon sheepCard = new ImageIcon("Kaart Schaap.png");
+    private final ImageIcon rockCard = new ImageIcon("Kaart Steen.png");
 
     public static JFrame getPlayingFrame() {
         return playingFrame;
@@ -28,31 +33,42 @@ public class StartButtonActionListener implements ActionListener {
         card2 = currentPlayer.getCard2();
 
         if(playingFrame == null) {
-            //The playing screen
-            playingFrame = new JFrame(Main.file1);
-            //Playing screen size
-            playingFrame.setSize(1366, 720);
-            //Sets layout to null
+            playingFrame = new JFrame(Main.file1);  //The playing screen
+            playingFrame.setSize(1366, 720);    //Playing screen size
             playingFrame.setLayout(null);
+            playingFrame.getContentPane().setBackground(new Color(215, 140, 98));
             playingFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+            JLabel ore = new JLabel(oreCard);
+            ore.setBounds(60, 460, oreCard.getIconWidth(), oreCard.getIconHeight());
+            JLabel grain = new JLabel(grainCard);
+            grain.setBounds(ore.getX() + oreCard.getIconWidth() + 20, ore.getY(), grainCard.getIconWidth(), grainCard.getIconHeight());
+            JLabel wood = new JLabel(woodCard);
+            wood.setBounds(grain.getX() + grainCard.getIconWidth() + 20, grain.getY(), woodCard.getIconWidth(), woodCard.getIconHeight());
+            JLabel sheep = new JLabel(sheepCard);
+            sheep.setBounds(wood.getX() + woodCard.getIconWidth() + 20, wood.getY(), sheepCard.getIconWidth(), sheepCard.getIconHeight());
+
+            playingFrame.add(ore);
+            playingFrame.add(grain);
+            playingFrame.add(wood);
+            playingFrame.add(sheep);
+            ore.setVisible(true);
+            grain.setVisible(true);
+            wood.setVisible(true);
+            sheep.setVisible(true);
         }
 
         if(playingFrame != null) {
             playingFrame.getContentPane().removeAll();
         }
 
-        //Array of attributes 'player'
-        Player[] players = game.getPlayers();
+        Player[] players = game.getPlayers();   //Array of attributes player
 
         //for loop of players in Player[]
         for(Player p : players) {
-            //adds Card to playingFrame
-            playingFrame.add(p.getCard());
-            //adds Card2 to playingFrame
+            playingFrame.add(p.getCard());  //adds cards to playingFrame
             playingFrame.add(p.getCard2());
-            //sets Card invisible
-            p.getCard().setVisible(false);
-            //sets Card2 invisible
+            p.getCard().setVisible(false);  //sets cards automatically invisible
             p.getCard2().setVisible(false);
         }
 

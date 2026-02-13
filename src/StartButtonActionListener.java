@@ -218,6 +218,32 @@ public class StartButtonActionListener implements ActionListener {
         //assigns ActionListener 'marketListener' to marketButton
         marketButton.addActionListener(marketListener);
 
+        //initialises 'step1Button' & declares it a new JButton with the text "1. Grondstofkaarten ruilen"
+        JButton step1Button = new JButton("1. Grondstofkaarten ruilen");
+        //sets the position & size of GUI component step1Button
+        step1Button.setBounds(1100, 550, 200, 150);
+        //sets the background colour of GUI component step1Button
+        step1Button.setBackground(new Color(200, 0, 100));
+        //adds step1Button to playingFrame
+        playingFrame.add(step1Button);
+        //initialises ActionListener 'step1Listener' & declares it as a new MarketActionListener (?)
+        ActionListener step1Listener = new MarketActionListener();
+        //assigns ActionListener 'marketListener' to marketButton
+        step1Button.addActionListener(step1Listener);
+
+        //initialises 'marketButton' & declares it a new JButton with the text "Naar de markt!"
+        JButton step2Button = new JButton("2. Grondstofkaarten ruilen");
+        //sets the position & size of GUI component marketButton
+        step1Button.setBounds(1100, 550, 200, 150);
+        //sets the background colour of GUI component marketButton
+        step1Button.setBackground(new Color(200, 0, 100));
+        //adds marketButton to playingFrame
+        playingFrame.add(step2Button);
+        //initialises ActionListener 'marketListener' & declares it as a new MarketActionListener (?)
+        ActionListener step2Listener = new MarketActionListener();
+        //assigns ActionListener 'marketListener' to marketButton
+        step2Button.addActionListener(step2Listener);
+
         //initialises 'backButton' & declares it a new JButton with the text "Terug naar start"
         JButton backButton = new JButton("Terug naar start");
         //sets the position & size of GUI component backButton

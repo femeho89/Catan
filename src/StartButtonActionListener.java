@@ -291,6 +291,13 @@ public class StartButtonActionListener implements ActionListener {
         //assigns ActionListener 'endListener' from EndListener Class to backButton
         backButton.addActionListener(EndListener.getBackListener());
 
+        JButton winButtonTemp = new JButton("win");
+        backButton.setBounds(50, 50, 200, 50);
+        backButton.setBackground(new Color(200, 150, 200));
+        playingFrame.add(winButtonTemp);
+
+        //startButton.addActionListener(e -> {
+
         for(Player p : players) {
             p.getCard().setLocation(0, card.getY());
             p.getCard2().setLocation(0, card2.getY());

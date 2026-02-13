@@ -3,6 +3,10 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class MarketActionListener implements ActionListener{
+
+    static JLabel confirmLabel = new JLabel("Je hebt een kaart getrokken.");
+    static ImageIcon stockPile = new ImageIcon("Kaart Achterkant.png");
+
     public MarketActionListener() {
     }
 
@@ -16,9 +20,21 @@ public class MarketActionListener implements ActionListener{
         StartButtonActionListener.getPlayingFrame().setVisible(false);
         marketFrame.setVisible(true);
 
-        GrondstofKaart grondstofKaart1 = GrondstofKaart.getRandom();
-        grondstofKaart1.setLocation(60, 360 - grondstofKaart1.getHeight()/2 );
-        marketFrame.add(grondstofKaart1);
+        ActionListener newCardListener = event -> {
+            GrondstofKaart grondstofKaart1 = GrondstofKaart.getRandom();
+            grondstofKaart1.setLocation(60, 600);
+            StartButtonActionListener.getPlayingFrame().add(grondstofKaart1);
+
+            confirmLabel.setLocation(60, 400);
+            marketFrame.add(confirmLabel);
+            confirmLabel.setVisible(true);
+            MarketTimer.timer.start();
+        };
+        JButton drawCard = new JButton(stockPile);
+        drawCard.setBounds(60, 420, stockPile.getIconWidth(), stockPile.getIconHeight());
+        marketFrame.add(drawCard);
+        drawCard.setVisible(true);
+        drawCard.addActionListener(newCardListener);
 
         ActionListener marketBackListener = back -> {
             StartButtonActionListener.getPlayingFrame().setVisible(true);

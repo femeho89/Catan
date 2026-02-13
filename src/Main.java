@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.ArrayList;
+import java.util.*;
 
 public class Main {
     //initialises String 'file1' & declares it as "Catan"
@@ -52,7 +52,7 @@ public class Main {
         //sets the position & size of GUI component textButton
         textButton.setBounds(200, 600, 200, 50);
         //initialises outputLabel & declares it a new JLabel
-        JLabel outputLabel = new JLabel();
+        JLabel outputLabel = new JLabel("Vul namen in.");
         //sets the position & size of GUI component outputLabel
         outputLabel.setBounds(200, 400, 200, 50);
         //sets font for outputLabel
@@ -70,18 +70,24 @@ public class Main {
             //gets the input text from textField
             String input = textField.getText().trim();
             //if-statement to respond if textField is empty, relying on:
-            if(input.isEmpty()) { //if textField is empty
-                //has outputLabel show text "Vul namen in"
+            if(input.isEmpty()) {
                 outputLabel.setText("Vul namen in.");
             }
             //else-statement to respond when textField not empty
             else{
-                //has outputLabe; show text "De namen zijn ingevuld"
-                outputLabel.setText("De namen zijn ingevuld!");
                 //adds input from textField to ArrayList playerNames
                 playerNames.add(input);
                 //sets textfield empty
                 textField.setText("");
+
+                updateLabel(outputLabel);
+                JLabel player1 = new JLabel("Naam speler 1:" + playerNames.get(0));
+                player1.setBounds(600, 600, 200, 50);
+                player1.setFont(new Font("Arial", Font.BOLD, 16));
+
+                JLabel player2 = new JLabel("Naam speler 2:" + playerNames.get(1));
+                player2.setBounds(600, 660, 200, 50);
+                player2.setFont(new Font("Arial", Font.BOLD, 16));
             }
         });
 
@@ -107,7 +113,6 @@ public class Main {
         startButton.addActionListener(e -> {
             //if-statement to return something, relying on:
             if(playerNames.size() < 2) { //if the size of the ArrayList playerNames is less than 2
-                //returns something
                 return;
             }
             Player[] players = new Player[2];   // Makes a player Array
@@ -132,5 +137,13 @@ public class Main {
 
         frame.setVisible(true);     // Makes the frame visible
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);    // Makes the game close when the cross is pressed
+    }
+    public static void updateLabel(JLabel label) {
+        if(playerNames.size() < 2) {
+            label.setText("Vul namen in.");
+        }
+        else{
+            label.setText("De namen zijn ingevuld!");
+        }
     }
 }

@@ -17,8 +17,8 @@ public class MarketActionListener implements ActionListener{
         marketFrame.setVisible(true);
 
         GrondstofKaart grondstofKaart1 = GrondstofKaart.getRandom();
-        grondstofKaart1.setLocation(60, 600);
-        StartButtonActionListener.getPlayingFrame().add(grondstofKaart1);
+        grondstofKaart1.setLocation(60, 360 - grondstofKaart1.getHeight()/2 );
+        marketFrame.add(grondstofKaart1);
 
         ActionListener marketBackListener = back -> {
             StartButtonActionListener.getPlayingFrame().setVisible(true);

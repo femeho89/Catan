@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.util.ArrayList;
 
 public class Player {
 
@@ -15,6 +16,8 @@ public class Player {
     private final BouwKaart card;
     //initialises BouwKaart 'card2'
     private final BouwKaart card2;
+    private ArrayList<Kaart> OwnedCards = new ArrayList<>();
+    private Kaart addingCard;
 
     //?
     public Player(String name, ImageIcon cardImage, ImageIcon card2Image) {
@@ -149,4 +152,19 @@ public class Player {
     public String getName() {
         return name;
     }
+
+    /**
+     * A getter for the attribute OwnedCards
+     * @return the owned cards of a player
+     */
+    public ArrayList<Kaart> getOwnedCards() {
+        return OwnedCards;
+    }
+    /**
+     * A method for adding a card to the OwnedCards ArrayList
+     */
+    public void addCardToOwned(Kaart addingCard){
+        OwnedCards.add(addingCard);
+    }
+
 }

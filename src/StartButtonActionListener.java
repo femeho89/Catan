@@ -16,6 +16,8 @@ public class StartButtonActionListener implements ActionListener {
     private static ActionListener step2Listener;
     //initialises ActionListener 'step3Listener'
     private static ActionListener step3Listener;
+    //initialises ActionListener 'ownedCardListener'
+    private static ActionListener ownedCardListener;
 
     public static JFrame getPlayingFrame() {
         return playingFrame;
@@ -256,6 +258,17 @@ public class StartButtonActionListener implements ActionListener {
         playingFrame.add(step3Button);
         //assigns ActionListener 'step3Listener' to step3Button
         step3Button.addActionListener(step3Listener);
+
+        //initialises 'ownedCardButton' & declares it a new JButton with the text "Jouw kaaten zien"
+        JButton ownedCardButton = new JButton("Jouw kaarten zien");
+        //sets the position & size of GUI component ownedCardButton
+        ownedCardButton.setBounds(550, 550, 200, 50);
+        //sets the background colour of GUI component ownedCardButton
+        ownedCardButton.setBackground(new Color(200, 0, 0));
+        //adds ownedCardButton to playingFrame
+        playingFrame.add(ownedCardButton);
+        //assigns ActionListener 'ownedCardListener' to ownedCardButton
+        ownedCardButton.addActionListener(ownedCardListener);
 
         //initialises 'backButton' & declares it a new JButton with the text "Terug naar start"
         JButton backButton = new JButton("Terug naar start");

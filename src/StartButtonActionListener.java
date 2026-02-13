@@ -10,6 +10,12 @@ public class StartButtonActionListener implements ActionListener {
     private BouwKaart card;
     private BouwKaart card2;
     private static JFrame playingFrame;
+    //initialises ActionListener 'step1Listener'
+    private static ActionListener step1Listener;
+    //initialises ActionListener 'step2Listener'
+    private static ActionListener step2Listener;
+    //initialises ActionListener 'step3Listener'
+    private static ActionListener step3Listener;
 
     public static JFrame getPlayingFrame() {
         return playingFrame;
@@ -221,28 +227,35 @@ public class StartButtonActionListener implements ActionListener {
         //initialises 'step1Button' & declares it a new JButton with the text "1. Grondstofkaarten ruilen"
         JButton step1Button = new JButton("1. Grondstofkaarten ruilen");
         //sets the position & size of GUI component step1Button
-        step1Button.setBounds(1100, 550, 200, 150);
+        step1Button.setBounds(1100, 450, 200, 50);
         //sets the background colour of GUI component step1Button
         step1Button.setBackground(new Color(200, 0, 100));
         //adds step1Button to playingFrame
         playingFrame.add(step1Button);
-        //initialises ActionListener 'step1Listener' & declares it as a new MarketActionListener (?)
-        ActionListener step1Listener = new MarketActionListener();
-        //assigns ActionListener 'marketListener' to marketButton
+        //assigns ActionListener 'step1Button' to set1Button
         step1Button.addActionListener(step1Listener);
 
-        //initialises 'marketButton' & declares it a new JButton with the text "Naar de markt!"
-        JButton step2Button = new JButton("2. Grondstofkaarten ruilen");
+        //initialises 'step2Button' & declares it a new JButton with the text "2. Bouwkaarten bouwen"
+        JButton step2Button = new JButton("2. Bouwkaarten bouwen");
         //sets the position & size of GUI component marketButton
-        step1Button.setBounds(1100, 550, 200, 150);
+        step2Button.setBounds(1100, 500, 200, 50);
         //sets the background colour of GUI component marketButton
-        step1Button.setBackground(new Color(200, 0, 100));
+        step2Button.setBackground(new Color(200, 0, 100));
         //adds marketButton to playingFrame
         playingFrame.add(step2Button);
-        //initialises ActionListener 'marketListener' & declares it as a new MarketActionListener (?)
-        ActionListener step2Listener = new MarketActionListener();
         //assigns ActionListener 'marketListener' to marketButton
         step2Button.addActionListener(step2Listener);
+
+        //initialises 'step3Button' & declares it a new JButton with the text "3. nieuwe grondstoffen"
+        JButton step3Button = new JButton("3. nieuwe grondstoffen");
+        //sets the position & size of GUI component step3Button
+        step3Button.setBounds(1100, 550, 200, 50);
+        //sets the background colour of GUI component step3Button
+        step3Button.setBackground(new Color(200, 0, 100));
+        //adds step3Button to playingFrame
+        playingFrame.add(step3Button);
+        //assigns ActionListener 'step3Listener' to step3Button
+        step3Button.addActionListener(step3Listener);
 
         //initialises 'backButton' & declares it a new JButton with the text "Terug naar start"
         JButton backButton = new JButton("Terug naar start");

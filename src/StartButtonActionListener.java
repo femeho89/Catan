@@ -18,6 +18,8 @@ public class StartButtonActionListener implements ActionListener {
     private static ActionListener step3Listener;
     //initialises ActionListener 'ownedCardListener'
     private static ActionListener ownedCardListener;
+    //initialises ActionListener 'buildListener'
+    private static ActionListener buildListener;
 
     public static JFrame getPlayingFrame() {
         return playingFrame;
@@ -244,13 +246,14 @@ public class StartButtonActionListener implements ActionListener {
 
         //initialises 'step2Button' & declares it a new JButton with the text "2. Bouwkaarten bouwen"
         JButton step2Button = new JButton("2. Bouwkaarten bouwen");
-        //sets the position & size of GUI component marketButton
+        //sets the position & size of GUI component step2Button
         step2Button.setBounds(1100, 500, 200, 50);
-        //sets the background colour of GUI component marketButton
+        //sets the background colour of GUI component step2Button
         step2Button.setBackground(new Color(200, 0, 100));
-        //adds marketButton to playingFrame
+        //adds step2Button to playingFrame
         playingFrame.add(step2Button);
-        //assigns ActionListener 'marketListener' to marketButton
+        ActionListener buildListener = new Bouwen();
+        //assigns ActionListener 'step2Listener' to step2Button
         step2Button.addActionListener(step2Listener);
 
         //initialises 'step3Button' & declares it a new JButton with the text "3. nieuwe grondstoffen"

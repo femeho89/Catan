@@ -25,7 +25,7 @@ public class MarketActionListener implements ActionListener{
             grondstofKaart1.setLocation(60, 600);
             StartButtonActionListener.getPlayingFrame().add(grondstofKaart1); //?
             marketFrame.add(grondstofKaart1);
-            Player.addCardToOwned(grondstofKaart1);
+            //Player.addCardToOwned(grondstofKaart1);
 
             confirmLabel.setLocation(60, 400);
             marketFrame.add(confirmLabel);

@@ -23,6 +23,11 @@ public class Bouwen implements ActionListener {
             questionLabel.setFont(new Font("Arial", Font.BOLD, 16));
             //adds questionLabel to frame
             buildFrame.add(questionLabel);
+
+            ImageIcon BouwStraatKaart = BouwKaart.BouwType.STREET.getImage();
+//            grondstofKaart1.setLocation(60, 600);
+//            StartButtonActionListener.getPlayingFrame().add(grondstofKaart1); //?
+//            marketFrame.add(grondstofKaart1);
         }
     }
 

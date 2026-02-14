@@ -11,21 +11,22 @@ public class Win implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         //sets the size of GUI component winFrame
         winFrame.setSize(1366, 720);
-        //sets the layout of GUI component winFrame
-        winFrame.setLayout(null);
         //sets background colour of GUI component winFrame
         winFrame.setBackground(new Color(200, 50, 150));
+        //sets the layout of GUI component winFrame
+        winFrame.setLayout(null);
+
         //sets playingFrame to invisible
         StartButtonActionListener.getPlayingFrame().setVisible(false);
         //sets winFrame to visible
         winFrame.setVisible(true);
 
-        JTextArea winText = new JTextArea("""
-                Gefeliciteer!!! \s
-                Je hebt Catan gewonnen!!!""");
-        winText.setEditable(false);
-        winText.setWrapStyleWord(true);
+        JLabel winText = new JLabel(" Gefeliciteerd!!! \s Je hebt Catan gewonnen!!!");
+        winText.setBounds(633, 360, 500, 250);
+        winText.setFont(new Font("Arial", Font.BOLD, 16));
         winText.setBackground(new Color(255, 50, 150));
+
+        winFrame.add(winText);
     }
 
     public static JFrame getWinFrame() {

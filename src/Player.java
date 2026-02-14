@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class Player {
@@ -65,14 +66,17 @@ public class Player {
 
     /**
      * A setter for the attribute victorypoints
+     *
      * @param victorypoints of the player
+     * @return
      */
-    public void setVictorypoints(int victorypoints) {
+    public ActionListener setVictorypoints(int victorypoints) {
         this.victorypoints = victorypoints;
+        return null;
     }
 
     /**
-     * A method for adding cards to acquire vitorypoints
+     * A method for adding cards to acquire victorypoints
      * @param type of the card that has to be added
      */
     public void addCard(BouwKaart.BouwType type) {

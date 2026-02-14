@@ -78,10 +78,6 @@ public class StartButtonActionListener implements ActionListener {
         //shows text on playingFrame
         playingFrame.add(points);
 
-        if (10 <= currentPlayer.getVictorypoints()){
-
-        }
-
         //timer to move cards
         timer = new Timer(9, event -> {
             //adds 1 pixel to X position of card
@@ -195,6 +191,10 @@ public class StartButtonActionListener implements ActionListener {
             points.setText(currentPlayer.getName() + " heeft: " + currentPlayer.getVictorypoints() + " overwinningspunt(en)");
         };
 
+        if(10 <= currentPlayer.getVictorypoints()){
+            new Win();
+        }
+
         //initialises 'nextButton' & declares it a new JButton with the text "Volgende ronde"
         JButton nextButton = new JButton("Volgende ronde");
         //sets the position & size of GUI component nextButton
@@ -262,14 +262,15 @@ public class StartButtonActionListener implements ActionListener {
         playingFrame.add(step3Button);
         //assigns ActionListener 'step3Listener' to step3Button
         step3Button.addActionListener(step3Listener);
+
         JButton winButtonTemp = new JButton("win");
         winButtonTemp.setBounds(1100, 400, 200, 50);
         winButtonTemp.setBackground(new Color(200, 150, 200));
         playingFrame.add(winButtonTemp);
-        //initializes listener & declares it a new StartButtonActionListener with the variable game
-        ActionListener Winlistener = new Win();
-        //assigns listener to startButton
-        winButtonTemp.addActionListener(Winlistener);
+//        //initializes listener & declares it a new StartButtonActionListener with the variable game
+//        ActionListener Winlistener = Player.setVictorypoints(10);
+//        //assigns listener to startButton
+//        winButtonTemp.addActionListener(Winlistener);
 
         //initialises 'ownedCardButton' & declares it a new JButton with the text "Jouw kaaten zien"
         JButton ownedCardButton = new JButton("Jouw kaarten zien");

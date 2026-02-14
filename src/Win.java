@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 public class Win implements ActionListener {
     //makes a win frame for when a player has won the game
-    private static JFrame winFrame = new JFrame(Main.file1);
+    private static final JFrame winFrame = new JFrame(Main.file1);
 
     @Override
     public void actionPerformed(ActionEvent e) {

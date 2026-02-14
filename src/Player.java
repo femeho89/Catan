@@ -1,6 +1,6 @@
 import javax.swing.*;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
+import java.awt.event.*;
+import java.util.*;
 
 public class Player {
 
@@ -17,7 +17,7 @@ public class Player {
     private final BouwKaart card;
     //initialises BouwKaart 'card2'
     private final BouwKaart card2;
-    private ArrayList<Kaart> OwnedCards = new ArrayList<>();
+    private final ArrayList<Kaart> OwnedCards = new ArrayList<>();
     private Kaart addingCard;
 
     //?
@@ -66,7 +66,6 @@ public class Player {
 
     /**
      * A setter for the attribute victorypoints
-     *
      * @param victorypoints of the player
      * @return
      */
@@ -170,5 +169,4 @@ public class Player {
     public void addCardToOwned(Kaart addingCard){
         OwnedCards.add(addingCard);
     }
-
 }

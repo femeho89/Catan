@@ -262,6 +262,14 @@ public class StartButtonActionListener implements ActionListener {
         playingFrame.add(step3Button);
         //assigns ActionListener 'step3Listener' to step3Button
         step3Button.addActionListener(step3Listener);
+        JButton winButtonTemp = new JButton("win");
+        winButtonTemp.setBounds(1100, 400, 200, 50);
+        winButtonTemp.setBackground(new Color(200, 150, 200));
+        playingFrame.add(winButtonTemp);
+        //initializes listener & declares it a new StartButtonActionListener with the variable game
+        ActionListener Winlistener = new Win();
+        //assigns listener to startButton
+        winButtonTemp.addActionListener(Winlistener);
 
         //initialises 'ownedCardButton' & declares it a new JButton with the text "Jouw kaaten zien"
         JButton ownedCardButton = new JButton("Jouw kaarten zien");
@@ -290,13 +298,6 @@ public class StartButtonActionListener implements ActionListener {
         EndListener.getEndFrame().add(backButton);
         //assigns ActionListener 'endListener' from EndListener Class to backButton
         backButton.addActionListener(EndListener.getBackListener());
-
-        JButton winButtonTemp = new JButton("win");
-        backButton.setBounds(50, 50, 200, 50);
-        backButton.setBackground(new Color(200, 150, 200));
-        playingFrame.add(winButtonTemp);
-
-        //startButton.addActionListener(e -> {
 
         for(Player p : players) {
             p.getCard().setLocation(0, card.getY());

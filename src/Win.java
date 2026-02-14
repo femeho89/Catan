@@ -1,11 +1,14 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class Win {
+public class Win implements ActionListener {
     //makes a win frame for when a player has won the game
     private static JFrame winFrame = new JFrame(Main.file1);
-    public void actionPerformed(ActionEvent e){
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
         //sets the size of GUI component winFrame
         winFrame.setSize(1366, 720);
         //sets the layout of GUI component winFrame
@@ -22,10 +25,11 @@ public class Win {
                 Je hebt Catan gewonnen!!!""");
         winText.setEditable(false);
         winText.setWrapStyleWord(true);
-        winText.setBackground(new Color(255,50,150));
+        winText.setBackground(new Color(255, 50, 150));
     }
 
     public static JFrame getWinFrame() {
         return winFrame;
     }
+
 }

@@ -42,6 +42,7 @@ public class StartButtonActionListener implements ActionListener {
             playingFrame.setSize(1366, 720);
             //Sets layout to null
             playingFrame.setLayout(null);
+            playingFrame.getContentPane().setBackground(new Color(237, 140, 98));
             playingFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         }
 

@@ -17,7 +17,7 @@ public class Player {
     private final BouwKaart card;
     //initialises BouwKaart 'card2'
     private final BouwKaart card2;
-    private static ArrayList<Kaart> OwnedCards = new ArrayList<>();
+    private ArrayList<Kaart> OwnedCards = new ArrayList<>();
     private Kaart addingCard;
 
     //?
@@ -167,7 +167,7 @@ public class Player {
     /**
      * A method for adding a card to the OwnedCards ArrayList
      */
-    public static void addCardToOwned(Kaart addingCard){
+    public void addCardToOwned(Kaart addingCard){
         OwnedCards.add(addingCard);
     }
 

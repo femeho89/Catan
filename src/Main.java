@@ -58,6 +58,16 @@ public class Main {
         //sets font for outputLabel
         outputLabel.setFont(new Font("Arial", Font.BOLD, 16));
 
+        JLabel player1 = new JLabel();
+        player1.setBounds(600, 600, 200, 50);
+        player1.setFont(new Font("Arial", Font.BOLD, 14));
+        frame.add(player1);
+
+        JLabel player2 = new JLabel();
+        player2.setBounds(600, 630, 200, 50);
+        player2.setFont(new Font("Arial", Font.BOLD, 14));
+        frame.add(player2);
+
         //adds textField to frame
         frame.add(textField);
         //adds textButton to frame
@@ -81,13 +91,13 @@ public class Main {
                 textField.setText("");
 
                 updateLabel(outputLabel);
-                JLabel player1 = new JLabel("Naam speler 1:" + playerNames.get(0));
-                player1.setBounds(600, 600, 200, 50);
-                player1.setFont(new Font("Arial", Font.BOLD, 16));
 
-                JLabel player2 = new JLabel("Naam speler 2:" + playerNames.get(1));
-                player2.setBounds(600, 660, 200, 50);
-                player2.setFont(new Font("Arial", Font.BOLD, 16));
+                if(!playerNames.isEmpty()) {
+                    player1.setText("Naam speler 1: " + playerNames.getFirst());
+                }
+                if(playerNames.size() >= 2) {
+                    player2.setText("Naam speler 2: " + playerNames.get(1));
+                }
             }
         });
 

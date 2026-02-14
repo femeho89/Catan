@@ -23,15 +23,19 @@ public class MarketActionListener implements ActionListener{
         ActionListener newCardListener = event -> {
             GrondstofKaart grondstofKaart1 = GrondstofKaart.getRandom();
             grondstofKaart1.setLocation(60, 600);
-            StartButtonActionListener.getPlayingFrame().add(grondstofKaart1);
+            StartButtonActionListener.getPlayingFrame().add(grondstofKaart1); //?
+            marketFrame.add(grondstofKaart1);
+            Player.addCardToOwned(grondstofKaart1);
 
             confirmLabel.setLocation(60, 400);
             marketFrame.add(confirmLabel);
             confirmLabel.setVisible(true);
             MarketTimer.timer.start();
+
+            marketFrame.setVisible(true);
         };
         JButton drawCard = new JButton(stockPile);
-        drawCard.setBounds(60, 420, stockPile.getIconWidth(), stockPile.getIconHeight());
+        drawCard.setBounds(505, 232, stockPile.getIconWidth(), stockPile.getIconHeight());
         marketFrame.add(drawCard);
         drawCard.setVisible(true);
         drawCard.addActionListener(newCardListener);

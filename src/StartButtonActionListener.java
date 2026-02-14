@@ -12,14 +12,13 @@ public class StartButtonActionListener implements ActionListener {
     private static JFrame playingFrame;
     //initialises ActionListener 'step1Listener'
     private static ActionListener step1Listener;
-    //initialises ActionListener 'step2Listener'
-    private static ActionListener step2Listener;
+    //initialises ActionListener 'buildListener'
+    private static ActionListener buildListener;
     //initialises ActionListener 'step3Listener'
     private static ActionListener step3Listener;
     //initialises ActionListener 'ownedCardListener'
     private static ActionListener ownedCardListener;
-    //initialises ActionListener 'buildListener'
-    private static ActionListener buildListener;
+
 
     public static JFrame getPlayingFrame() {
         return playingFrame;
@@ -254,7 +253,7 @@ public class StartButtonActionListener implements ActionListener {
         playingFrame.add(step2Button);
         ActionListener buildListener = new Bouwen();
         //assigns ActionListener 'step2Listener' to step2Button
-        step2Button.addActionListener(step2Listener);
+        step2Button.addActionListener(buildListener);
 
         //initialises 'step3Button' & declares it a new JButton with the text "3. nieuwe grondstoffen"
         JButton step3Button = new JButton("3. nieuwe grondstoffen");

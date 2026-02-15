@@ -31,7 +31,7 @@ public class Bouwen implements ActionListener {
                 StartButtonActionListener.getPlayingFrame().add(StraatBouwenKaart);
             };
 
-            JButton straatBuildCard = new JButton(bouwStraatKaart);
+            JButton straatBuildCard = new JButton((StraatBouwenKaart);
             straatBuildCard.setBounds(60, 600, bouwStraatKaart.getIconHeight(), bouwStraatKaart.getIconWidth());
             buildFrame.add(straatBuildCard);
             straatBuildCard.setVisible(true);

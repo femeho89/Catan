@@ -30,7 +30,7 @@ public class BouwKaart extends Kaart{
 
     /**
      * A getter for the attribute type
-     * @return the type of a card
+     * @return the type of card
      */
     public BouwType getBouwType() {
         return type;

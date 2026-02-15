@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Bouwen implements ActionListener {
+    static ImageIcon bouwStraatKaart = new ImageIcon("Kaart Straat.png");
+
         @Override
         public void actionPerformed(ActionEvent e) {
             StartButtonActionListener.timer.stop();
@@ -24,10 +26,25 @@ public class Bouwen implements ActionListener {
             //adds questionLabel to frame
             buildFrame.add(questionLabel);
 
-            ImageIcon BouwStraatKaart = BouwKaart.BouwType.STREET.getImage();
-//            grondstofKaart1.setLocation(60, 600);
-//            StartButtonActionListener.getPlayingFrame().add(grondstofKaart1); //?
-//            marketFrame.add(grondstofKaart1);
+            ActionListener straatBuildListener = event -> {
+
+            };
+
+            JButton straatBuildCard = new JButton(bouwStraatKaart);
+            straatBuildCard.setBounds(60, 600, bouwStraatKaart.getIconHeight(), bouwStraatKaart.getIconWidth());
+            buildFrame.add(straatBuildCard);
+            straatBuildCard.setVisible(true);
+            straatBuildCard.addActionListener(straatBuildListener);
+
+            ActionListener buildBackListener = event -> {
+
+            };
+
+            JButton buildExitButton = new JButton("Terug naar het spel");
+            buildExitButton.setBounds(50, 50, 200, 50);
+            buildExitButton.setBackground(new Color(200, 0, 0));
+            buildFrame.add(buildExitButton);
+            buildExitButton.addActionListener(buildBackListener);
         }
     }
 

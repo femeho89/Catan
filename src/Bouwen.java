@@ -37,7 +37,9 @@ public class Bouwen implements ActionListener {
             straatBuildCard.addActionListener(straatBuildListener);
 
             ActionListener buildBackListener = event -> {
-
+                StartButtonActionListener.getPlayingFrame().setVisible(true);
+                buildFrame.setVisible(false);
+                StartButtonActionListener.timer.start();
             };
 
             JButton buildExitButton = new JButton("Terug naar het spel");

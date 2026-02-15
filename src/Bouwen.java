@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 public class Bouwen implements ActionListener {
     static ImageIcon bouwStraatKaart = new ImageIcon("Kaart Straat.png");
+    BouwKaart StraatBouwenKaart = BouwKaart;
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -27,7 +28,7 @@ public class Bouwen implements ActionListener {
             buildFrame.add(questionLabel);
 
             ActionListener straatBuildListener = event -> {
-
+                StartButtonActionListener.getPlayingFrame().add(grondstofKaart1);
             };
 
             JButton straatBuildCard = new JButton(bouwStraatKaart);

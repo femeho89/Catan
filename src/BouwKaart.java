@@ -21,6 +21,9 @@ public class BouwKaart extends Kaart{
             }
             return new ImageIcon("error");
         }
+//        public BouwKaart getBuildCard(int xBouw, int yBouw, int heightBouw, int widthBouw, ImageIcon image, BouwType type){
+//            case KNIGHT -> {return new BouwKaart(xBouw, yBouw, heightBouw, widthBouw, image, type );}
+//        };
     }
 
     public BouwKaart(int x, int y, int height, int width, ImageIcon image, BouwType type) {

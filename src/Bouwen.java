@@ -11,7 +11,7 @@ public class Bouwen implements ActionListener {
     static ImageIcon bouwStadKaart = new ImageIcon("Kaart Stad.png");
     BouwKaart StadBouwenKaart = new BouwKaart(750, 260, bouwStadKaart.getIconHeight(), bouwStadKaart.getIconWidth(), bouwStadKaart, BouwKaart.BouwType.CITY);
     static ImageIcon bouwStadsUitbreidingKaart = new ImageIcon("Stadsuitbreiding Kaart catan 2.png");
-    BouwKaart StadsuitbreidingBouwenKaart = new BouwKaart(1000, 260, bouwStadsUitbreidingKaart.getIconHeight(), bouwStadsUitbreidingKaart.getIconWidth(), bouwStadsUitbreidingKaart, BouwKaart.BouwType.CITY); //x-coordinate 1250 gives card on right wall
+    BouwKaart StadsuitbreidingBouwenKaart = new BouwKaart(1000, 260, bouwStadsUitbreidingKaart.getIconHeight(), bouwStadsUitbreidingKaart.getIconWidth(), bouwStadsUitbreidingKaart, BouwKaart.BouwType.CITY_EXTENSION); //x-coordinate 1250 gives card on right wall
     //Omnes Optant Mundum Regere
 
 
@@ -52,34 +52,34 @@ public class Bouwen implements ActionListener {
 
             //Straat
             buildFrame.add(StraatBouwenKaart);
-            JButton straatBuildCard = new JButton(bouwStraatKaart);
-            straatBuildCard.setBounds(50, 300, 128, 256);
-            //buildFrame.add(straatBuildCard);
-            //straatBuildCard.setVisible(true);
+            JButton straatBuildCard = new JButton();
+            straatBuildCard.setBounds(250,260, 100, 156);
+            straatBuildCard.setBackground(new Color(255,0,255));
+            buildFrame.add(straatBuildCard);
             straatBuildCard.addActionListener(straatBuildListener);
 
             //Dorp
             buildFrame.add(DorpBouwenKaart);
             JButton dorpBuildCard = new JButton(bouwDorpKaart);
-            dorpBuildCard.setBounds(250, 300, bouwDorpKaart.getIconHeight(), bouwDorpKaart.getIconWidth());
-            //buildFrame.add(dorpBuildCard);
-            //dorpBuildCard.setVisible(true);
+            dorpBuildCard.setBounds(500,260, 100, 156);
+            dorpBuildCard.setBackground(new Color(255,0,255));
+            buildFrame.add(dorpBuildCard);
             dorpBuildCard.addActionListener(dorpBuildListener);
 
             //Stad
             buildFrame.add(StadBouwenKaart);
             JButton stadBuildCard = new JButton(bouwStadKaart);
-            stadBuildCard.setBounds(500, 300, bouwStadKaart.getIconHeight(), bouwStadKaart.getIconWidth());
-            //buildFrame.add(stadBuildCard);
-            //stadBuildCard.setVisible(true);
+            stadBuildCard.setBounds(750,260, 100, 156);
+            stadBuildCard.setBackground(new Color(255,0,255));
+            buildFrame.add(stadBuildCard);
             stadBuildCard.addActionListener(stadBuildListener);
 
             //Stadsuitbreiding
             buildFrame.add(StadsuitbreidingBouwenKaart);
             JButton stadsuitbreidingBuildCard = new JButton(bouwStadsUitbreidingKaart);
-            stadsuitbreidingBuildCard.setBounds(750, 300, bouwStadsUitbreidingKaart.getIconHeight(), bouwStadsUitbreidingKaart.getIconWidth());
-           // buildFrame.add(stadsuitbreidingBuildCard);
-            //stadsuitbreidingBuildCard.setVisible(true);
+            stadsuitbreidingBuildCard.setBounds(1000,260, 100, 156);
+            stadsuitbreidingBuildCard.setBackground(new Color(255,0,255));
+            buildFrame.add(stadsuitbreidingBuildCard);
             stadsuitbreidingBuildCard.addActionListener(stadsuitbreidingBuildListener);
 
             ActionListener buildBackListener = event -> {

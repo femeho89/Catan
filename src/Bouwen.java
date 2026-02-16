@@ -5,13 +5,14 @@ import java.awt.event.ActionListener;
 
 public class Bouwen implements ActionListener {
     static ImageIcon bouwStraatKaart = new ImageIcon("Straat Kaart catan 2.png");
-    BouwKaart StraatBouwenKaart = new BouwKaart(100, 100, bouwStraatKaart.getIconHeight(), bouwStraatKaart.getIconWidth(), bouwStraatKaart, BouwKaart.BouwType.STREET);
+    BouwKaart StraatBouwenKaart = new BouwKaart(250, 260, bouwStraatKaart.getIconHeight(), bouwStraatKaart.getIconWidth(), bouwStraatKaart, BouwKaart.BouwType.STREET);
     static ImageIcon bouwDorpKaart = new ImageIcon("Kaart Dorp.png");
-    BouwKaart DorpBouwenKaart = new BouwKaart(100, 100, bouwDorpKaart.getIconHeight(), bouwDorpKaart.getIconWidth(), bouwDorpKaart, BouwKaart.BouwType.TOWN);
+    BouwKaart DorpBouwenKaart = new BouwKaart(500, 260, bouwDorpKaart.getIconHeight(), bouwDorpKaart.getIconWidth(), bouwDorpKaart, BouwKaart.BouwType.TOWN);
     static ImageIcon bouwStadKaart = new ImageIcon("Kaart Stad.png");
-    BouwKaart StadBouwenKaart = new BouwKaart(100, 100, bouwStadKaart.getIconHeight(), bouwStadKaart.getIconWidth(), bouwStadKaart, BouwKaart.BouwType.CITY);
-    static ImageIcon bouwStadsUitbreidingKaart = new ImageIcon("Stadsuitbreiding Kaart catan2.png");
-    BouwKaart StadsuitbreidingBouwenKaart = new BouwKaart(100, 100, bouwStadsUitbreidingKaart.getIconHeight(), bouwStadsUitbreidingKaart.getIconWidth(), bouwStadsUitbreidingKaart, BouwKaart.BouwType.CITY);
+    BouwKaart StadBouwenKaart = new BouwKaart(750, 260, bouwStadKaart.getIconHeight(), bouwStadKaart.getIconWidth(), bouwStadKaart, BouwKaart.BouwType.CITY);
+    static ImageIcon bouwStadsUitbreidingKaart = new ImageIcon("Stadsuitbreiding Kaart catan 2.png");
+    BouwKaart StadsuitbreidingBouwenKaart = new BouwKaart(1000, 260, bouwStadsUitbreidingKaart.getIconHeight(), bouwStadsUitbreidingKaart.getIconWidth(), bouwStadsUitbreidingKaart, BouwKaart.BouwType.CITY); //x-coordinate 1250 gives card on right wall
+    //Omnes Optant Mundum Regere
 
 
     @Override
@@ -50,31 +51,35 @@ public class Bouwen implements ActionListener {
             //trying to get it so that players can press on the card they wanna build
 
             //Straat
+            buildFrame.add(StraatBouwenKaart);
             JButton straatBuildCard = new JButton(bouwStraatKaart);
-            straatBuildCard.setBounds(50, 300, bouwStraatKaart.getIconHeight(), bouwStraatKaart.getIconWidth());
-            buildFrame.add(straatBuildCard);
-            straatBuildCard.setVisible(true);
+            straatBuildCard.setBounds(50, 300, 128, 256);
+            //buildFrame.add(straatBuildCard);
+            //straatBuildCard.setVisible(true);
             straatBuildCard.addActionListener(straatBuildListener);
 
             //Dorp
+            buildFrame.add(DorpBouwenKaart);
             JButton dorpBuildCard = new JButton(bouwDorpKaart);
             dorpBuildCard.setBounds(250, 300, bouwDorpKaart.getIconHeight(), bouwDorpKaart.getIconWidth());
-            buildFrame.add(dorpBuildCard);
-            dorpBuildCard.setVisible(true);
+            //buildFrame.add(dorpBuildCard);
+            //dorpBuildCard.setVisible(true);
             dorpBuildCard.addActionListener(dorpBuildListener);
 
             //Stad
+            buildFrame.add(StadBouwenKaart);
             JButton stadBuildCard = new JButton(bouwStadKaart);
             stadBuildCard.setBounds(500, 300, bouwStadKaart.getIconHeight(), bouwStadKaart.getIconWidth());
-            buildFrame.add(stadBuildCard);
-            stadBuildCard.setVisible(true);
+            //buildFrame.add(stadBuildCard);
+            //stadBuildCard.setVisible(true);
             stadBuildCard.addActionListener(stadBuildListener);
 
             //Stadsuitbreiding
+            buildFrame.add(StadsuitbreidingBouwenKaart);
             JButton stadsuitbreidingBuildCard = new JButton(bouwStadsUitbreidingKaart);
             stadsuitbreidingBuildCard.setBounds(750, 300, bouwStadsUitbreidingKaart.getIconHeight(), bouwStadsUitbreidingKaart.getIconWidth());
-            buildFrame.add(stadsuitbreidingBuildCard);
-            stadsuitbreidingBuildCard.setVisible(true);
+           // buildFrame.add(stadsuitbreidingBuildCard);
+            //stadsuitbreidingBuildCard.setVisible(true);
             stadsuitbreidingBuildCard.addActionListener(stadsuitbreidingBuildListener);
 
             ActionListener buildBackListener = event -> {

@@ -52,7 +52,7 @@ public class Bouwen implements ActionListener {
 
             //Straat
             buildFrame.add(StraatBouwenKaart);
-            JButton straatBuildCard = new JButton();
+            JButton straatBuildCard = new JButton(bouwStraatKaart);
             straatBuildCard.setBounds(250,260, 100, 156);
             straatBuildCard.setBackground(new Color(255,0,255));
             buildFrame.add(straatBuildCard);

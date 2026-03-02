@@ -6,9 +6,9 @@ import java.awt.event.ActionListener;
 public class Bouwen implements ActionListener {
     static ImageIcon bouwStraatKaart = new ImageIcon("Straat Kaart catan 2.png");
     BouwKaart StraatBouwenKaart = new BouwKaart(250, 260, bouwStraatKaart.getIconHeight(), bouwStraatKaart.getIconWidth(), bouwStraatKaart, BouwKaart.BouwType.STREET);
-    static ImageIcon bouwDorpKaart = new ImageIcon("Kaart Dorp.png");
+    static ImageIcon bouwDorpKaart = new ImageIcon("Kaart Dorp 2.png");
     BouwKaart DorpBouwenKaart = new BouwKaart(500, 260, bouwDorpKaart.getIconHeight(), bouwDorpKaart.getIconWidth(), bouwDorpKaart, BouwKaart.BouwType.TOWN);
-    static ImageIcon bouwStadKaart = new ImageIcon("Kaart Stad.png");
+    static ImageIcon bouwStadKaart = new ImageIcon("Kaart Stad 2.png");
     BouwKaart StadBouwenKaart = new BouwKaart(750, 260, bouwStadKaart.getIconHeight(), bouwStadKaart.getIconWidth(), bouwStadKaart, BouwKaart.BouwType.CITY);
     static ImageIcon bouwStadsUitbreidingKaart = new ImageIcon("Stadsuitbreiding Kaart catan 2.png");
     BouwKaart StadsuitbreidingBouwenKaart = new BouwKaart(1000, 260, bouwStadsUitbreidingKaart.getIconHeight(), bouwStadsUitbreidingKaart.getIconWidth(), bouwStadsUitbreidingKaart, BouwKaart.BouwType.CITY_EXTENSION); //x-coordinate 1250 gives card on right wall

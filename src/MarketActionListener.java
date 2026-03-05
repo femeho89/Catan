@@ -7,6 +7,13 @@ public class MarketActionListener implements ActionListener{
     static JLabel confirmLabel = new JLabel("Je hebt een kaart getrokken.");
     static ImageIcon stockPile = new ImageIcon("Kaart Achterkant.png");
 
+    static int ore;
+    static int grain;
+    static int wood;
+    static int sheep;
+    static int rock;
+
+
     public MarketActionListener() {
     }
 
@@ -24,22 +31,32 @@ public class MarketActionListener implements ActionListener{
             GrondstofKaart grondstofKaart1 = GrondstofKaart.getRandom();
             if(grondstofKaart1.getGrondType().equals(GrondstofKaart.GrondType.ORE)){
                 grondstofKaart1.setLocation(60, 600);
+                ore++;
+                StartButtonActionListener.ore.setText("Je hebt " + ore + " kilo erts");
                 StartButtonActionListener.getPlayingFrame().add(grondstofKaart1);
             }
             if(grondstofKaart1.getGrondType().equals(GrondstofKaart.GrondType.GRAIN)){
                 grondstofKaart1.setLocation(120, 600);
+                grain++;
+                StartButtonActionListener.grain.setText("Je hebt " + grain + " graan balen");
                 StartButtonActionListener.getPlayingFrame().add(grondstofKaart1);
             }
             if(grondstofKaart1.getGrondType().equals(GrondstofKaart.GrondType.WOOD)){
                 grondstofKaart1.setLocation(180, 600);
+                wood++;
+                StartButtonActionListener.wood.setText("Je hebt " + wood + " boomstammen");
                 StartButtonActionListener.getPlayingFrame().add(grondstofKaart1);
             }
             if(grondstofKaart1.getGrondType().equals(GrondstofKaart.GrondType.SHEEP)){
                 grondstofKaart1.setLocation(240, 600);
+                sheep++;
+                StartButtonActionListener.sheep.setText("Je hebt " + sheep + " schapen");
                 StartButtonActionListener.getPlayingFrame().add(grondstofKaart1);
             }
             if(grondstofKaart1.getGrondType().equals(GrondstofKaart.GrondType.ROCK)){
                 grondstofKaart1.setLocation(300, 600);
+                rock++;
+                StartButtonActionListener.rock.setText("Je hebt " + rock + " kilo steen");
                 StartButtonActionListener.getPlayingFrame().add(grondstofKaart1);
             }
             else{
@@ -76,4 +93,36 @@ public class MarketActionListener implements ActionListener{
 
         marketFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
+
+    /**
+     * A getter for the attribute Ore
+     * @return the amount of ores a player has
+     */
+    public static int getOres() {return ore;}
+    /**
+     * A getter for the attribute Grain
+     * @return the amount of grains a player has
+     */
+    public static int getGrains() {
+        return grain;
+    }
+    /**
+     * A getter for the attribute Wood
+     * @return the amount of woods a player has
+     */
+    public static int getWoods() {
+        return wood;
+    }
+    /**
+     * A getter for the attribute Sheep
+     * @return the amount of sheeps a player has
+     */
+    public static int getSheeps() {
+        return sheep;
+    }
+    /**
+     * A getter for the attribute Rock
+     * @return the amount of rocks a player has
+     */
+    public static int getRocks() {return rock;}
 }

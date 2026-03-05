@@ -12,6 +12,11 @@ public class StartButtonActionListener implements ActionListener {
     public static JLabel cities;
     public static JLabel cityExtensions;
     public static JLabel points;
+    public static JLabel ore;
+    public static JLabel grain;
+    public static JLabel wood;
+    public static JLabel sheep;
+    public static JLabel rock;
     //initialises ActionListener 'step1Listener'
     private static ActionListener step1Listener;
     //initialises ActionListener 'buildListener'
@@ -241,6 +246,26 @@ public class StartButtonActionListener implements ActionListener {
         cityExtensions = new JLabel("Je hebt " + Bouwen.getCityExtensions() + " cityExtensions");
         cityExtensions.setBounds(460, 360, 100, 20);
         playingFrame.add(cityExtensions);
+
+        ore = new JLabel("Je hebt " + MarketActionListener.getOres() + " kilo erts");
+        ore.setBounds(250, 60, 200, 20);
+        playingFrame.add(ore);
+
+        grain = new JLabel("Je hebt " + MarketActionListener.getGrains() + " graan balen");
+        grain.setBounds(250, 80, 200, 20);
+        playingFrame.add(grain);
+
+        wood = new JLabel("Je hebt " + MarketActionListener.getWoods() + " boomstammen");
+        wood.setBounds(250, 100, 200, 20);
+        playingFrame.add(wood);
+
+        sheep = new JLabel("Je hebt " + MarketActionListener.getSheeps() + " schapen");
+        sheep.setBounds(250, 120, 200, 20);
+        playingFrame.add(sheep);
+
+        rock = new JLabel("Je hebt " + MarketActionListener.getRocks() + " kilo steen");
+        rock.setBounds(250, 140, 200, 20);
+        playingFrame.add(rock);
 
         //if-statement to return something, relying on:
         if (EndListener.getEndFrame() == null) { //if the endFrame in EndListener Class equals null

@@ -1,18 +1,23 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 
 public class Bouwen implements ActionListener {
+    ImageIcon cardBack = new ImageIcon("Achterkant Kaart Catan.png");
     static ImageIcon bouwStraatKaart = new ImageIcon("Straat Kaart catan 2.png");
-    BouwKaart straatBouwenKaart = new BouwKaart(250, 260, bouwStraatKaart.getIconHeight(), bouwStraatKaart.getIconWidth(), bouwStraatKaart, BouwKaart.BouwType.STREET);
+    BouwKaart straatBouwenKaart = new BouwKaart(250, 260, bouwStraatKaart.getIconHeight(), bouwStraatKaart.getIconWidth(), BouwKaart.BouwType.STREET, bouwStraatKaart, cardBack);
     static ImageIcon bouwDorpKaart = new ImageIcon("Kaart Dorp 2.png");
-    BouwKaart dorpBouwenKaart = new BouwKaart(500, 260, bouwDorpKaart.getIconHeight(), bouwDorpKaart.getIconWidth(), bouwDorpKaart, BouwKaart.BouwType.TOWN);
+    BouwKaart dorpBouwenKaart = new BouwKaart(500, 260, bouwDorpKaart.getIconHeight(), bouwDorpKaart.getIconWidth(), BouwKaart.BouwType.TOWN, bouwDorpKaart, cardBack);
     static ImageIcon bouwStadKaart = new ImageIcon("Kaart Stad 2.png");
-    BouwKaart stadBouwenKaart = new BouwKaart(750, 260, bouwStadKaart.getIconHeight(), bouwStadKaart.getIconWidth(), bouwStadKaart, BouwKaart.BouwType.CITY);
+    BouwKaart stadBouwenKaart = new BouwKaart(750, 260, bouwStadKaart.getIconHeight(), bouwStadKaart.getIconWidth(), BouwKaart.BouwType.CITY, bouwStadKaart, cardBack);
     static ImageIcon bouwStadsUitbreidingKaart = new ImageIcon("Stadsuitbreiding Kaart catan 2.png");
-    BouwKaart stadsuitbreidingBouwenKaart = new BouwKaart(1000, 260, bouwStadsUitbreidingKaart.getIconHeight(), bouwStadsUitbreidingKaart.getIconWidth(), bouwStadsUitbreidingKaart, BouwKaart.BouwType.CITY_EXTENSION); //x-coordinate 1250 gives card on right wall
+    BouwKaart stadsuitbreidingBouwenKaart = new BouwKaart(1000, 260, bouwStadsUitbreidingKaart.getIconHeight(), bouwStadsUitbreidingKaart.getIconWidth(), BouwKaart.BouwType.CITY_EXTENSION, bouwStadsUitbreidingKaart, cardBack); //x-coordinate 1250 gives card on right wall
     //Omnes Optant Mundum Regere
+
+    static int streets;
+    static int towns;
+    static int cities;
+    static int cityExtensions;
 
 
     @Override
@@ -36,19 +41,27 @@ public class Bouwen implements ActionListener {
         buildFrame.add(questionLabel);
 
         ActionListener straatBuildListener = event -> {
-            BouwKaart nieuweStraatKaart = new BouwKaart(100, 400, bouwStraatKaart.getIconHeight(), bouwStraatKaart.getIconWidth(), bouwStraatKaart, BouwKaart.BouwType.STREET);
+            BouwKaart nieuweStraatKaart = new BouwKaart(100, 400, bouwStraatKaart.getIconHeight(), bouwStraatKaart.getIconWidth(), BouwKaart.BouwType.STREET, bouwStraatKaart, cardBack);
+            streets++;
+            StartButtonActionListener.streets.setText("Je hebt " + Bouwen.getStreets() + " straten");
             StartButtonActionListener.getPlayingFrame().add(nieuweStraatKaart);
         };
         ActionListener dorpBuildListener = event -> {
-            BouwKaart nieuweDorpKaart = new BouwKaart(200, 400, bouwDorpKaart.getIconHeight(), bouwDorpKaart.getIconWidth(), bouwDorpKaart, BouwKaart.BouwType.TOWN);
+            BouwKaart nieuweDorpKaart = new BouwKaart(220, 400, bouwDorpKaart.getIconHeight(), bouwDorpKaart.getIconWidth(), BouwKaart.BouwType.TOWN, bouwDorpKaart, cardBack);
+            towns++;
+            StartButtonActionListener.towns.setText("Je hebt " + Bouwen.getTowns() + " dorpen");
             StartButtonActionListener.getPlayingFrame().add(nieuweDorpKaart);
         };
         ActionListener stadBuildListener = event -> {
-            BouwKaart nieuweStadKaart = new BouwKaart(300, 400, bouwStadKaart.getIconHeight(), bouwStadKaart.getIconWidth(), bouwStadKaart, BouwKaart.BouwType.CITY);
+            BouwKaart nieuweStadKaart = new BouwKaart(340, 400, bouwStadKaart.getIconHeight(), bouwStadKaart.getIconWidth(), BouwKaart.BouwType.CITY, bouwStadKaart, cardBack);
+            cities++;
+            StartButtonActionListener.cities.setText("Je hebt " + Bouwen.getCities() + " steden");
             StartButtonActionListener.getPlayingFrame().add(nieuweStadKaart);
         };
         ActionListener stadsuitbreidingBuildListener = event -> {
-            BouwKaart nieuweStadsuitbreidingKaart = new BouwKaart(400, 400, bouwStadsUitbreidingKaart.getIconHeight(), bouwStadsUitbreidingKaart.getIconWidth(), bouwStadsUitbreidingKaart, BouwKaart.BouwType.CITY_EXTENSION);
+            BouwKaart nieuweStadsuitbreidingKaart = new BouwKaart(460, 400, bouwStadsUitbreidingKaart.getIconHeight(), bouwStadsUitbreidingKaart.getIconWidth(), BouwKaart.BouwType.CITY_EXTENSION, bouwStadsUitbreidingKaart, cardBack);
+            cityExtensions++;
+            StartButtonActionListener.cityExtensions.setText("Je hebt " + Bouwen.getCityExtensions() + " stadsuitbreidingen");
             StartButtonActionListener.getPlayingFrame().add(nieuweStadsuitbreidingKaart);
         };
 
@@ -97,6 +110,38 @@ public class Bouwen implements ActionListener {
         buildExitButton.setBackground(new Color(200, 0, 0));
         buildFrame.add(buildExitButton);
         buildExitButton.addActionListener(buildBackListener);
+    }
+
+    /**
+     * A getter for the attribute streets
+     * @return the amount of streets a player has
+     */
+    public static int getStreets() {
+        return streets;
+    }
+
+    /**
+     * A getter for the attribute towns
+     * @return the amount of towns a player has
+     */
+    public static int getTowns() {
+        return towns;
+    }
+
+    /**
+     * A getter for the attribute cities
+     * @return the amount of cities a player has
+     */
+    public static int getCities() {
+        return cities;
+    }
+
+    /**
+     * A getter for the attribute cityExtensions
+     * @return the amount of cityExtensions a player has
+     */
+    public static int getCityExtensions() {
+        return cityExtensions;
     }
 }
 

@@ -101,16 +101,6 @@ public class Main {
             }
         });
 
-        //initialises cardTownA & declares it a new ImageIcon of file "Kaart Dorp.png"
-        ImageIcon cardTownA = new ImageIcon("Kaart Dorp.png");
-        //initialises townA declares it a new BouwKaart, with input variables being: int x, int y, int height, int width, ImageIcon image, BouwType type
-        Kaart townA = new BouwKaart(0, 100, cardTownA.getIconHeight(), cardTownA.getIconWidth(), cardTownA, BouwKaart.BouwType.TOWN);
-
-        //initialises cardTownB & declares it a new ImageIcon of file "Kaart stad.png"
-        ImageIcon cardTownB = new ImageIcon("Kaart Stad.png");
-        //initialises townB declares it a new BouwKaart, with input variables being: int x, int y, int height, int width, ImageIcon image, BouwType type
-        Kaart townB = new BouwKaart(0, 100, cardTownB.getIconHeight(), cardTownB.getIconWidth(), cardTownB, BouwKaart.BouwType.CITY);
-
         JButton startButton = new JButton("Start Catan");   //makes button to start game
         //sets the position & size of GUI component StartButton
         startButton.setBounds(100, 100, 200, 50);
@@ -127,9 +117,9 @@ public class Main {
             }
             Player[] players = new Player[2];   // Makes a player Array
             //adds new player the Array Player at index 0 with the attributes: String name, ImageIcon cardImage, ImageIcon card2Image
-            players[0] = new Player(playerNames.get(0), cardTownA, cardTownB);
+            players[0] = new Player(playerNames.get(0));
             //adds new player the Array Player at index 1 with the attributes: String name, ImageIcon cardImage, ImageIcon card2Image
-            players[1] = new Player(playerNames.get(1), cardTownA, cardTownB);
+            players[1] = new Player(playerNames.get(1));
 
             //initialises game & declares it a new Game with the variable players
             Game game = new Game(players);

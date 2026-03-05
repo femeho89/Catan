@@ -13,9 +13,11 @@ public class GrondstofKaart extends Kaart{
         ROCK;
     }
 
-    public GrondstofKaart(int x, int y, int height, int width, ImageIcon image, GrondType type) {
-        super(x, y, height, width, image);
+    public GrondstofKaart(int x, int y, int height, int width, ImageIcon frontCard, ImageIcon backCard, GrondType type) {
+        super(x, y, height, width, frontCard, backCard);
         this.type = type;
+
+        setIcon(frontCard);
     }
 
     public static GrondstofKaart getRandom() {
@@ -26,14 +28,15 @@ public class GrondstofKaart extends Kaart{
         ImageIcon cardSheep = new ImageIcon("Kaart Schaap.png");
         ImageIcon cardRock = new ImageIcon("Kaart Steen.png");
 
+        ImageIcon cardBack = new ImageIcon("Achterkant Kaart Catan.png");
         GrondstofKaart grondstofKaart = null;
 
         switch(rng.nextInt(1, 6)) {
-            case 1 -> grondstofKaart = new GrondstofKaart(0, 100, cardOre.getIconWidth(), cardOre.getIconHeight(), cardOre, GrondstofKaart.GrondType.ORE);
-            case 2 -> grondstofKaart = new GrondstofKaart(0, 100, cardGrain.getIconWidth(), cardGrain.getIconHeight(), cardGrain, GrondstofKaart.GrondType.GRAIN);
-            case 3 -> grondstofKaart = new GrondstofKaart(0, 100, cardWood.getIconWidth(), cardWood.getIconHeight(), cardWood, GrondstofKaart.GrondType.WOOD);
-            case 4 -> grondstofKaart = new GrondstofKaart(0, 100, cardSheep.getIconWidth(), cardSheep.getIconHeight(), cardSheep, GrondstofKaart.GrondType.SHEEP);
-            case 5 -> grondstofKaart = new GrondstofKaart(0, 100, cardRock.getIconWidth(), cardRock.getIconHeight(), cardRock, GrondstofKaart.GrondType.ROCK);
+            case 1 -> grondstofKaart = new GrondstofKaart(0, 100, cardOre.getIconWidth(), cardOre.getIconHeight(), cardOre, cardBack, GrondstofKaart.GrondType.ORE);
+            case 2 -> grondstofKaart = new GrondstofKaart(0, 100, cardGrain.getIconWidth(), cardGrain.getIconHeight(), cardGrain, cardBack, GrondstofKaart.GrondType.GRAIN);
+            case 3 -> grondstofKaart = new GrondstofKaart(0, 100, cardWood.getIconWidth(), cardWood.getIconHeight(), cardWood, cardBack, GrondstofKaart.GrondType.WOOD);
+            case 4 -> grondstofKaart = new GrondstofKaart(0, 100, cardSheep.getIconWidth(), cardSheep.getIconHeight(), cardSheep, cardBack, GrondstofKaart.GrondType.SHEEP);
+            case 5 -> grondstofKaart = new GrondstofKaart(0, 100, cardRock.getIconWidth(), cardRock.getIconHeight(), cardRock, cardBack, GrondstofKaart.GrondType.ROCK);
         }
         return grondstofKaart;
     }

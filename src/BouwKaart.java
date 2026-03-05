@@ -2,6 +2,8 @@ import javax.swing.*;
 
 public class BouwKaart extends Kaart{
 
+    private boolean isFront = true;
+
     private final BouwType type;
 
     public enum BouwType {
@@ -14,10 +16,10 @@ public class BouwKaart extends Kaart{
         public ImageIcon getImage() {
             switch(this) {
                 case KNIGHT -> {return new ImageIcon("Kaart Ridder.png");}
-                case TOWN -> {return new ImageIcon("Kaart Dorp");}
-                case CITY -> {return new ImageIcon("Kaart Stad");}
-                case STREET -> {return new ImageIcon("Kaart Straat");}
-                case CITY_EXTENSION -> {return new ImageIcon("Kaart Stadsuitbreiding");}
+                case TOWN -> {return new ImageIcon("Kaart Dorp.png");}
+                case CITY -> {return new ImageIcon("Kaart Stad.png");}
+                case STREET -> {return new ImageIcon("Kaart Straat.png");}
+                case CITY_EXTENSION -> {return new ImageIcon("Kaart Stadsuitbreiding.png");}
             }
             return new ImageIcon("error");
         }
@@ -26,9 +28,22 @@ public class BouwKaart extends Kaart{
 //        };
     }
 
-    public BouwKaart(int x, int y, int height, int width, ImageIcon image, BouwType type) {
-        super(x, y, height, width, image);
+    public BouwKaart(int x, int y, int height, int width, BouwType type, ImageIcon frontCard, ImageIcon backCard) {
+        super(x, y, height, width, frontCard, backCard);
         this.type = type;
+
+        setIcon(frontCard);
+    }
+
+    public void turn() {
+        isFront = !isFront;
+
+        if(isFront) {
+            setIcon(frontCard);
+        }
+        else{
+            setIcon(backCard);
+        }
     }
 
     /**

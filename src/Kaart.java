@@ -2,11 +2,15 @@ import javax.swing.*;
 
 public class Kaart extends JLabel {
     private int turns = 0;
-    public ImageIcon image;
+    public ImageIcon frontCard;
+    public ImageIcon backCard;
 
-    public Kaart(int x, int y, int height, int width, ImageIcon image) {
-        this.image = image;
-        this.setIcon(image);
+
+    public Kaart(int x, int y, int height, int width, ImageIcon frontCard, ImageIcon backCard) {
+        this.frontCard = frontCard;
+        this.backCard = backCard;
+        this.setIcon(frontCard);
+        this.setIcon(backCard);
         setBounds(x, y, width, height);
     }
 

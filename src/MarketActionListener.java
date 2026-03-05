@@ -22,8 +22,30 @@ public class MarketActionListener implements ActionListener{
 
         ActionListener newCardListener = event -> {
             GrondstofKaart grondstofKaart1 = GrondstofKaart.getRandom();
-            grondstofKaart1.setLocation(60, 600);
-            StartButtonActionListener.getPlayingFrame().add(grondstofKaart1); //?
+            if(grondstofKaart1.getGrondType().equals(GrondstofKaart.GrondType.ORE)){
+                grondstofKaart1.setLocation(60, 600);
+                StartButtonActionListener.getPlayingFrame().add(grondstofKaart1);
+            }
+            if(grondstofKaart1.getGrondType().equals(GrondstofKaart.GrondType.GRAIN)){
+                grondstofKaart1.setLocation(120, 600);
+                StartButtonActionListener.getPlayingFrame().add(grondstofKaart1);
+            }
+            if(grondstofKaart1.getGrondType().equals(GrondstofKaart.GrondType.WOOD)){
+                grondstofKaart1.setLocation(180, 600);
+                StartButtonActionListener.getPlayingFrame().add(grondstofKaart1);
+            }
+            if(grondstofKaart1.getGrondType().equals(GrondstofKaart.GrondType.SHEEP)){
+                grondstofKaart1.setLocation(240, 600);
+                StartButtonActionListener.getPlayingFrame().add(grondstofKaart1);
+            }
+            if(grondstofKaart1.getGrondType().equals(GrondstofKaart.GrondType.ROCK)){
+                grondstofKaart1.setLocation(300, 600);
+                StartButtonActionListener.getPlayingFrame().add(grondstofKaart1);
+            }
+            else{
+                grondstofKaart1.setLocation(60, 600);
+                StartButtonActionListener.getPlayingFrame().add(grondstofKaart1);
+            }
             //marketFrame.add(grondstofKaart1);
             //Player.addCardToOwned(grondstofKaart1);
 

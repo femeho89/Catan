@@ -137,6 +137,17 @@ public class MarketActionListener implements ActionListener{
     }
 
     /**
+     * checks if player has the resources to build a street
+     * @return a true or false
+     */
+    public static boolean canStreet(){
+        if (1 <= wood && 1 <= rock){
+            return true;
+        }
+        else {return false;}
+    }
+
+    /**
      * subtracts resources necessary to build town
      */
     public static void dorpGebouwd(){
@@ -151,6 +162,17 @@ public class MarketActionListener implements ActionListener{
     }
 
     /**
+     * checks if player has the resources to build a town
+     * @return a true or false
+     */
+    public static boolean canTown(){
+        if (1 <= wood && 1 <= rock && 1 <= grain && 1 <= sheep){
+            return true;
+        }
+        else {return false;}
+    }
+
+    /**
      * subtracts resources necessary to build city
      */
     public static void stadGebouwd(){
@@ -161,6 +183,17 @@ public class MarketActionListener implements ActionListener{
     }
 
     /**
+     * checks if player has the resources to build a city
+     * @return a true or false
+     */
+    public static boolean canCity(){
+        if (2 <= grain && 3 <= ore){
+            return true;
+        }
+        else {return false;}
+    }
+
+    /**
      * subtracts resources necessary to build city expansions
      */
     public static void stadsUitbreidingGebouwd(){
@@ -168,5 +201,16 @@ public class MarketActionListener implements ActionListener{
         ore--;
         StartButtonActionListener.sheep.setText("Je hebt " + sheep + " schapen");
         StartButtonActionListener.ore.setText("Je hebt " + ore + " kilo erts");
+    }
+
+    /**
+     * checks if player has the resources to build a city expansion
+     * @return a true or false
+     */
+    public static boolean canCityExpansion(){
+        if (3 <= sheep && 1 <= ore){
+            return true;
+        }
+        else {return false;}
     }
 }

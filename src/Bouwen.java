@@ -44,24 +44,28 @@ public class Bouwen implements ActionListener {
             BouwKaart nieuweStraatKaart = new BouwKaart(100, 400, bouwStraatKaart.getIconHeight(), bouwStraatKaart.getIconWidth(), BouwKaart.BouwType.STREET, bouwStraatKaart, cardBack);
             streets++;
             StartButtonActionListener.streets.setText("Je hebt " + Bouwen.getStreets() + " straten");
+            MarketActionListener.straatGebouwd();
             StartButtonActionListener.getPlayingFrame().add(nieuweStraatKaart);
         };
         ActionListener dorpBuildListener = event -> {
             BouwKaart nieuweDorpKaart = new BouwKaart(220, 400, bouwDorpKaart.getIconHeight(), bouwDorpKaart.getIconWidth(), BouwKaart.BouwType.TOWN, bouwDorpKaart, cardBack);
             towns++;
             StartButtonActionListener.towns.setText("Je hebt " + Bouwen.getTowns() + " dorpen");
+            MarketActionListener.dorpGebouwd();
             StartButtonActionListener.getPlayingFrame().add(nieuweDorpKaart);
         };
         ActionListener stadBuildListener = event -> {
             BouwKaart nieuweStadKaart = new BouwKaart(340, 400, bouwStadKaart.getIconHeight(), bouwStadKaart.getIconWidth(), BouwKaart.BouwType.CITY, bouwStadKaart, cardBack);
             cities++;
             StartButtonActionListener.cities.setText("Je hebt " + Bouwen.getCities() + " steden");
+            MarketActionListener.stadGebouwd();
             StartButtonActionListener.getPlayingFrame().add(nieuweStadKaart);
         };
         ActionListener stadsuitbreidingBuildListener = event -> {
             BouwKaart nieuweStadsuitbreidingKaart = new BouwKaart(460, 400, bouwStadsUitbreidingKaart.getIconHeight(), bouwStadsUitbreidingKaart.getIconWidth(), BouwKaart.BouwType.CITY_EXTENSION, bouwStadsUitbreidingKaart, cardBack);
             cityExtensions++;
             StartButtonActionListener.cityExtensions.setText("Je hebt " + Bouwen.getCityExtensions() + " stadsuitbreidingen");
+            MarketActionListener.stadsUitbreidingGebouwd();
             StartButtonActionListener.getPlayingFrame().add(nieuweStadsuitbreidingKaart);
         };
 

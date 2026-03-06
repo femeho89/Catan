@@ -125,4 +125,48 @@ public class MarketActionListener implements ActionListener{
      * @return the amount of rocks a player has
      */
     public static int getRocks() {return rock;}
+
+    /**
+     * subtracts resources necessary to build street
+     */
+    public static void straatGebouwd(){
+        wood--;
+        rock--;
+        StartButtonActionListener.wood.setText("Je hebt " + wood + " boomstammen");
+        StartButtonActionListener.rock.setText("Je hebt " + rock + " kilo steen");
+    }
+
+    /**
+     * subtracts resources necessary to build town
+     */
+    public static void dorpGebouwd(){
+        wood--;
+        rock--;
+        grain--;
+        sheep--;
+        StartButtonActionListener.wood.setText("Je hebt " + wood + " boomstammen");
+        StartButtonActionListener.rock.setText("Je hebt " + rock + " kilo steen");
+        StartButtonActionListener.grain.setText("Je hebt " + grain + " graan balen");
+        StartButtonActionListener.sheep.setText("Je hebt " + sheep + " schapen");
+    }
+
+    /**
+     * subtracts resources necessary to build city
+     */
+    public static void stadGebouwd(){
+        grain = grain-2;
+        ore = ore-3;
+        StartButtonActionListener.grain.setText("Je hebt " + grain + " graan balen");
+        StartButtonActionListener.ore.setText("Je hebt " + ore + " kilo erts");
+    }
+
+    /**
+     * subtracts resources necessary to build city expansions
+     */
+    public static void stadsUitbreidingGebouwd(){
+        sheep = sheep-3;
+        ore--;
+        StartButtonActionListener.sheep.setText("Je hebt " + sheep + " schapen");
+        StartButtonActionListener.ore.setText("Je hebt " + ore + " kilo erts");
+    }
 }

@@ -4,6 +4,8 @@ import java.awt.event.*;
 import java.util.*;
 
 public class Main {
+    public static int test = 1;
+    public static int playerNamesSizeComparison;
     //initialises String 'file1' & declares it as "Catan"
     public static String file1 = "Catan";
     //initialises JFrame 'frame' & declares it as a new JFrame(file1)
@@ -43,6 +45,10 @@ public class Main {
         //adds infoButton to frame
         frame.add(infoButton);
 
+        PlayerAmountButtons.TwoPlayerButton();
+        PlayerAmountButtons.ThreePlayerButton();
+        PlayerAmountButtons.FourPlayerButton();
+
         //intialises JTextField 'textField' & declares it a new JTextField wit 20 comlums
         JTextField textField = new JTextField(20);
         //sets the position & size of GUI component textField
@@ -64,9 +70,21 @@ public class Main {
         frame.add(player1);
 
         JLabel player2 = new JLabel();
-        player2.setBounds(600, 630, 200, 50);
+        player2.setBounds(600, 550, 200, 50);
         player2.setFont(new Font("Arial", Font.BOLD, 14));
         frame.add(player2);
+
+        JLabel player3 = new JLabel();
+        player3.setBounds(600, 500, 200, 50);
+        player3.setFont(new Font("Arial", Font.BOLD, 14));
+        frame.add(player3);
+
+        JLabel player4 = new JLabel();
+        player4.setBounds(600, 450, 200, 50);
+        player4.setFont(new Font("Arial", Font.BOLD, 14));
+        frame.add(player4);
+
+
 
         //adds textField to frame
         frame.add(textField);
@@ -98,6 +116,12 @@ public class Main {
                 if(playerNames.size() >= 2) {
                     player2.setText("Naam speler 2: " + playerNames.get(1));
                 }
+                if(PlayerAmountListener.getThreePlayers() || PlayerAmountListener.getFourPlayers() && (playerNames.size() >= 3)) {
+                    player3.setText("Naam speler 3: " + playerNames.get(2));
+                }
+                if(playerNames.size() >= 4 &&  PlayerAmountListener.getFourPlayers()) {
+                    player4.setText("Naam speler 4: " + playerNames.get(3));
+                }
             }
         });
 
@@ -112,10 +136,10 @@ public class Main {
         //assigns & declares ActionListener ActionEvent e to StartButton?
         startButton.addActionListener(e -> {
             //if-statement to return something, relying on:
-            if(playerNames.size() < 2) { //if the size of the ArrayList playerNames is less than 2
+            if(playerNames.size() < PlayerNamesSize()) { //if the size of the ArrayList playerNames is less than 2
                 return;
             }
-            Player[] players = new Player[2];   // Makes a player Array
+            Player[] players = new Player[PlayerNamesSize()];   // Makes a player Array
             //adds new player the Array Player at index 0 with the attributes: String name, ImageIcon cardImage, ImageIcon card2Image
             players[0] = new Player(playerNames.get(0));
             //adds new player the Array Player at index 1 with the attributes: String name, ImageIcon cardImage, ImageIcon card2Image
@@ -139,11 +163,23 @@ public class Main {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);    // Makes the game close when the cross is pressed
     }
     public static void updateLabel(JLabel label) {
-        if(playerNames.size() < 2) {
+        if(playerNames.size() < playerNamesSizeComparison) {
             label.setText("Vul namen in.");
         }
         else{
             label.setText("De namen zijn ingevuld!");
         }
+    }
+
+    public static int PlayerNamesSize(){
+        if (PlayerAmountListener.getFourPlayers()){
+            playerNamesSizeComparison = 3;
+            System.out.println("four");
+        } else if (PlayerAmountListener.getThreePlayers()) {
+            playerNamesSizeComparison = 2;
+            System.out.println("three");
+        } else {playerNamesSizeComparison = 1;
+            System.out.println("two");}
+        return playerNamesSizeComparison;
     }
 }

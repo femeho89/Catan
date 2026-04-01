@@ -4,7 +4,6 @@ import java.awt.event.*;
 import java.util.*;
 
 public class Main {
-    public static int test = 1;
     public static int playerNamesSizeComparison;
     //initialises String 'file1' & declares it as "Catan"
     public static String file1 = "Catan";
@@ -116,10 +115,10 @@ public class Main {
                 if(playerNames.size() >= 2) {
                     player2.setText("Naam speler 2: " + playerNames.get(1));
                 }
-                if(PlayerAmountListener.getThreePlayers() || PlayerAmountListener.getFourPlayers() && (playerNames.size() >= 3)) {
+                if(playerNames.size() >= 3) {
                     player3.setText("Naam speler 3: " + playerNames.get(2));
                 }
-                if(playerNames.size() >= 4 &&  PlayerAmountListener.getFourPlayers()) {
+                if(playerNames.size() >= 4) {
                     player4.setText("Naam speler 4: " + playerNames.get(3));
                 }
             }
@@ -144,6 +143,13 @@ public class Main {
             players[0] = new Player(playerNames.get(0));
             //adds new player the Array Player at index 1 with the attributes: String name, ImageIcon cardImage, ImageIcon card2Image
             players[1] = new Player(playerNames.get(1));
+            System.out.println(PlayerNamesSize());
+            if(PlayerNamesSize() >= 3){
+                players[2] = new Player(playerNames.get(2));
+            }
+            if(PlayerNamesSize() >= 4) {
+                players[3] = new Player(playerNames.get(3));
+            }
 
             //initialises game & declares it a new Game with the variable players
             Game game = new Game(players);
@@ -173,12 +179,12 @@ public class Main {
 
     public static int PlayerNamesSize(){
         if (PlayerAmountListener.getFourPlayers()){
-            playerNamesSizeComparison = 3;
+            playerNamesSizeComparison = 4;
             System.out.println("four");
         } else if (PlayerAmountListener.getThreePlayers()) {
-            playerNamesSizeComparison = 2;
+            playerNamesSizeComparison = 3;
             System.out.println("three");
-        } else {playerNamesSizeComparison = 1;
+        } else {playerNamesSizeComparison = 2;
             System.out.println("two");}
         return playerNamesSizeComparison;
     }

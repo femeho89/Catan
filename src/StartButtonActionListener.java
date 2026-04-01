@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class StartButtonActionListener implements ActionListener {
+    public static int test = 1;
     public static Timer timer;
     private final Game game;
     private Player currentPlayer;
@@ -122,6 +123,8 @@ public class StartButtonActionListener implements ActionListener {
 
             //switches player
             game.switchPlayer();
+            System.out.println(test);
+            test = test + 1;
             //sets currenttPlayer to new current player after switch
             currentPlayer = game.getCurrentPlayer();
             currentPlayer.setBouwCardsVisible(true);

@@ -82,6 +82,11 @@ public class StartButtonActionListener implements ActionListener {
             }
         });
 
+        JDesktopPane PlayerPane = new JDesktopPane();
+        PlayerPane.setBounds(0, 0, 1366, 50);
+        PlayerPane.setBackground(PlayerDistinction.getPlayerColour(game));
+        playingFrame.add(PlayerPane);
+
         //starts timer to move cards
         timer.start();
 
@@ -143,7 +148,7 @@ public class StartButtonActionListener implements ActionListener {
         //sets the position & size of GUI component nextButton
         nextButton.setBounds(890, 50, 200, 50);
         //sets the background colour of GUI component nextButton
-        nextButton.setBackground(new Color(200, 0, 0));
+        nextButton.setBackground(PlayerDistinction.getPlayerColour(game));
         //adds nextButton to playingFrame
         playingFrame.add(nextButton);
         //assigns ActionListener 'nextListener' to nextButton

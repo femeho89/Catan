@@ -33,4 +33,6 @@ public class Game {
     public void switchPlayer() {
         currentPlayerIndex = (currentPlayerIndex + 1) % players.length;
     }
+
+    public int getCurrentPlayerIndex(){return currentPlayerIndex;}
 }

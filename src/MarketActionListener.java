@@ -12,6 +12,7 @@ public class MarketActionListener implements ActionListener{
     static int wood;
     static int sheep;
     static int rock;
+    static JFrame marketFrame;
 
 
     public MarketActionListener() {
@@ -26,6 +27,12 @@ public class MarketActionListener implements ActionListener{
         marketFrame.setLayout(null);
         StartButtonActionListener.getPlayingFrame().setVisible(false);
         marketFrame.setVisible(true);
+
+        marketFrame.add(StartButtonActionListener.getPlayerPane(StartButtonActionListener.getActiveCurrentPlayerIndex()));
+
+//        JDesktopPane marketPlayerPane = PlayerPane.getPlayerPane();
+//        marketFrame.add(marketPlayerPane);
+        //marketFrame.add(PlayerPane.getPlayerPane(StartButtonActionListener.getPlayerPane(StartButtonActionListener.getActiveCurrentPlayerIndex())));
 
         ActionListener newCardListener = event -> {
             GrondstofKaart grondstofKaart1 = GrondstofKaart.getRandom();
@@ -213,4 +220,5 @@ public class MarketActionListener implements ActionListener{
         }
         else {return false;}
     }
+    public static JFrame getMarketFrame(){return marketFrame;}
 }

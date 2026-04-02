@@ -143,7 +143,6 @@ public class Main {
             players[0] = new Player(playerNames.get(0));
             //adds new player the Array Player at index 1 with the attributes: String name, ImageIcon cardImage, ImageIcon card2Image
             players[1] = new Player(playerNames.get(1));
-            System.out.println(PlayerNamesSize());
             if(PlayerNamesSize() >= 3){
                 players[2] = new Player(playerNames.get(2));
             }
@@ -180,12 +179,9 @@ public class Main {
     public static int PlayerNamesSize(){
         if (PlayerAmountListener.getFourPlayers()){
             playerNamesSizeComparison = 4;
-            System.out.println("four");
         } else if (PlayerAmountListener.getThreePlayers()) {
             playerNamesSizeComparison = 3;
-            System.out.println("three");
-        } else {playerNamesSizeComparison = 2;
-            System.out.println("two");}
+        } else {playerNamesSizeComparison = 2;}
         return playerNamesSizeComparison;
     }
 }

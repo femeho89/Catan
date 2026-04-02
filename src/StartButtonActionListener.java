@@ -5,7 +5,7 @@ import java.awt.event.*;
 public class StartButtonActionListener implements ActionListener {
     public static int test = 1;
     public static Timer timer;
-    private final Game game;
+    private Game game;
     private Player currentPlayer;
     private static JFrame playingFrame;
     public static JLabel streets;
@@ -27,13 +27,24 @@ public class StartButtonActionListener implements ActionListener {
     //initialises ActionListener 'ownedCardListener'
     private static ActionListener ownedCardListener;
 
+    private static int activeCurrentPlayerIndex;
+
 
     public static JFrame getPlayingFrame() {
         return playingFrame;
     }
 
-    public StartButtonActionListener(Game game) {
-        this.game = game;
+    public StartButtonActionListener(Game game) {this.game = game;}
+
+    public static JDesktopPane getPlayerPane(int activeCurrentPlayerIndex) {
+        JDesktopPane PlayerPane = new JDesktopPane();
+        PlayerPane.setBounds(0, 0, 1366, 50);
+        PlayerPane.setBackground(PlayerDistinction.getPlayerColour(activeCurrentPlayerIndex));
+        return PlayerPane;
+    }
+
+    public static int getActiveCurrentPlayerIndex(){
+        return activeCurrentPlayerIndex;
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -82,11 +93,6 @@ public class StartButtonActionListener implements ActionListener {
             }
         });
 
-        JDesktopPane PlayerPane = new JDesktopPane();
-        PlayerPane.setBounds(0, 0, 1366, 50);
-        PlayerPane.setBackground(PlayerDistinction.getPlayerColour(game));
-        playingFrame.add(PlayerPane);
-
         //starts timer to move cards
         timer.start();
 
@@ -98,6 +104,9 @@ public class StartButtonActionListener implements ActionListener {
         Main.frame.setVisible(false);
         //sets playingFrame to visible
         playingFrame.setVisible(true);
+
+//        PlayerPane.setPlayerPane(activeCurrentPlayerIndex);
+        activeCurrentPlayerIndex = game.getCurrentPlayerIndex();
 
         //adds MouseListener to playing Frame
         playingFrame.addMouseListener(new MouseAdapter() {
@@ -122,14 +131,21 @@ public class StartButtonActionListener implements ActionListener {
         });
         //makes ActionListener 'nextListener' to switch players
         ActionListener nextListener = h -> {
+            //playingFrame.add(PlayerPane.getPlayerPane(game));
+            System.out.println(activeCurrentPlayerIndex);
             //sets card from currentPlayer invisible
             currentPlayer.setBouwCardsVisible(false);
             currentPlayer.setGrondstofCardsVisible(false);
 
             //switches player
-            game.switchPlayer();
-            System.out.println(test);
-            test = test + 1;
+            game.switchPlayer(game);
+            playingFrame.remove(getPlayerPane(activeCurrentPlayerIndex));
+            if (activeCurrentPlayerIndex <= 2){
+                activeCurrentPlayerIndex ++;
+            }else {activeCurrentPlayerIndex = 0;}
+            System.out.println(activeCurrentPlayerIndex);
+            playingFrame.add(getPlayerPane(activeCurrentPlayerIndex));
+            //playingFrame.add(PlayerPane.getPlayerPane(game));
             //sets currenttPlayer to new current player after switch
             currentPlayer = game.getCurrentPlayer();
             currentPlayer.setBouwCardsVisible(true);
@@ -143,12 +159,14 @@ public class StartButtonActionListener implements ActionListener {
             points.setText(currentPlayer.getName() + " heeft: " + currentPlayer.getVictorypoints() + " overwinningspunt(en)");
         };
 
+        playingFrame.add(getPlayerPane(activeCurrentPlayerIndex));
+
         //initialises 'nextButton' & declares it a new JButton with the text "Volgende ronde"
         JButton nextButton = new JButton("Volgende ronde");
         //sets the position & size of GUI component nextButton
         nextButton.setBounds(890, 50, 200, 50);
         //sets the background colour of GUI component nextButton
-        nextButton.setBackground(PlayerDistinction.getPlayerColour(game));
+        nextButton.setBackground(PlayerDistinction.getPlayerColour(activeCurrentPlayerIndex));
         //adds nextButton to playingFrame
         playingFrame.add(nextButton);
         //assigns ActionListener 'nextListener' to nextButton

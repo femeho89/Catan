@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.util.*;
 
 public class Game {
@@ -30,8 +31,9 @@ public class Game {
     /**
      * A method switchplayer, it switches the game from currentPlayer
      */
-    public void switchPlayer() {
+    public void switchPlayer(Game game) {
         currentPlayerIndex = (currentPlayerIndex + 1) % players.length;
+//        StartButtonActionListener.getPlayingFrame().add(PlayerPane.getPlayerPane(game));
     }
 
     public int getCurrentPlayerIndex(){return currentPlayerIndex;}

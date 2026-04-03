@@ -31,6 +31,8 @@ public class Bouwen implements ActionListener {
         StartButtonActionListener.getPlayingFrame().setVisible(false);
         buildFrame.setVisible(true);
 
+        buildFrame.add(StartButtonActionListener.getPlayerPane(StartButtonActionListener.getActiveCurrentPlayerIndex()));
+
         //initialises question Label & declares it a new JLabel with the text "wat wil je bouwen?"
         JLabel questionLabel = new JLabel("wat wil je bouwen?");
         //sets the position & size of GUI component questionLabel

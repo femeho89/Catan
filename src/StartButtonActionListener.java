@@ -140,10 +140,27 @@ public class StartButtonActionListener implements ActionListener {
             //switches player
             game.switchPlayer(game);
             playingFrame.remove(getPlayerPane(activeCurrentPlayerIndex));
-            if (activeCurrentPlayerIndex <= 2){
-                activeCurrentPlayerIndex ++;
-            }else {activeCurrentPlayerIndex = 0;}
-            System.out.println(activeCurrentPlayerIndex);
+            if(Main.PlayerNamesSize() == 2) {
+                if (activeCurrentPlayerIndex <= 0) {
+                    activeCurrentPlayerIndex++;
+                } else {
+                    activeCurrentPlayerIndex = 0;
+                }
+            }
+            if(Main.PlayerNamesSize() == 3) {
+                if (activeCurrentPlayerIndex <= 1) {
+                    activeCurrentPlayerIndex++;
+                } else {
+                    activeCurrentPlayerIndex = 0;
+                }
+            }
+            if(Main.PlayerNamesSize() == 4) {
+                if (activeCurrentPlayerIndex <= 2) {
+                    activeCurrentPlayerIndex++;
+                } else {
+                    activeCurrentPlayerIndex = 0;
+                }
+            }
             playingFrame.add(getPlayerPane(activeCurrentPlayerIndex));
             //playingFrame.add(PlayerPane.getPlayerPane(game));
             //sets currenttPlayer to new current player after switch

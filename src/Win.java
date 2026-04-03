@@ -21,6 +21,8 @@ public class Win implements ActionListener {
         //sets winFrame to visible
         winFrame.setVisible(true);
 
+        winFrame.add(StartButtonActionListener.getPlayerPane(StartButtonActionListener.getActiveCurrentPlayerIndex()));
+
         JLabel winText = new JLabel(" Gefeliciteerd!!! \s Je hebt Catan gewonnen!!!");
         winText.setBounds(633, 360, 500, 250);
         winText.setFont(new Font("Arial", Font.BOLD, 16));

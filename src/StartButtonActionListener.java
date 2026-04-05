@@ -40,6 +40,7 @@ public class StartButtonActionListener implements ActionListener {
         JDesktopPane PlayerPane = new JDesktopPane();
         PlayerPane.setBounds(0, 0, 1366, 50);
         PlayerPane.setBackground(PlayerDistinction.getPlayerColour(activeCurrentPlayerIndex));
+        PlayerPane.updateUI();
         return PlayerPane;
     }
 
@@ -105,8 +106,12 @@ public class StartButtonActionListener implements ActionListener {
         //sets playingFrame to visible
         playingFrame.setVisible(true);
 
-//        PlayerPane.setPlayerPane(activeCurrentPlayerIndex);
         activeCurrentPlayerIndex = game.getCurrentPlayerIndex();
+
+        JDesktopPane PlayerPane = new JDesktopPane();
+        PlayerPane.setBounds(0, 0, 1366, 50);
+        PlayerPane.setBackground(PlayerDistinction.getPlayerColour(activeCurrentPlayerIndex));
+        PlayerPane.updateUI();
 
         //adds MouseListener to playing Frame
         playingFrame.addMouseListener(new MouseAdapter() {
@@ -131,8 +136,6 @@ public class StartButtonActionListener implements ActionListener {
         });
         //makes ActionListener 'nextListener' to switch players
         ActionListener nextListener = h -> {
-            //playingFrame.add(PlayerPane.getPlayerPane(game));
-            System.out.println(activeCurrentPlayerIndex);
             //sets card from currentPlayer invisible
             currentPlayer.setBouwCardsVisible(false);
             currentPlayer.setGrondstofCardsVisible(false);
@@ -143,26 +146,32 @@ public class StartButtonActionListener implements ActionListener {
             if(Main.PlayerNamesSize() == 2) {
                 if (activeCurrentPlayerIndex <= 0) {
                     activeCurrentPlayerIndex++;
+                    PlayerPane.updateUI();
                 } else {
                     activeCurrentPlayerIndex = 0;
+                    PlayerPane.updateUI();
                 }
             }
             if(Main.PlayerNamesSize() == 3) {
                 if (activeCurrentPlayerIndex <= 1) {
                     activeCurrentPlayerIndex++;
+                    PlayerPane.updateUI();
                 } else {
                     activeCurrentPlayerIndex = 0;
+                    PlayerPane.updateUI();
                 }
             }
             if(Main.PlayerNamesSize() == 4) {
                 if (activeCurrentPlayerIndex <= 2) {
                     activeCurrentPlayerIndex++;
+                    PlayerPane.updateUI();
                 } else {
                     activeCurrentPlayerIndex = 0;
+                    PlayerPane.updateUI();
                 }
             }
+            PlayerPane.updateUI();
             playingFrame.add(getPlayerPane(activeCurrentPlayerIndex));
-            //playingFrame.add(PlayerPane.getPlayerPane(game));
             //sets currenttPlayer to new current player after switch
             currentPlayer = game.getCurrentPlayer();
             currentPlayer.setBouwCardsVisible(true);
@@ -176,7 +185,7 @@ public class StartButtonActionListener implements ActionListener {
             points.setText(currentPlayer.getName() + " heeft: " + currentPlayer.getVictorypoints() + " overwinningspunt(en)");
         };
 
-        playingFrame.add(getPlayerPane(activeCurrentPlayerIndex));
+        //playingFrame.add(getPlayerPane(activeCurrentPlayerIndex));
 
         //initialises 'nextButton' & declares it a new JButton with the text "Volgende ronde"
         JButton nextButton = new JButton("Volgende ronde");
